@@ -33,13 +33,6 @@
         </whitelist>
     </filter>
 
-    <logging>
-        <log type="coverage-html" target="./build/log/code-coverage" charset="UTF-8"
-            yui="true" highlight="true"
-            lowUpperBound="50" highLowerBound="80"/>
-        <log type="testdox-html" target="./build/log/testdox.html" />
-    </logging>
-
     <php>
         <const name="PHPUNIT_TESTSUITE" value="true"/>
         <ini name="date.timezone" value="UTC"/>
