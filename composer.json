@@ -1,0 +1,44 @@
+{
+    "name": "noughts-and-crosses/noughts-and-crosses",
+    "description": "A PHP application that learns to play Xs and Os.",
+    "type": "application",
+    "version": "1.0.0",
+    "authors": [
+        {
+            "name": "Eric Mugerwa",
+            "email":  "dev@ericmugerwa.com",
+            "homepage":  "http://www.ericmugerwa.com",
+            "role": "Developer"
+        }
+    ],
+    "license": "MIT",
+    "keywords": [
+        "machine learning",
+        "artificial neural networks"
+    ],
+    "homepage": "https://github.com/ericmdev/NoughtsAndCrosses",
+    "autoload": {
+        "psr-4": {
+            "NoughtsAndCrosses\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "NoughtsAndCrosses\\Test\\": "test"
+        }
+    },
+    "require": {
+        "php": ">=5.5"
+    },
+    "require-dev": {
+        "firephp/firephp-core": "^0.4.0",
+        "phpunit/PHPUnit": "~4.0",
+        "phpdocumentor/phpdocumentor": "2.*",
+        "satooshi/php-coveralls": "dev-master",
+        "sensiolabs/security-checker": "^3.0"
+    },
+    "suggest": {
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
+}
