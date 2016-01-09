@@ -1,5 +1,5 @@
 {
-    "name": "noughts-and-crosses/noughts-and-crosses",
+    "name": "noughtsandcrosses/noughtsandcrosses",
     "description": "A PHP application that learns to play Xs and Os.",
     "type": "application",
     "version": "1.0.0",
