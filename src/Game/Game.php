@@ -127,6 +127,7 @@ class Game implements GameInterface
      */
     public function removePlayer($number)
     {
-        
+        $playerNumber = $number -1;
+        unset($this->players[$playerNumber]);
     }
 }
