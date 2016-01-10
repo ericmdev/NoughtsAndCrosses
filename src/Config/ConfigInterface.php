@@ -9,7 +9,7 @@ namespace NoughtsAndCrosses\Config;
 interface ConfigInterface
 {
     /**
-     * Gets the game property.
+     * Returns the game property.
      * 
      * @return stdClass
      */
