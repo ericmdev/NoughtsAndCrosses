@@ -8,7 +8,14 @@ use PHPUnit_Framework_TestCase;
  * @package noughtsandcrosses
  * @group   specification
  */
-class Config_UnitTest extends PHPUnit_Framework_TestCase
+class Config_UnitTest extends NoughtsAndCrossesTestCase
 {
-
+    /**
+     * @dataProvider configDataProvider
+     */
+    public function testSetGame($game)
+    {
+        $config = new Config();
+        $this->assertSame($game, $config->setGame($game));
+    }
 }
