@@ -45,4 +45,14 @@ class Application_UnitTest extends NoughtsAndCrossesTestCase
         $this->assertSame($game, $app->setGame($game));
     }
 
+    /**
+     * @dataProvider gameProvider
+     */
+    public function testGetGame($game)
+    {
+        $app = new Application();
+        $app->setGame($game);
+        $this->assertSame($game, $app->getGame());
+    }
+
 }
