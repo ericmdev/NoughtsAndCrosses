@@ -33,9 +33,10 @@ interface GameInterface
     /**
      * Sets the pencil property.
      * 
+     * @param  PencilInterface $pencil Pencil.
      * @return PencilInterface
      */
-    public function setPencil();	
+    public function setPencil($pencil);	
 
     /**
      * Returns players array.
