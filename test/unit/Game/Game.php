@@ -12,7 +12,7 @@ use PHPUnit_Framework_TestCase;
 class Game_UnitTest extends NoughtsAndCrossesTestCase
 {
     /**
-     * @dataProvider gameDataProvider
+     * @dataProvider gamePaperProvider
      */
     public function testSetPaper($paper)
     {
@@ -21,12 +21,21 @@ class Game_UnitTest extends NoughtsAndCrossesTestCase
     }
 
     /**
-     * @dataProvider gameDataProvider
+     * @dataProvider gamePaperProvider
      */
     public function testGetPaper($paper)
     {
         $game = new Game();
         $game->setPaper($paper);
         $this->assertSame($paper, $game->getPaper());
+    }
+
+    /**
+     * @dataProvider gamePencilProvider
+     */
+    public function testSetPencil($pencil)
+    {
+        $game = new Game();
+        $this->assertSame($pencil, $game->setPencil($pencil));
     }
 }
