@@ -56,15 +56,16 @@ class Game implements GameInterface
      */
     public function getPaper()
     {
-
+        return $this->paper;
     }
 
     /**
      * Set Pencil.
      * 
+     * @param  PencilInterface $pencil Pencil.
      * @return PencilInterface
      */
-    public function setPencil()
+    public function setPencil($pencil)
     {
 
     }
