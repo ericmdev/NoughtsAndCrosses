@@ -11,12 +11,26 @@ use NoughtsAndCrosses\Game\GameInterface;
 interface ApplicationInterface
 {
     /**
+     * Gets the config property.
+     * 
+     * @return ConfigInterface
+     */
+    public function getConfig();
+
+    /**
      * Sets the config property.
      * 
      * @param  ConfigInterface Config.
      * @return ConfigInterface
      */
     public function setConfig(ConfigInterface $config);
+
+    /**
+     * Gets the game property.
+     * 
+     * @return GameInterface
+     */
+    public function getGame();
 
     /**
      * Sets the game property.
