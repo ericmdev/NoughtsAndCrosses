@@ -40,8 +40,9 @@ class Config implements ConfigInterface
      * @param  array    $game Game configuration data.
      * @return stdClass
      */
-    public function setGame(array $data)
+    public function setGame(array $game)
     {
-
+        $this->game = $game;
+        return $this->game;
     }
 }
