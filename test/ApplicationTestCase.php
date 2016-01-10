@@ -1,14 +1,14 @@
 <?php
 namespace NoughtsAndCrosses\Test;
 use NoughtsAndCrosses\Application;
+use PHPUnit_Framework_TestCase;
 
 /** 
  * Application test case.
  *
  * @package noughtsandcrosses
  */ 
-abstract class ApplicationTestCase
-extends \PHPUnit_Framework_TestCase
+abstract class ApplicationTestCase extends PHPUnit_Framework_TestCase
 {
 
     public function provider()
