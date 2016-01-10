@@ -20,5 +20,19 @@ interface GameInterface
      * 
      * @return PaperInterface
      */
-    public function setPaper();	
+    public function setPaper();
+
+    /**
+     * Gets the pencil property.
+     * 
+     * @return PencilInterface
+     */
+    public function getPencil();	
+
+    /**
+     * Sets the pencil property.
+     * 
+     * @return PencilInterface
+     */
+    public function setPencil();	
 }
