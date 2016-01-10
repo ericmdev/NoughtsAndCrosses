@@ -8,7 +8,7 @@ use NoughtsAndCrosses\ApplicationInterface;
  * @package noughtsandcrosses
  * @group   specification
  */
-class Application_UnitTest extends ApplicationTestCase
+class Application_UnitTest extends NoughtsAndCrossesTestCase
 {
     public function testIsInstanceOfApplicationInterface()
     {
