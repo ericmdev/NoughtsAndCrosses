@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- Set project name, basedir and default target. -->
+<project name="NoughtsAndCrosses Application" default="build">
+
+  <!-- Import build properties. -->
+  <property file="build.properties"/>
+
+  <!-- Set project description. -->
+  <description>NoughtsAndCrosses application.</description>
+
+  <!-- Set build time property. -->
+  <tstamp>
+    <format property="build.time" pattern="yyyy-MM-dd HH:mm:ss"/>
+  </tstamp>
+
+  <!-- Echo build information. -->
+  <echo>
+    Application: ${app.name} ${app.version}
+    Site name: ${site.name}
+    Build File : ${ant.file} 
+    Run Date   : ${build.time}
+    Run by     : ${user.name}
+    Base Dir   : ${basedir}
+    Build Dir  : ${workspace.build}
+  </echo>
+
+  <!-- Import build files. -->
+  <import file="ant/tasks/php.xml"></import>
+
+  <!-- Build target. -->
+  <target name="build"
+    description="Build NoughtsAndCrosses application."
+    depends="php.build">
+  </target>
+
+</project>
