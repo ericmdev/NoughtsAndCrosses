@@ -77,4 +77,15 @@ class Game_UnitTest extends NoughtsAndCrossesTestCase
         $game->addPlayer($player);
         $this->assertSame([$player], $game->getPlayers());
     }
+
+    /**
+     * @dataProvider gamePlayerProvider
+     */
+    public function testRemovePlayers($player)
+    {
+        $game = new Game();
+        $game->addPlayer($player);
+        $game->removePlayer(1);
+        $this->assertSame([], $game->getPlayers());
+    }
 }
