@@ -78,7 +78,7 @@ class Game implements GameInterface
      */
     public function getPencil()
     {
-        
+        return $this->pencil;
     }
 
     /**
