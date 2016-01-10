@@ -62,7 +62,7 @@ class Application implements ApplicationInterface
      */
     public function getGame()
     {
-
+        return $this->game;
     }
 
     /**
