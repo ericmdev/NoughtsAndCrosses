@@ -1,16 +1,14 @@
 <?php
 namespace NoughtsAndCrosses\Test;
-use NoughtsAndCrosses\Application;
 use PHPUnit_Framework_TestCase;
 
 /** 
- * Application test case.
+ * NoughtsAndCrosses test case.
  *
  * @package noughtsandcrosses
  */ 
-abstract class ApplicationTestCase extends PHPUnit_Framework_TestCase
+abstract class NoughtsAndCrossesTestCase extends PHPUnit_Framework_TestCase
 {
-
     public function provider()
     {
         return [[]];
@@ -23,7 +21,7 @@ abstract class ApplicationTestCase extends PHPUnit_Framework_TestCase
 
     public function setUp()
     {
-        $this->stub = new Application();
+        // ...
     }
 
     public function tearDown()
