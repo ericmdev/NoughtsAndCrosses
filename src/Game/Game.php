@@ -67,7 +67,8 @@ class Game implements GameInterface
      */
     public function setPencil($pencil)
     {
-
+        $this->pencil = $pencil;
+        return $this->pencil;
     }
 
     /**
