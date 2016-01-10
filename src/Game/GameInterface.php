@@ -9,7 +9,7 @@ namespace NoughtsAndCrosses\Game;
 interface GameInterface
 {
     /**
-     * Gets the paper property.
+     * Returns the paper property.
      * 
      * @return PaperInterface
      */
@@ -23,7 +23,7 @@ interface GameInterface
     public function setPaper();
 
     /**
-     * Gets the pencil property.
+     * Returns the pencil property.
      * 
      * @return PencilInterface
      */
@@ -35,4 +35,26 @@ interface GameInterface
      * @return PencilInterface
      */
     public function setPencil();	
+
+    /**
+     * Returns a player from the player array.
+     * 
+     * @param  str             $number Player number.
+     * @return PlayerInterface 
+     */
+    public function getPlayer($number);	
+
+    /**
+     * Adds a player to the players array.
+     * 
+     * @return PlayerInterface
+     */
+    public function addPlayer();
+
+    /**
+     * Removes a player from the players array.
+     * 
+     * @return PlayerInterface
+     */
+    public function removePlayer();	
 }
