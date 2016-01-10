@@ -18,7 +18,8 @@ interface ConfigInterface
     /**
      * Sets the game property.
      * 
-     * @param array $game Game configuration data.
+     * @param  array    $game Game configuration data.
+     * @return stdClass
      */
     public function setGame(array $game);
 }
