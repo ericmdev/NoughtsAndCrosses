@@ -38,4 +38,14 @@ class Game_UnitTest extends NoughtsAndCrossesTestCase
         $game = new Game();
         $this->assertSame($pencil, $game->setPencil($pencil));
     }
+
+    /**
+     * @dataProvider gamePencilProvider
+     */
+    public function testGetPencil($pencil)
+    {
+        $game = new Game();
+        $game->setPencil($pencil);
+        $this->assertSame($pencil, $game->getPencil());
+    }
 }
