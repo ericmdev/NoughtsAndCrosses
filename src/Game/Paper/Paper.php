@@ -8,5 +8,12 @@ namespace NoughtsAndCrosses\Game\Paper;
  */
 class Paper implements PaperInterface
 {
+    /**
+     * Constructor.
+     * 
+     */
+    public function __construct()
+    {  
 
+    }
 }
