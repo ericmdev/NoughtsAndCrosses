@@ -4,7 +4,7 @@ namespace NoughtsAndCrosses\Config;
 /** 
  * Interface for Config.
  *
- * @package   noughtsandcrosses
+ * @package noughtsandcrosses
  */
 interface ConfigInterface
 {

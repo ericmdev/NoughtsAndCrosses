@@ -6,7 +6,7 @@ use NoughtsAndCrosses\Game\GameInterface;
 /** 
  * Interface for Application.
  *
- * @package   noughtsandcrosses
+ * @package noughtsandcrosses
  */
 interface ApplicationInterface
 {
