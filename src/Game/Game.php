@@ -1,5 +1,6 @@
 <?php
 namespace NoughtsAndCrosses\Game;
+use NoughtsAndCrosses\Game\Paper\Paper;
 
 /**
  * Game
@@ -39,11 +40,13 @@ class Game implements GameInterface
     /**
      * Set Paper.
      * 
+     * @param  PaperInterface $paper Paper.
      * @return PaperInterface
      */
-    public function setPaper()
+    public function setPaper($paper)
     {
-
+        $this->paper = $paper;
+        return $this->paper;
     }
 
     /**

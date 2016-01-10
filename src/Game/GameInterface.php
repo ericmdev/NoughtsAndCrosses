@@ -18,9 +18,10 @@ interface GameInterface
     /**
      * Sets the paper property.
      * 
+     * @param  PaperInterface $paper Paper.
      * @return PaperInterface
      */
-    public function setPaper();
+    public function setPaper($paper);
 
     /**
      * Returns the pencil property.

@@ -17,6 +17,6 @@ class Game_UnitTest extends NoughtsAndCrossesTestCase
     public function testSetPaper($paper)
     {
         $game = new Game();
-        $this->assertSame($game, $game->setPaper($paper));
+        $this->assertSame($paper, $game->setPaper($paper));
     }
 }
