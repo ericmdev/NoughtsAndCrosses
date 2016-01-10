@@ -1,5 +1,6 @@
 <?php
 namespace NoughtsAndCrosses\Test;
+use NoughtsAndCrosses\Config\Config;
 use PHPUnit_Framework_TestCase;
 
 /**
