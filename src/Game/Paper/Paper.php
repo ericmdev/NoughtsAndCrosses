@@ -13,7 +13,7 @@ class Paper implements PaperInterface
      * 
      */
     public function __construct()
-    {  
-
+    {
+        
     }
 }
