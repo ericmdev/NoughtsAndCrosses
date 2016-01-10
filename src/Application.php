@@ -40,7 +40,7 @@ class Application implements ApplicationInterface
      */
     public function getConfig()
     {
-
+        return $this->config;
     }
 
     /**
@@ -62,7 +62,7 @@ class Application implements ApplicationInterface
      */
     public function getGame()
     {
-
+        return $this->game;
     }
 
     /**
@@ -73,7 +73,8 @@ class Application implements ApplicationInterface
      */
     public function setGame(GameInterface $game)
     {
-
+        $this->game = $game;
+        return $this->game;
     }
 
     /**
