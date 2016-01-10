@@ -19,4 +19,14 @@ class Game_UnitTest extends NoughtsAndCrossesTestCase
         $game = new Game();
         $this->assertSame($paper, $game->setPaper($paper));
     }
+
+    /**
+     * @dataProvider gameDataProvider
+     */
+    public function testGetPaper($paper)
+    {
+        $game = new Game();
+        $game->setPaper($paper);
+        $this->assertSame($paper, $game->getPaper());
+    }
 }
