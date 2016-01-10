@@ -104,7 +104,8 @@ class Game implements GameInterface
      */
     public function getPlayer($number)
     {
-        
+        $playerNumber = $number -1;
+        return $this->players[$playerNumber];
     }
 
     /**
