@@ -93,7 +93,7 @@ class Game implements GameInterface
      */
     public function getPlayers()
     {
-        
+        return $this->players;
     }
 
     /**
