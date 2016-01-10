@@ -8,5 +8,17 @@ namespace NoughtsAndCrosses\Game;
  */
 interface GameInterface
 {
-	
+    /**
+     * Gets the paper property.
+     * 
+     * @return PaperInterface
+     */
+    public function getPaper();	
+
+    /**
+     * Sets the paper property.
+     * 
+     * @return PaperInterface
+     */
+    public function setPaper();	
 }
