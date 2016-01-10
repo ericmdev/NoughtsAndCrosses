@@ -37,9 +37,16 @@ interface GameInterface
     public function setPencil();	
 
     /**
-     * Returns a player from the player array.
+     * Returns players array.
      * 
-     * @param  str             $number Player number.
+     * @return array
+     */
+    public function getPlayers();	
+
+    /**
+     * Returns a player from the players array.
+     * 
+     * @param  int             $number Player number.
      * @return PlayerInterface 
      */
     public function getPlayer($number);	
@@ -54,7 +61,8 @@ interface GameInterface
     /**
      * Removes a player from the players array.
      * 
+     * @param  int             $number Player number.
      * @return PlayerInterface
      */
-    public function removePlayer();	
+    public function removePlayer($number);	
 }
