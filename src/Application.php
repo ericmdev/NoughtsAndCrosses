@@ -40,7 +40,7 @@ class Application implements ApplicationInterface
      */
     public function getConfig()
     {
-
+        return $this->config;
     }
 
     /**
