@@ -14,14 +14,13 @@ class Application_UnitTest extends NoughtsAndCrossesTestCase
     {
         $this->assertTrue($this->stub instanceof ApplicationInterface); 
     }
-    
+
     /**
      * @dataProvider configProvider
      */
     public function testSetConfig($config)
     {
         $app = new Application();
-        $config = new Config();
         $this->assertSame($config, $app->setConfig($config));
     }
 }
