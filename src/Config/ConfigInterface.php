@@ -8,7 +8,17 @@ namespace NoughtsAndCrosses\Config;
  */
 interface ConfigInterface
 {
-    public function get();
-    public function set($data);
-    public function parse($file);
+    /**
+     * Gets the game property.
+     * 
+     * @return stdClass
+     */
+    public function getGame();
+
+    /**
+     * Sets the game property.
+     * 
+     * @param array $data Game configuration data.
+     */
+    public function setGame($data);
 }
