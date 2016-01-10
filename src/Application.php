@@ -29,7 +29,7 @@ class Application implements ApplicationInterface
      * 
      */
     public function __construct()
-    {   
+    {
 
     }
 
@@ -39,7 +39,7 @@ class Application implements ApplicationInterface
      * @return ConfigInterface
      */
     public function getConfig()
-    {  
+    {
 
     }
 
@@ -50,8 +50,9 @@ class Application implements ApplicationInterface
      * @return ConfigInterface
      */
     public function setConfig(ConfigInterface $config)
-    {  
-
+    {
+        $this->config = $config;
+        return $this->config;
     }
 
     /**
@@ -60,7 +61,7 @@ class Application implements ApplicationInterface
      * @return GameInterface
      */
     public function getGame()
-    {  
+    {
 
     }
 
