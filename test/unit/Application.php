@@ -1,5 +1,6 @@
 <?php
 namespace NoughtsAndCrosses\Test;
+use NoughtsAndCrosses\Application;
 use NoughtsAndCrosses\ApplicationInterface;
 
 /**
@@ -12,7 +13,8 @@ class Application_UnitTest extends NoughtsAndCrossesTestCase
 {
     public function testIsInstanceOfApplicationInterface()
     {
-        $this->assertTrue($this->stub instanceof ApplicationInterface); 
+        $app = new Application();
+        $this->assertTrue($app instanceof ApplicationInterface); 
     }
 
     /**
