@@ -3,6 +3,7 @@ namespace NoughtsAndCrosses\Test;
 use NoughtsAndCrosses\Config\Config;
 use NoughtsAndCrosses\Game\Game;
 use NoughtsAndCrosses\Game\Paper\Paper;
+use NoughtsAndCrosses\Game\Pencil\Pencil;
 use PHPUnit_Framework_TestCase;
 
 /** 
@@ -59,13 +60,23 @@ abstract class NoughtsAndCrossesTestCase extends PHPUnit_Framework_TestCase
     }
 
     /**
-     * Game data provider.
+     * Game paper provider.
      *
      */
-    public function gameDataProvider()
+    public function gamePaperProvider()
     {
         $paper = new Paper();
         return [[$paper]];
+    }
+
+    /**
+     * Game paper provider.
+     *
+     */
+    public function gamePencilProvider()
+    {
+        $pencil = new Pencil();
+        return [[$pencil]];
     }
 
     public function setUp()
