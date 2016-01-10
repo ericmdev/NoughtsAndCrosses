@@ -73,7 +73,8 @@ class Application implements ApplicationInterface
      */
     public function setGame(GameInterface $game)
     {
-
+        $this->game = $game;
+        return $this->game;
     }
 
     /**
