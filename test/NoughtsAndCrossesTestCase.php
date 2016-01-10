@@ -1,6 +1,7 @@
 <?php
 namespace NoughtsAndCrosses\Test;
 use NoughtsAndCrosses\Config\Config;
+use NoughtsAndCrosses\Game\Game;
 use PHPUnit_Framework_TestCase;
 
 /** 
@@ -23,6 +24,11 @@ abstract class NoughtsAndCrossesTestCase extends PHPUnit_Framework_TestCase
     public function configProvider()
     {
         return [[new Config()]];
+    }
+
+    public function gameProvider()
+    {
+        return [[new Game()]];
     }
 
     public function configDataProvider()
