@@ -38,4 +38,19 @@ interface NeuralNetworkInterface
      * @return HiddenLayerInterface
      */
     public function setHiddenLayer(HiddenLayerInterface $layer);
+
+    /**
+     * Returns the output layer property.
+     * 
+     * @return OutputLayerInterface
+     */
+    public function getOutputLayer();
+
+    /**
+     * Set output layer.
+     * 
+     * @param  OutputLayerInterface $layer Output layer.
+     * @return OutputLayerInterface
+     */
+    public function setOutputLayer(OutputLayerInterface $layer);
 }
