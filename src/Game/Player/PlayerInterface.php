@@ -8,5 +8,18 @@ namespace NoughtsAndCrosses\Game\Player;
  */
 interface PlayerInterface
 {
-	
+    /**
+     * Returns the number property.
+     * 
+     * @return int
+     */
+    public function getNumber();	
+
+    /**
+     * Sets the number property.
+     * 
+     * @param  int $number Player number.
+     * @return int
+     */
+    public function setNumber($number);
 }
