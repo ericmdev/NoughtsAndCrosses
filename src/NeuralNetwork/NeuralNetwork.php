@@ -89,6 +89,7 @@ class NeuralNetwork implements NeuralNetworkInterface
      */
     public function setOutputLayer(OutputLayerInterface $layer)
     {
-
+        $this->layers->output = $layer;
+        return $this->layers->output;
     }
 }
