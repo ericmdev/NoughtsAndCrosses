@@ -1,6 +1,7 @@
 <?php
 namespace NoughtsAndCrosses\NeuralNetwork;
 use NoughtsAndCrosses\NeuralNetwork\Layer\InputLayerInterface;
+use stdClass;
 
 /**
  * NeuralNetwork
@@ -10,12 +11,18 @@ use NoughtsAndCrosses\NeuralNetwork\Layer\InputLayerInterface;
 class NeuralNetwork implements NeuralNetworkInterface
 {
     /**
+     * @access protected
+     * @var    stdClass
+     */
+    protected  $layers;
+
+    /**
      * Constructor.
      * 
      */
     public function __construct()
     {
-        
+        $this->layers = new stdClass();
     }
 
     /**
@@ -36,6 +43,7 @@ class NeuralNetwork implements NeuralNetworkInterface
      */
     public function setInputLayer(InputLayerInterface $layer)
     {
-    	
+        $this->layers->input = $layer;
+        return $this->layers->input;
     }
 }
