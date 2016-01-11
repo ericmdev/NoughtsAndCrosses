@@ -18,4 +18,25 @@ abstract class Layer_Abstract implements Layer_AbstractInterface
     {
 
     }
+
+    /**
+     * Get Neurons.
+     * 
+     * @return array
+     */
+    public function getNeurons()
+    {
+
+    }
+
+    /**
+     * Set Neurons.
+     * 
+     * @param  int   $number Number of neurons. 
+     * @return array
+     */
+    public function setNeurons(NeuronInterface $neuron)
+    {
+
+    }
 }
