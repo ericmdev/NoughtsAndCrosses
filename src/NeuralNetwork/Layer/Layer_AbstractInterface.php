@@ -1,5 +1,6 @@
 <?php
 namespace NoughtsAndCrosses\NeuralNetwork\Layer;
+use NoughtsAndCrosses\NeuralNetwork\Neuron\NeuronInterface;
 
 /** 
  * Interface for Abstract Layer.
@@ -8,5 +9,18 @@ namespace NoughtsAndCrosses\NeuralNetwork\Layer;
  */
 interface Layer_AbstractInterface
 {
-	
+    /**
+     * Returns neurons array.
+     * 
+     * @return array
+     */
+    public function getNeurons();
+
+    /**
+     * Sets the number of neurons.
+     * 
+     * @param  int   $number Number of neurons. 
+     * @return array
+     */
+    public function setNeurons(NeuronInterface $neuron);	
 }
