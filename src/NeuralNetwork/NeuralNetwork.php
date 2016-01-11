@@ -67,7 +67,8 @@ class NeuralNetwork implements NeuralNetworkInterface
      */
     public function setHiddenLayer(HiddenLayerInterface $layer)
     {
-
+        $this->layers->hidden = $layer;
+        return $this->layers->hidden;
     }
 
     /**
