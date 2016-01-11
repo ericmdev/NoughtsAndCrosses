@@ -114,6 +114,15 @@ abstract class NoughtsAndCrossesTestCase extends PHPUnit_Framework_TestCase
         return [[$layer]];
     }
 
+    /**
+     * Neurons provider.
+     *
+     */
+    public function neuronsProvider()
+    {
+        return [[1]];
+    }
+
     public function setUp()
     {
         // ...
