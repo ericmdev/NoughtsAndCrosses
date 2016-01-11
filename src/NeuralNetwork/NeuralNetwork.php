@@ -56,7 +56,7 @@ class NeuralNetwork implements NeuralNetworkInterface
      */
     public function getHiddenLayer()
     {
-
+        return $this->layers->hidden;
     }
 
     /**
@@ -67,17 +67,18 @@ class NeuralNetwork implements NeuralNetworkInterface
      */
     public function setHiddenLayer(HiddenLayerInterface $layer)
     {
-
+        $this->layers->hidden = $layer;
+        return $this->layers->hidden;
     }
 
     /**
-     * Get Out Layer.
+     * Get Output Layer.
      * 
      * @return OutputLayerInterface
      */
     public function getOutputLayer()
     {
-
+        return $this->layers->output;
     }
 
     /**
@@ -88,6 +89,7 @@ class NeuralNetwork implements NeuralNetworkInterface
      */
     public function setOutputLayer(OutputLayerInterface $layer)
     {
-
+        $this->layers->output = $layer;
+        return $this->layers->output;
     }
 }

@@ -7,6 +7,7 @@ use NoughtsAndCrosses\Game\Pencil\Pencil;
 use NoughtsAndCrosses\Game\Player\Player;
 use NoughtsAndCrosses\NeuralNetwork\Layer\InputLayer;
 use NoughtsAndCrosses\NeuralNetwork\Layer\HiddenLayer;
+use NoughtsAndCrosses\NeuralNetwork\Layer\OutputLayer;
 use PHPUnit_Framework_TestCase;
 
 /** 
@@ -17,7 +18,7 @@ use PHPUnit_Framework_TestCase;
 abstract class NoughtsAndCrossesTestCase extends PHPUnit_Framework_TestCase
 {
     /**
-     * Default provider.
+     * Default Provider.
      *
      */
     public function provider()
@@ -26,7 +27,7 @@ abstract class NoughtsAndCrossesTestCase extends PHPUnit_Framework_TestCase
     }
 
     /**
-     * Default bad provider.
+     * Default Bad Provider.
      *
      */
     public function badProvider()
@@ -35,7 +36,7 @@ abstract class NoughtsAndCrossesTestCase extends PHPUnit_Framework_TestCase
     }
 
     /**
-     * Config provider.
+     * Config Provider.
      *
      */
     public function configProvider()
@@ -44,7 +45,7 @@ abstract class NoughtsAndCrossesTestCase extends PHPUnit_Framework_TestCase
     }
 
     /**
-     * Config data provider.
+     * Config Data Provider.
      *
      */
     public function configDataProvider()
@@ -54,7 +55,7 @@ abstract class NoughtsAndCrossesTestCase extends PHPUnit_Framework_TestCase
     }
 
     /**
-     * Game provider.
+     * Game Provider.
      *
      */
     public function gameProvider()
@@ -63,7 +64,7 @@ abstract class NoughtsAndCrossesTestCase extends PHPUnit_Framework_TestCase
     }
 
     /**
-     * Game paper provider.
+     * Game Paper Provider.
      *
      */
     public function gamePaperProvider()
@@ -73,7 +74,7 @@ abstract class NoughtsAndCrossesTestCase extends PHPUnit_Framework_TestCase
     }
 
     /**
-     * Game paper provider.
+     * Game Paper Provider.
      *
      */
     public function gamePencilProvider()
@@ -83,7 +84,7 @@ abstract class NoughtsAndCrossesTestCase extends PHPUnit_Framework_TestCase
     }
 
     /**
-     * Game player provider.
+     * Game Player Provider.
      *
      */
     public function gamePlayerProvider()
@@ -93,7 +94,7 @@ abstract class NoughtsAndCrossesTestCase extends PHPUnit_Framework_TestCase
     }
 
     /**
-     * Neural network input layer provider.
+     * Neural Network Input Layer Provider.
      *
      */
     public function neuralNetworkInputLayerProvider()
@@ -104,7 +105,7 @@ abstract class NoughtsAndCrossesTestCase extends PHPUnit_Framework_TestCase
     }
 
     /**
-     * Neural network input layer provider.
+     * Neural Network Input Layer Provider.
      *
      */
     public function neuralNetworkHiddenLayerProvider()
@@ -115,7 +116,18 @@ abstract class NoughtsAndCrossesTestCase extends PHPUnit_Framework_TestCase
     }
 
     /**
-     * Neurons provider.
+     * Neural Network Output Layer Provider.
+     *
+     */
+    public function neuralNetworkOutputLayerProvider()
+    {
+        $neurons = 1;
+        $layer = new OutputLayer($neurons);
+        return [[$layer]];
+    }
+
+    /**
+     * Neurons Provider.
      *
      */
     public function neuronsProvider()
@@ -123,11 +135,19 @@ abstract class NoughtsAndCrossesTestCase extends PHPUnit_Framework_TestCase
         return [[1]];
     }
 
+    /**
+     * Set Up.
+     *
+     */
     public function setUp()
     {
         // ...
     }
 
+    /**
+     * Tear Down.
+     *
+     */
     public function tearDown()
     { 
         // ...
