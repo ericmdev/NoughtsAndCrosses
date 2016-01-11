@@ -16,4 +16,25 @@ class NeuralNetwork implements NeuralNetworkInterface
     {
         
     }
+
+    /**
+     * Returns the input layer property.
+     * 
+     * @return InputLayerInterface
+     */
+    public function getInputLayer()
+    {
+
+    }
+
+    /**
+     * Set input layer.
+     * 
+     * @param  InputLayerInterface $layer Input layer.
+     * @return InputLayerInterface
+     */
+    public function setInputLayer(InputLayerInterface $layer)
+    {
+    	
+    }
 }
