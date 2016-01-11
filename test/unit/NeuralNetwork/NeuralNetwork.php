@@ -48,4 +48,23 @@ class NeuralNetwork_UnitTest extends NoughtsAndCrossesTestCase
         $neuralNetwork->setHiddenLayer($layer);
         $this->assertSame($layer, $neuralNetwork->getHiddenLayer());
     }
+
+    /**
+     * @dataProvider neuralNetworkOutputLayerProvider
+     */
+    public function testSetOutputLayer($layer)
+    {
+        $neuralNetwork = new NeuralNetwork();
+        $this->assertSame($layer, $neuralNetwork->setOutputLayer($layer));
+    }
+    
+    /**
+     * @dataProvider neuralNetworkOutputLayerProvider
+     */
+    public function testGetOutputLayer($layer)
+    {
+        $neuralNetwork = new NeuralNetwork();
+        $neuralNetwork->setOutputLayer($layer);
+        $this->assertSame($layer, $neuralNetwork->getOutputLayer());
+    }
 }
