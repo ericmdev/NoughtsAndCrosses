@@ -6,7 +6,7 @@ namespace NoughtsAndCrosses\NeuralNetwork\Layer;
  *
  * @package noughtsandcrosses
  */
-class HiddenLayer implements HiddenLayerInterface
+class HiddenLayer extends Layer_Abstract implements HiddenLayerInterface
 {
     /**
      * Constructor.
