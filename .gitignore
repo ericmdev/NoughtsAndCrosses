@@ -1,4 +1,6 @@
+/ant/
 /build/
 /vendor/
 composer.phar
 *.tmp
+*cache.properties
