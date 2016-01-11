@@ -20,7 +20,7 @@ interface Layer_AbstractInterface
      * Sets the number of neurons.
      * 
      * @param  int   $number Number of neurons. 
-     * @return array
+     * @return int
      */
     public function setNeurons($neurons);	
 }
