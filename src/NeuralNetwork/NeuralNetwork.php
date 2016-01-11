@@ -67,4 +67,25 @@ class NeuralNetwork implements NeuralNetworkInterface
     {
 
     }
+
+    /**
+     * Get Out Layer.
+     * 
+     * @return OutputLayerInterface
+     */
+    public function getOutputLayer()
+    {
+    	
+    }
+
+    /**
+     * Set Output Layer.
+     * 
+     * @param  OutputLayerInterface $layer Output layer.
+     * @return OutputLayerInterface
+     */
+    public function setOutputLayer(OutputLayerInterface $layer)
+    {
+
+    }
 }
