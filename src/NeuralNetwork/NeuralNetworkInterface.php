@@ -1,6 +1,6 @@
 <?php
 namespace NoughtsAndCrosses\NeuralNetwork;
-namespace NoughtsAndCrosses\NeuralNetwork\Layer\InputLayerInterface;
+use NoughtsAndCrosses\NeuralNetwork\Layer\InputLayerInterface;
 
 /** 
  * Interface for NeuralNetwork.
