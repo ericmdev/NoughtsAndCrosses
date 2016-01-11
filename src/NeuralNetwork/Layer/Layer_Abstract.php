@@ -19,9 +19,8 @@ abstract class Layer_Abstract implements Layer_AbstractInterface
     /**
      * Constructor.
      *
-     * @var int $neurons Number of layer neurons.
      */
-    public function __construct($neurons)
+    public function __construct()
     {
 
     }
