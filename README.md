@@ -2,6 +2,7 @@ NoughtsAndCrosses
 =================
 
 [![Build Status](https://travis-ci.org/ericmdev/NoughtsAndCrosses.svg?branch=master)](https://travis-ci.org/ericmdev/NoughtsAndCrosses)
+[![Coverage Status](https://coveralls.io/repos/ericmdev/NoughtsAndCrosses/badge.svg?branch=develop&service=github)](https://coveralls.io/github/ericmdev/NoughtsAndCrosses?branch=develop)
 [![Dependency Status](https://www.versioneye.com/user/projects/56930ebaaf789b0043000010/badge.svg?style=flat)](https://www.versioneye.com/user/projects/56930ebaaf789b0043000010)
 
 A PHP application that **learns** to play Xs and Os.
