@@ -11,5 +11,12 @@ use PHPUnit_Framework_TestCase;
  */
 class Layer_Abstract_UnitTest extends NoughtsAndCrossesTestCase
 {
-	
+    /**
+     * @dataProvider neuronsProvider
+     */
+    public function testSetNeurons($neurons)
+    {
+        $stub = $this->getMock('NoughtsAndCrosses\NeuralNetwork\Layer\Layer_Abstract');
+        $this->assertSame($neurons, $stub->setNeurons($neurons));
+    }
 }
