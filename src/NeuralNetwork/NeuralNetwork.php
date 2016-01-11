@@ -32,7 +32,7 @@ class NeuralNetwork implements NeuralNetworkInterface
      */
     public function getInputLayer()
     {
-
+    	return $this->layers->input;
     }
 
     /**
