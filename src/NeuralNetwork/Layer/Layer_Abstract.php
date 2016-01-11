@@ -28,11 +28,11 @@ abstract class Layer_Abstract implements Layer_AbstractInterface
     /**
      * Get Neurons.
      * 
-     * @return array
+     * @return int
      */
     public function getNeurons()
     {
-
+    	return count($this->neurons);
     }
 
     /**

@@ -10,9 +10,9 @@ use NoughtsAndCrosses\NeuralNetwork\Neuron\NeuronInterface;
 interface Layer_AbstractInterface
 {
     /**
-     * Returns neurons array.
+     * Returns number of neurons.
      * 
-     * @return array
+     * @return int
      */
     public function getNeurons();
 
