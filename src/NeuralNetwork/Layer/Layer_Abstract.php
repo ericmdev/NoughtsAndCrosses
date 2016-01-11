@@ -9,6 +9,13 @@ use NoughtsAndCrosses\NeuralNetwork\Neuron\Neuron;
  */
 abstract class Layer_Abstract implements Layer_AbstractInterface
 {
+
+    /**
+     * @access protected
+     * @var    array
+     */
+    protected  $neurons = [];
+
     /**
      * Constructor.
      *
@@ -35,7 +42,7 @@ abstract class Layer_Abstract implements Layer_AbstractInterface
      * @param  int   $number Number of neurons. 
      * @return array
      */
-    public function setNeurons(NeuronInterface $neuron)
+    public function setNeurons($neurons)
     {
 
     }
