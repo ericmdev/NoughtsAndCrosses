@@ -1,5 +1,6 @@
 <?php
 namespace NoughtsAndCrosses\Game\Player;
+use NoughtsAndCrosses\NeuralNetwork\NeuralNetworkInterface;
 
 /** 
  * Interface for Player.
@@ -36,5 +37,5 @@ interface PlayerInterface
      * @param  NeuralNetworkInterface $neuralNetwork Neural network.
      * @return NeuralNetworkInterface
      */
-    public function setNeuralNetwork($neuralNetwork);
+    public function setNeuralNetwork(NeuralNetworkInterface $neuralNetwork);
 }
