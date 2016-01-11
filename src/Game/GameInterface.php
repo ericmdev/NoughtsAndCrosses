@@ -1,5 +1,8 @@
 <?php
 namespace NoughtsAndCrosses\Game;
+use NoughtsAndCrosses\Game\Paper\PaperInterface;
+use NoughtsAndCrosses\Game\Pencil\PencilInterface;
+use NoughtsAndCrosses\Game\Player\PlayerInterface;
 
 /** 
  * Interface for Game.
@@ -21,7 +24,7 @@ interface GameInterface
      * @param  PaperInterface $paper Paper.
      * @return PaperInterface
      */
-    public function setPaper($paper);
+    public function setPaper(PaperInterface $paper);
 
     /**
      * Returns the pencil property.
@@ -36,7 +39,7 @@ interface GameInterface
      * @param  PencilInterface $pencil Pencil.
      * @return PencilInterface
      */
-    public function setPencil($pencil);	
+    public function setPencil(PencilInterface $pencil);	
 
     /**
      * Returns players array.
@@ -56,9 +59,10 @@ interface GameInterface
     /**
      * Adds a player to the players array.
      * 
+     * @param  PlayerInterface $player Player.
      * @return PlayerInterface
      */
-    public function addPlayer();
+    public function addPlayer(PlayerInterface $player);
 
     /**
      * Removes a player from the players array.

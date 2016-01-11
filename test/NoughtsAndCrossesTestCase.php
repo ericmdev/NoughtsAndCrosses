@@ -4,6 +4,9 @@ use NoughtsAndCrosses\Config\Config;
 use NoughtsAndCrosses\Game\Game;
 use NoughtsAndCrosses\Game\Paper\Paper;
 use NoughtsAndCrosses\Game\Pencil\Pencil;
+use NoughtsAndCrosses\Game\Player\Player;
+use NoughtsAndCrosses\NeuralNetwork\Layer\InputLayer;
+use NoughtsAndCrosses\NeuralNetwork\Layer\HiddenLayer;
 use PHPUnit_Framework_TestCase;
 
 /** 
@@ -77,6 +80,47 @@ abstract class NoughtsAndCrossesTestCase extends PHPUnit_Framework_TestCase
     {
         $pencil = new Pencil();
         return [[$pencil]];
+    }
+
+    /**
+     * Game player provider.
+     *
+     */
+    public function gamePlayerProvider()
+    {
+        $player = new Player();
+        return [[$player]];
+    }
+
+    /**
+     * Neural network input layer provider.
+     *
+     */
+    public function neuralNetworkInputLayerProvider()
+    {
+        $neurons = 1;
+        $layer = new InputLayer($neurons);
+        return [[$layer]];
+    }
+
+    /**
+     * Neural network input layer provider.
+     *
+     */
+    public function neuralNetworkHiddenLayerProvider()
+    {
+        $neurons = 1;
+        $layer = new HiddenLayer($neurons);
+        return [[$layer]];
+    }
+
+    /**
+     * Neurons provider.
+     *
+     */
+    public function neuronsProvider()
+    {
+        return [[1]];
     }
 
     public function setUp()

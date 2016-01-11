@@ -1,6 +1,11 @@
 <?php
 namespace NoughtsAndCrosses\Game;
 use NoughtsAndCrosses\Game\Paper\Paper;
+use NoughtsAndCrosses\Game\Paper\PaperInterface;
+use NoughtsAndCrosses\Game\Pencil\Pencil;
+use NoughtsAndCrosses\Game\Pencil\PencilInterface;
+use NoughtsAndCrosses\Game\Player\Player;
+use NoughtsAndCrosses\Game\Player\PlayerInterface;
 
 /**
  * Game
@@ -23,9 +28,9 @@ class Game implements GameInterface
 
     /**
      * @access protected
-     * @var    Pencil
+     * @var    array
      */
-    protected $players;
+    protected $players = [];
 
     /**
      * Constructor.
@@ -43,7 +48,7 @@ class Game implements GameInterface
      * @param  PaperInterface $paper Paper.
      * @return PaperInterface
      */
-    public function setPaper($paper)
+    public function setPaper(PaperInterface $paper)
     {
         $this->paper = $paper;
         return $this->paper;
@@ -65,7 +70,7 @@ class Game implements GameInterface
      * @param  PencilInterface $pencil Pencil.
      * @return PencilInterface
      */
-    public function setPencil($pencil)
+    public function setPencil(PencilInterface $pencil)
     {
         $this->pencil = $pencil;
         return $this->pencil;
@@ -88,7 +93,7 @@ class Game implements GameInterface
      */
     public function getPlayers()
     {
-        
+        return $this->players;
     }
 
     /**
@@ -99,7 +104,8 @@ class Game implements GameInterface
      */
     public function getPlayer($number)
     {
-        
+        $playerNumber = $number -1;
+        return $this->players[$playerNumber];
     }
 
     /**
@@ -107,9 +113,10 @@ class Game implements GameInterface
      * 
      * @return PlayerInterface
      */
-    public function addPlayer()
+    public function addPlayer(PlayerInterface $player)
     {
-        
+        array_push($this->players, $player);
+        return $this->players[count($this->players)-1];
     }
 
     /**
@@ -120,6 +127,7 @@ class Game implements GameInterface
      */
     public function removePlayer($number)
     {
-        
+        $playerNumber = $number -1;
+        unset($this->players[$playerNumber]);
     }
 }
