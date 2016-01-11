@@ -43,6 +43,8 @@ abstract class Layer_Abstract implements Layer_AbstractInterface
      */
     public function setNeurons($neurons)
     {
-
+        for($i = 1; $i <= $neurons; $i++)
+            array_push($this->neurons, new Neuron());
+        return count($this->neurons);
     }
 }
