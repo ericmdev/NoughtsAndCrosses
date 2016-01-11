@@ -72,13 +72,13 @@ class NeuralNetwork implements NeuralNetworkInterface
     }
 
     /**
-     * Get Out Layer.
+     * Get Output Layer.
      * 
      * @return OutputLayerInterface
      */
     public function getOutputLayer()
     {
-
+        return $this->layers->output;
     }
 
     /**
