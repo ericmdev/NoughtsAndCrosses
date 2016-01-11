@@ -1,6 +1,8 @@
 <?php
 namespace NoughtsAndCrosses\NeuralNetwork;
 use NoughtsAndCrosses\NeuralNetwork\Layer\InputLayerInterface;
+use NoughtsAndCrosses\NeuralNetwork\Layer\HiddenLayerInterface;
+use NoughtsAndCrosses\NeuralNetwork\Layer\OutputLayerInterface;
 use stdClass;
 
 /**
@@ -75,7 +77,7 @@ class NeuralNetwork implements NeuralNetworkInterface
      */
     public function getOutputLayer()
     {
-    	
+
     }
 
     /**
