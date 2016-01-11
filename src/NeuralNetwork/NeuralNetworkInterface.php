@@ -19,7 +19,7 @@ interface NeuralNetworkInterface
     public function getInputLayer();
 
     /**
-     * Set input layer.
+     * Sets the input layer.
      * 
      * @param  InputLayerInterface $layer Input layer.
      * @return InputLayerInterface
@@ -34,7 +34,7 @@ interface NeuralNetworkInterface
     public function getHiddenLayer();
 
     /**
-     * Set hidden layer.
+     * Sets the hidden layer.
      * 
      * @param  HiddenLayerInterface $layer Hidden layer.
      * @return HiddenLayerInterface
@@ -49,7 +49,7 @@ interface NeuralNetworkInterface
     public function getOutputLayer();
 
     /**
-     * Set output layer.
+     * Sets the output layer.
      * 
      * @param  OutputLayerInterface $layer Output layer.
      * @return OutputLayerInterface
