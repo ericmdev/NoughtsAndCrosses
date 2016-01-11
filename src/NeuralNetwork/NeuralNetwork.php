@@ -26,7 +26,7 @@ class NeuralNetwork implements NeuralNetworkInterface
     }
 
     /**
-     * Returns the input layer property.
+     * Get Input Layer.
      * 
      * @return InputLayerInterface
      */
@@ -36,7 +36,7 @@ class NeuralNetwork implements NeuralNetworkInterface
     }
 
     /**
-     * Set input layer.
+     * Set Input Layer.
      * 
      * @param  InputLayerInterface $layer Input layer.
      * @return InputLayerInterface
@@ -45,5 +45,26 @@ class NeuralNetwork implements NeuralNetworkInterface
     {
         $this->layers->input = $layer;
         return $this->layers->input;
+    }
+
+    /**
+     * Get Hidden Layer.
+     * 
+     * @return HiddenLayerInterface
+     */
+    public function getHiddenLayer()
+    {
+
+    }
+
+    /**
+     * Set Hidden Layer.
+     * 
+     * @param  HiddenLayerInterface $layer Hidden layer.
+     * @return HiddenLayerInterface
+     */
+    public function setHiddenLayer(HiddenLayerInterface $layer)
+    {
+
     }
 }
