@@ -1,6 +1,7 @@
 <?php
 namespace NoughtsAndCrosses\Test;
 use NoughtsAndCrosses\Game\Player\Player;
+use NoughtsAndCrosses\NeuralNetwork\NeuralNetworkInterface;
 use PHPUnit_Framework_TestCase;
 
 /**
@@ -32,5 +33,14 @@ class Player_UnitTest extends NoughtsAndCrossesTestCase
             $player->setNumber($number);
             $this->assertSame($number, $player->getNumber());
         }
+    }
+
+    /**
+     * @dataProvider gamePlayerNeuralNetworkProvider
+     */
+    public function testSetNeuralNetwork(NeuralNetworkInterface $neuralNetwork)
+    {
+        $player = new Player();
+        $this->assertSame($neuralNetwork, $player->setNeuralNetwork($neuralNetwork));
     }
 }
