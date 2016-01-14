@@ -2,6 +2,8 @@
 namespace NoughtsAndCrosses\Test;
 use NoughtsAndCrosses\Application;
 use NoughtsAndCrosses\ApplicationInterface;
+use NoughtsAndCrosses\Game\GameInterface;
+use NoughtsAndCrosses\Config\ConfigInterface;
 
 /**
  * Application unit test.
@@ -20,7 +22,7 @@ class Application_UnitTest extends NoughtsAndCrossesTestCase
     /**
      * @dataProvider configProvider
      */
-    public function testSetConfig($config)
+    public function testSetConfig(ConfigInterface $config)
     {
         $app = new Application();
         $this->assertSame($config, $app->setConfig($config));
@@ -29,7 +31,7 @@ class Application_UnitTest extends NoughtsAndCrossesTestCase
     /**
      * @dataProvider configProvider
      */
-    public function testGetConfig($config)
+    public function testGetConfig(ConfigInterface $config)
     {
         $app = new Application();
         $app->setConfig($config);
@@ -39,7 +41,7 @@ class Application_UnitTest extends NoughtsAndCrossesTestCase
     /**
      * @dataProvider gameProvider
      */
-    public function testSetGame($game)
+    public function testSetGame(GameInterface $game)
     {
         $app = new Application();
         $this->assertSame($game, $app->setGame($game));
@@ -48,7 +50,7 @@ class Application_UnitTest extends NoughtsAndCrossesTestCase
     /**
      * @dataProvider gameProvider
      */
-    public function testGetGame($game)
+    public function testGetGame(GameInterface $game)
     {
         $app = new Application();
         $app->setGame($game);
