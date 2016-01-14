@@ -16,6 +16,12 @@ class Player implements PlayerInterface
     protected  $number;
 
     /**
+     * @access protected
+     * @var    stdClass
+     */
+    protected  $neuralNetwork;
+
+    /**
      * Constructor.
      * 
      */
@@ -64,6 +70,7 @@ class Player implements PlayerInterface
      */
     public function setNeuralNetwork(NeuralNetworkInterface $neuralNetwork)
     {
-    	
+    	$this->neuralNetwork = $neuralNetwork;
+        return $this->neuralNetwork;
     }
 }
