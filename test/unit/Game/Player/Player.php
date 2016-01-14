@@ -43,4 +43,14 @@ class Player_UnitTest extends NoughtsAndCrossesTestCase
         $player = new Player();
         $this->assertSame($neuralNetwork, $player->setNeuralNetwork($neuralNetwork));
     }
+
+    /**
+     * @dataProvider gamePlayerNeuralNetworkProvider
+     */
+    public function testGetNeuralNetwork(NeuralNetworkInterface $neuralNetwork)
+    {
+        $player = new Player();
+        $player->setNeuralNetwork($neuralNetwork);
+        $this->assertSame($neuralNetwork, $player->getNeuralNetwork());
+    }
 }
