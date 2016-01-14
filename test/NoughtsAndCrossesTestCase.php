@@ -94,6 +94,16 @@ abstract class NoughtsAndCrossesTestCase extends PHPUnit_Framework_TestCase
     }
 
     /**
+     * Game Player Number Provider.
+     *
+     */
+    public function gamePlayerNumberProvider()
+    {
+        $numbers = [1, 2];
+        return [[$numbers]];
+    }
+
+    /**
      * Neural Network Input Layer Provider.
      *
      */
