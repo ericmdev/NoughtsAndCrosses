@@ -52,7 +52,6 @@ class Application implements ApplicationInterface
     public function setConfig(ConfigInterface $config)
     {
         $this->config = $config;
-        return $this->config;
     }
 
     /**
@@ -74,7 +73,6 @@ class Application implements ApplicationInterface
     public function setGame(GameInterface $game)
     {
         $this->game = $game;
-        return $this->game;
     }
 
     /**
