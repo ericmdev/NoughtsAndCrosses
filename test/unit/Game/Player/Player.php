@@ -20,6 +20,17 @@ class Player_UnitTest extends NoughtsAndCrossesTestCase
         foreach ($numbers as $number) {
             $this->assertSame($number, $player->setNumber($number));
         }
-       
+    }
+
+    /**
+     * @dataProvider gamePlayerNumberProvider
+     */
+    public function testGetNumber($numbers)
+    {
+        $player = new Player();
+        foreach ($numbers as $number) {
+            $player->setNumber($number);
+            $this->assertSame($number, $player->getNumber());
+        }
     }
 }
