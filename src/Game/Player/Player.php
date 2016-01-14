@@ -59,7 +59,7 @@ class Player implements PlayerInterface
      */
     public function getNeuralNetwork()
     {
-
+        return $this->neuralNetwork;
     }
 
     /**
