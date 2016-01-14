@@ -31,7 +31,7 @@ class Player implements PlayerInterface
      */
     public function getNumber()
     {
-
+        return $this->number;
     }
 
     /**
