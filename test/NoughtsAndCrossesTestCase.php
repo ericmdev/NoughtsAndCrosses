@@ -5,6 +5,7 @@ use NoughtsAndCrosses\Game\Game;
 use NoughtsAndCrosses\Game\Paper\Paper;
 use NoughtsAndCrosses\Game\Pencil\Pencil;
 use NoughtsAndCrosses\Game\Player\Player;
+use NoughtsAndCrosses\NeuralNetwork\NeuralNetwork;
 use NoughtsAndCrosses\NeuralNetwork\Layer\InputLayer;
 use NoughtsAndCrosses\NeuralNetwork\Layer\HiddenLayer;
 use NoughtsAndCrosses\NeuralNetwork\Layer\OutputLayer;
@@ -91,6 +92,26 @@ abstract class NoughtsAndCrossesTestCase extends PHPUnit_Framework_TestCase
     {
         $player = new Player();
         return [[$player]];
+    }
+
+    /**
+     * Game Player Number Provider.
+     *
+     */
+    public function gamePlayerNumberProvider()
+    {
+        $numbers = [1, 2];
+        return [[$numbers]];
+    }
+
+    /**
+     * Game Player Neural Network Provider.
+     *
+     */
+    public function gamePlayerNeuralNetworkProvider()
+    {
+        $neuralNetwork = new NeuralNetwork();
+        return [[$neuralNetwork]];
     }
 
     /**
