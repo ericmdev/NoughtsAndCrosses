@@ -1,6 +1,7 @@
 /ant/
 /build/
 /vendor/
+/.vagrant/
 composer.phar
 *.tmp
 *cache.properties
