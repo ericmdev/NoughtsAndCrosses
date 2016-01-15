@@ -1,0 +1,19 @@
+{
+  "nodes": {
+    "docker": { 
+      ":node": "Docker-NoughtsAndCrosses",
+      ":box": "phusion/ubuntu-14.04-amd64",
+      ":box_url": "https://atlas.hashicorp.com/phusion/boxes/ubuntu-14.04-amd64",
+      ":ip": "192.333.22.01",
+      ":host": "docker.noughtsandcrosses",
+      "ports": [
+        {
+          ":host": 2222,
+          ":guest": 22,
+          ":id": "ssh"
+        }
+      ],
+      ":memory": 512
+    }
+  }
+}
