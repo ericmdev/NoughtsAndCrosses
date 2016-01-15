@@ -10,3 +10,23 @@ A PHP application that **learns** to play Xs and Os.
 It uses artifical neural networks to improve gameplay based on numeric weights tuned on experience.
 
 The application *demonstrates* **machine learning** in a PHP game.
+
+### Vagrant
+
+Vagrant up will provision a Docker container.
+
+<code>
+# Spin up Vagrant VM.
+$ vagrant up
+
+# SSH to Vagrant VM at host port 2222.
+$ vagrant ssh
+
+# Show Docker images.
+$ docker images
+
+# Access Docker container.
+$ docker exec -it noughtsandcrosses-container bash    
+</code>
+
+
