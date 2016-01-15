@@ -4,7 +4,7 @@
       ":node": "Docker-NoughtsAndCrosses",
       ":box": "phusion/ubuntu-14.04-amd64",
       ":box_url": "https://atlas.hashicorp.com/phusion/boxes/ubuntu-14.04-amd64",
-      ":ip": "192.333.22.01",
+      ":ip": "192.168.33.01",
       ":host": "docker.noughtsandcrosses",
       "ports": [
         {
