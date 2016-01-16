@@ -68,3 +68,6 @@ RUN apt-get update && \
 # Add managed php ini files.
 ADD ${FILES}/etc/php5/fpm/conf.d/noughtsandcrosses-app.ini /etc/php5/fpm/conf.d/
 ADD ${FILES}/etc/php5/fpm/pool.d/noughtsandcrosses-app.pool.conf /etc/php5/fpm/pool.d/
+
+# Define mountable directories.
+VOLUME ["/srv/www", "/etc/nginx", "/var/cache/nginx"]
