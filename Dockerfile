@@ -26,6 +26,10 @@ RUN echo "deb http://nginx.org/packages/mainline/debian/ jessie nginx" >> /etc/a
 RUN apt-get update && \
     apt-get install -y wget git nano
 
+# Install (libfann):
+RUN apt-get update && \
+    apt-get install -y libfann-dev
+
 # Install (nginx):
 # 
 # 	- openssl
