@@ -73,6 +73,9 @@ RUN ln -sf /dev/stderr /var/log/nginx/error.log
 RUN apt-get update && \
     apt-get install -y php5-dev php5-common php5-cli php5-fpm php5-mcrypt php5-mysql php5-apcu php5-gd php5-imagick php5-curl php5-intl
 
+# Install (pecl fann extension):
+RUN pecl install fann
+
 # Add managed php ini files.
 ADD ${FILES}/etc/php5/fpm/conf.d/noughtsandcrosses-app.ini /etc/php5/fpm/conf.d/
 ADD ${FILES}/etc/php5/fpm/pool.d/noughtsandcrosses-app.pool.conf /etc/php5/fpm/pool.d/
