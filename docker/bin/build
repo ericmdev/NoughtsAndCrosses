@@ -1,4 +1,0 @@
-#!/bin/bash
-
-# Run the container.
-docker run -d -P --name noughtsandcrosses-container11 -v `pwd`/web:/srv/www/noughtsandcrosses/web noughtsandcrosses-image
