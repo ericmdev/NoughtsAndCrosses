@@ -32,6 +32,9 @@ You can build and run the NoughtsAndCrosses application environment using native
 # Run the container `noughtsandcrosses-container`.
 . docker/bin/run
 
+# List running containers.
+. docker/bin/containers
+
 # List machines.
 . docker/bin/machines
 
