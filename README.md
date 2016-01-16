@@ -28,6 +28,12 @@ You can build and run the NoughtsAndCrosses application environment using native
 
 # Run the container `noughtsandcrosses-container`.
 . docker/bin/run
+
+# List machines.
+. docker/bin/machines
+
+# Show ip of default machine.
+. docker/bin/ip
 </code>
 
 #### Vagrant
