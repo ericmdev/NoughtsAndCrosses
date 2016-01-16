@@ -1,6 +1,9 @@
 <?php
 namespace NoughtsAndCrosses\Test;
 use NoughtsAndCrosses\Game\Game;
+use NoughtsAndCrosses\Game\Paper\PaperInterface;
+use NoughtsAndCrosses\Game\Pencil\PencilInterface;
+use NoughtsAndCrosses\Game\Player\PlayerInterface;
 use PHPUnit_Framework_TestCase;
 
 /**
@@ -14,7 +17,7 @@ class Game_UnitTest extends NoughtsAndCrossesTestCase
     /**
      * @dataProvider gamePaperProvider
      */
-    public function testSetPaper($paper)
+    public function testSetPaper(PaperInterface $paper)
     {
         $game = new Game();
         $this->assertSame($paper, $game->setPaper($paper));
@@ -23,7 +26,7 @@ class Game_UnitTest extends NoughtsAndCrossesTestCase
     /**
      * @dataProvider gamePaperProvider
      */
-    public function testGetPaper($paper)
+    public function testGetPaper(PaperInterface $paper)
     {
         $game = new Game();
         $game->setPaper($paper);
@@ -33,7 +36,7 @@ class Game_UnitTest extends NoughtsAndCrossesTestCase
     /**
      * @dataProvider gamePencilProvider
      */
-    public function testSetPencil($pencil)
+    public function testSetPencil(PencilInterface $pencil)
     {
         $game = new Game();
         $this->assertSame($pencil, $game->setPencil($pencil));
@@ -42,7 +45,7 @@ class Game_UnitTest extends NoughtsAndCrossesTestCase
     /**
      * @dataProvider gamePencilProvider
      */
-    public function testGetPencil($pencil)
+    public function testGetPencil(PencilInterface $pencil)
     {
         $game = new Game();
         $game->setPencil($pencil);
@@ -52,7 +55,7 @@ class Game_UnitTest extends NoughtsAndCrossesTestCase
     /**
      * @dataProvider gamePlayerProvider
      */
-    public function testAddPlayer($player)
+    public function testAddPlayer(PlayerInterface $player)
     {
         $game = new Game();
         $this->assertSame($player, $game->addPlayer($player));
@@ -61,7 +64,7 @@ class Game_UnitTest extends NoughtsAndCrossesTestCase
     /**
      * @dataProvider gamePlayerProvider
      */
-    public function testGetPlayer($player)
+    public function testGetPlayer(PlayerInterface $player)
     {
         $game = new Game();
         $game->addPlayer($player);
@@ -71,7 +74,7 @@ class Game_UnitTest extends NoughtsAndCrossesTestCase
     /**
      * @dataProvider gamePlayerProvider
      */
-    public function testGetPlayers($player)
+    public function testGetPlayers(PlayerInterface $player)
     {
         $game = new Game();
         $game->addPlayer($player);
@@ -81,7 +84,7 @@ class Game_UnitTest extends NoughtsAndCrossesTestCase
     /**
      * @dataProvider gamePlayerProvider
      */
-    public function testRemovePlayers($player)
+    public function testRemovePlayers(PlayerInterface $player)
     {
         $game = new Game();
         $game->addPlayer($player);

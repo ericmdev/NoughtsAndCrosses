@@ -1,6 +1,8 @@
 /ant/
 /build/
 /vendor/
+/.vagrant/
+/docker/volumes/
 composer.phar
 *.tmp
 *cache.properties

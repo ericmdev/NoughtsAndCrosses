@@ -10,6 +10,18 @@ use NoughtsAndCrosses\NeuralNetwork\NeuralNetworkInterface;
 class Player implements PlayerInterface
 {
     /**
+     * @access protected
+     * @var    stdClass
+     */
+    protected  $number;
+
+    /**
+     * @access protected
+     * @var    stdClass
+     */
+    protected  $neuralNetwork;
+
+    /**
      * Constructor.
      * 
      */
@@ -25,7 +37,7 @@ class Player implements PlayerInterface
      */
     public function getNumber()
     {
-
+        return $this->number;
     }
 
     /**
@@ -36,7 +48,8 @@ class Player implements PlayerInterface
      */
     public function setNumber($number)
     {
-
+        $this->number = $number;
+        return $this->number;
     }
 
     /**
@@ -46,7 +59,7 @@ class Player implements PlayerInterface
      */
     public function getNeuralNetwork()
     {
-
+        return $this->neuralNetwork;
     }
 
     /**
@@ -57,6 +70,7 @@ class Player implements PlayerInterface
      */
     public function setNeuralNetwork(NeuralNetworkInterface $neuralNetwork)
     {
-    	
+    	$this->neuralNetwork = $neuralNetwork;
+        return $this->neuralNetwork;
     }
 }

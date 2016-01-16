@@ -1,6 +1,9 @@
 <?php
 namespace NoughtsAndCrosses\Test;
 use NoughtsAndCrosses\NeuralNetwork\NeuralNetwork;
+use NoughtsAndCrosses\NeuralNetwork\Layer\InputLayerInterface;
+use NoughtsAndCrosses\NeuralNetwork\Layer\HiddenLayerInterface;
+use NoughtsAndCrosses\NeuralNetwork\Layer\OutputLayerInterface;
 use PHPUnit_Framework_TestCase;
 
 /**
@@ -14,7 +17,7 @@ class NeuralNetwork_UnitTest extends NoughtsAndCrossesTestCase
     /**
      * @dataProvider neuralNetworkInputLayerProvider
      */
-    public function testSetInputLayer($layer)
+    public function testSetInputLayer(InputLayerInterface $layer)
     {
         $neuralNetwork = new NeuralNetwork();
         $this->assertSame($layer, $neuralNetwork->setInputLayer($layer));
@@ -23,7 +26,7 @@ class NeuralNetwork_UnitTest extends NoughtsAndCrossesTestCase
     /**
      * @dataProvider neuralNetworkInputLayerProvider
      */
-    public function testGetInputLayer($layer)
+    public function testGetInputLayer(InputLayerInterface $layer)
     {
         $neuralNetwork = new NeuralNetwork();
         $neuralNetwork->setInputLayer($layer);
@@ -33,7 +36,7 @@ class NeuralNetwork_UnitTest extends NoughtsAndCrossesTestCase
     /**
      * @dataProvider neuralNetworkHiddenLayerProvider
      */
-    public function testSetHiddenLayer($layer)
+    public function testSetHiddenLayer(HiddenLayerInterface $layer)
     {
         $neuralNetwork = new NeuralNetwork();
         $this->assertSame($layer, $neuralNetwork->setHiddenLayer($layer));
@@ -42,7 +45,7 @@ class NeuralNetwork_UnitTest extends NoughtsAndCrossesTestCase
     /**
      * @dataProvider neuralNetworkHiddenLayerProvider
      */
-    public function testGetHiddenLayer($layer)
+    public function testGetHiddenLayer(HiddenLayerInterface $layer)
     {
         $neuralNetwork = new NeuralNetwork();
         $neuralNetwork->setHiddenLayer($layer);
@@ -52,7 +55,7 @@ class NeuralNetwork_UnitTest extends NoughtsAndCrossesTestCase
     /**
      * @dataProvider neuralNetworkOutputLayerProvider
      */
-    public function testSetOutputLayer($layer)
+    public function testSetOutputLayer(OutputLayerInterface $layer)
     {
         $neuralNetwork = new NeuralNetwork();
         $this->assertSame($layer, $neuralNetwork->setOutputLayer($layer));
@@ -61,7 +64,7 @@ class NeuralNetwork_UnitTest extends NoughtsAndCrossesTestCase
     /**
      * @dataProvider neuralNetworkOutputLayerProvider
      */
-    public function testGetOutputLayer($layer)
+    public function testGetOutputLayer(OutputLayerInterface $layer)
     {
         $neuralNetwork = new NeuralNetwork();
         $neuralNetwork->setOutputLayer($layer);
