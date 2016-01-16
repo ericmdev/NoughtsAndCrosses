@@ -38,6 +38,10 @@ ADD ${FILES}/etc/nginx/conf.d/php-upstream.conf /etc/nginx/conf.d/upstream.conf
 RUN rm -rf /var/www/*
 RUN rm -rf /srv/www/*
 
+# Forward request and error logs to docker log collector.
+RUN ln -sf /dev/stdout /var/log/nginx/access.log
+RUN ln -sf /dev/stderr /var/log/nginx/error.log
+
 # Install Wget, Git, Nano:
 #
 # 	- wget
@@ -45,3 +49,22 @@ RUN rm -rf /srv/www/*
 # 	- nano
 RUN apt-get update && \
     apt-get install -y wget git nano
+
+# Install PHP:
+#
+# 	- php5-common
+# 	- php5-cli
+# 	- php5-fpm
+# 	- php5-mcrypt
+# 	- php5-mysql
+# 	- php5-apcu
+# 	- php5-gd
+# 	- php5-imagick
+# 	- php5-curl
+# 	- php5-intl
+RUN apt-get update && \
+    apt-get install -y php5-common php5-cli php5-fpm php5-mcrypt php5-mysql php5-apcu php5-gd php5-imagick php5-curl php5-intl
+
+# Add managed php ini files.
+ADD ${FILES}/etc/php5/fpm/conf.d/noughtsandcrosses-app.ini /etc/php5/fpm/conf.d/
+ADD ${FILES}/etc/php5/fpm/pool.d/noughtsandcrosses-app.pool.conf /etc/php5/fpm/pool.d/
