@@ -1,0 +1,4 @@
+#!/bin/bash
+
+# List running containers.
+docker ps -a
