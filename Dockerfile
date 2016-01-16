@@ -71,3 +71,6 @@ ADD ${FILES}/etc/php5/fpm/pool.d/noughtsandcrosses-app.pool.conf /etc/php5/fpm/p
 
 # Define mountable directories.
 VOLUME ["/srv/www", "/etc/nginx", "/var/cache/nginx"]
+
+# Listen on HTTP and HTTPS ports.
+EXPOSE 80 443
