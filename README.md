@@ -20,8 +20,11 @@ You can build and run the NoughtsAndCrosses application environment using native
 *Bash scripts in `docker/bin`:*
 
 <code>
-# Destroy all images and containers.
+# Stop and remove all containers.
 . docker/bin/clean
+
+# Delete all images and stop and remove all containers.
+. docker/bin/clean-all
 
 # Build the image `noughtsandcrosses-image`.
 . docker/bin/build
@@ -66,5 +69,4 @@ $ docker ps -a
 # Access Docker container.
 $ docker exec -it noughtsandcrosses-container bash    
 </code>
-
 
