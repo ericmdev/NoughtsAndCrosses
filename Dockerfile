@@ -78,6 +78,7 @@ RUN pecl install fann
 
 # Add managed php ini files.
 ADD ${FILES}/etc/php5/fpm/conf.d/noughtsandcrosses-app.ini /etc/php5/fpm/conf.d/
+ADD ${FILES}/etc/php5/fpm/conf.d/noughtsandcrosses-app.ini /etc/php5/cli/conf.d/
 ADD ${FILES}/etc/php5/fpm/pool.d/noughtsandcrosses-app.pool.conf /etc/php5/fpm/pool.d/
 
 # Install (supervisor):
@@ -90,7 +91,7 @@ RUN apt-get update && \
 ADD ${FILES}/etc/supervisor/conf.d/supervisord.conf /etc/supervisor/conf.d/supervisord.conf 
 
 # Define mountable directories.
-VOLUME ["/srv/www", "/etc/nginx", "/var/cache/nginx"]
+VOLUME ["/srv/www", "/etc/nginx", "/var/log/nginx/", "/var/cache/nginx"]
 
 # Listen on http https ports.
 EXPOSE 80 443
