@@ -12,11 +12,21 @@ MAINTAINER NoughtsAndCrosses
 ENV FILES docker/files/
 ENV NGINX_VERSION 1.9.9-1~jessie
 
-# Add nginx repository.
+# Add apt sources:
+#
+#	- nginx
 RUN apt-key adv --keyserver hkp://pgp.mit.edu:80 --recv-keys 573BFD6B3D8FBC641079A6ABABF5BD827BD9BF62
 RUN echo "deb http://nginx.org/packages/mainline/debian/ jessie nginx" >> /etc/apt/sources.list
 
-# Install OpenSSL, CA-Certificates, NGINX:
+# Install (utils):
+#
+# 	- wget
+# 	- git
+# 	- nano
+RUN apt-get update && \
+    apt-get install -y wget git nano
+
+# Install (nginx):
 # 
 # 	- openssl
 # 	- ca-certificates
@@ -42,17 +52,11 @@ RUN rm -rf /srv/www/*
 RUN ln -sf /dev/stdout /var/log/nginx/access.log
 RUN ln -sf /dev/stderr /var/log/nginx/error.log
 
-# Install Wget, Git, Nano:
+# Install (php):
 #
-# 	- wget
-# 	- git
-# 	- nano
-RUN apt-get update && \
-    apt-get install -y wget git nano
-
-# Install PHP:
-#
-# 	- php5-common
+# 	- php5-dev
+#	- php5-common
+#	- php5-pear
 # 	- php5-cli
 # 	- php5-fpm
 # 	- php5-mcrypt
@@ -63,20 +67,29 @@ RUN apt-get update && \
 # 	- php5-curl
 # 	- php5-intl
 RUN apt-get update && \
-    apt-get install -y php5-common php5-cli php5-fpm php5-mcrypt php5-mysql php5-apcu php5-gd php5-imagick php5-curl php5-intl
+    apt-get install -y php5-dev php5-common php5-cli php5-fpm php5-mcrypt php5-mysql php5-apcu php5-gd php5-imagick php5-curl php5-intl
 
 # Add managed php ini files.
 ADD ${FILES}/etc/php5/fpm/conf.d/noughtsandcrosses-app.ini /etc/php5/fpm/conf.d/
 ADD ${FILES}/etc/php5/fpm/pool.d/noughtsandcrosses-app.pool.conf /etc/php5/fpm/pool.d/
 
+# Install (supervisor):
+# 
+# 	- supervisor
+RUN apt-get update && \
+	apt-get install -y supervisor
+
+# Add managed supervisor configuration files.
+ADD ${FILES}/etc/supervisor/conf.d/supervisord.conf /etc/supervisor/conf.d/supervisord.conf 
+
 # Define mountable directories.
 VOLUME ["/srv/www", "/etc/nginx", "/var/cache/nginx"]
 
-# Listen on HTTP and HTTPS ports.
+# Listen on http https ports.
 EXPOSE 80 443
 
 # Configure executable.
-ENTRYPOINT /usr/bin/tail -f /dev/null
+ENTRYPOINT ["/usr/bin/supervisord"]
 
 # Define default command.
 CMD []
