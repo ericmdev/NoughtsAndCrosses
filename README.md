@@ -36,6 +36,9 @@ You can build and run the NoughtsAndCrosses application environment using native
 . docker/bin/ip
 </code>
 
+*Browser:*
+Visit: `<docker_machine_ip>:<docker_container_host_port_80>/index.php`.
+
 #### Vagrant
 
 Vagrant up creates a virtual machine with Docker installed.
