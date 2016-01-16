@@ -1,0 +1,12 @@
+{
+  "docker": {
+    "build_image": {
+    	":path": "/vagrant",
+    	":args": "-t noughtsandcrosses-image"
+    },
+    "run": {
+    	":name": "noughtsandcrosses-container",
+    	":image": "noughtsandcrosses-image"
+    }
+  }
+}
