@@ -11,9 +11,35 @@ It uses artifical neural networks to improve gameplay based on numeric weights t
 
 The application *demonstrates* **machine learning** in a PHP game.
 
-### Vagrant
+### Application Environment
 
-Vagrant up will provision a Docker container.
+#### Native Docker
+
+You can build and run the NoughtsAndCrosses application environment using native Docker.
+
+*Bash scripts in `docker/bin`:*
+
+<code>
+# Destroy all images and containers.
+. docker/bin/clean
+
+# Build the image `noughtsandcrosses-image`.
+. docker/bin/build
+
+# Run the container `noughtsandcrosses-container`.
+. docker/bin/run
+</code>
+
+#### Vagrant
+
+Vagrant up creates a virtual machine with Docker installed.
+
+*VM:*
+- OS: Ubuntu 14.04.1 LTS (Trusty Tahr) - 64-bit
+- Memory: 512 MB
+
+*Provisioning:*
+Provisioning builds the Docker image `noughtsandcrosses-image` and runs the Docker container `noughtsandcrosses-container` inside the vm.
 
 <code>
 # Spin up Vagrant VM.
@@ -24,6 +50,9 @@ $ vagrant ssh
 
 # Show Docker images.
 $ docker images
+
+# Show Docker running containers.
+$ docker ps -a
 
 # Access Docker container.
 $ docker exec -it noughtsandcrosses-container bash    
