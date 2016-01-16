@@ -19,28 +19,26 @@ You can build and run the NoughtsAndCrosses application environment using native
 
 *Bash scripts in `docker/bin`:*
 
-<code>
-# Stop and remove all containers.
-. docker/bin/clean
+    # Stop and remove all containers.
+    . docker/bin/clean
 
-# Delete all images and stop and remove all containers.
-. docker/bin/clean-all
+    # Delete all images and stop and remove all containers.
+    . docker/bin/clean-all
 
-# Build the image `noughtsandcrosses-image`.
-. docker/bin/build
+    # Build the image `noughtsandcrosses-image`.
+    . docker/bin/build
 
-# Run the container `noughtsandcrosses-container`.
-. docker/bin/run
+    # Run the container `noughtsandcrosses-container`.
+    . docker/bin/run
 
-# List running containers.
-. docker/bin/containers
+    # List running containers.
+    . docker/bin/containers
 
-# List machines.
-. docker/bin/machines
+    # List machines.
+    . docker/bin/machines
 
-# Show ip of default machine.
-. docker/bin/ip
-</code>
+    # Show ip of default machine.
+    . docker/bin/ip
 
 *Browser:*
 Visit: `<docker_machine_ip>:<docker_container_host_port_80>/index.php`.
@@ -56,20 +54,17 @@ Vagrant up creates a virtual machine with Docker installed.
 *Provisioning:*
 Provisioning builds the Docker image `noughtsandcrosses-image` and runs the Docker container `noughtsandcrosses-container` inside the vm.
 
-<code>
-# Spin up Vagrant VM.
-$ vagrant up
+    # Spin up Vagrant VM.
+    $ vagrant up
 
-# SSH to Vagrant VM at host port 2222.
-$ vagrant ssh
+    # SSH to Vagrant VM at host port 2222.
+    $ vagrant ssh
 
-# Show Docker images.
-$ docker images
+    # Show Docker images.
+    $ docker images
 
-# Show Docker running containers.
-$ docker ps -a
+    # Show Docker running containers.
+    $ docker ps -a
 
-# Access Docker container.
-$ docker exec -it noughtsandcrosses-container bash    
-</code>
-
+    # Access Docker container.
+    $ docker exec -it noughtsandcrosses-container bash
