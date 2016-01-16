@@ -1,0 +1,4 @@
+#!/bin/bash
+
+# Build image.
+docker build -t noughtsandcrosses-app-image -f Dockerfile .
