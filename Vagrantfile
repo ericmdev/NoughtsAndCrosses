@@ -30,6 +30,11 @@ Vagrant.configure("2") do |config|
       config.vm.hostname = node_values[':node']
       config.vm.network :private_network, ip: node_values[':ip']
 
+      synced_folders = node_values['synced_folders']
+      synced_folders.each do |synced_folder|
+        config.vm.synced_folder synced_folder[':host'], synced_folder[':guest']
+      end
+
       config.vm.provider :virtualbox do |vb|
         vb.customize ["modifyvm", :id, "--memory", node_values[':memory']]
         vb.customize ["modifyvm", :id, "--name", node_values[':node']]
