@@ -5,4 +5,8 @@
 # 		-P: Map network ports inside container to host.
 #	--name: Set the name of the container.
 #		-v: Mount host volumes to container.
-docker run -d -P --name noughtsandcrosses-container -v `pwd`/web:/srv/www/noughtsandcrosses/web noughtsandcrosses-image
+docker run -d -P --name noughtsandcrosses-container \
+						-v `pwd`/web:/srv/www/noughtsandcrosses/web \
+						-v `pwd`/vendor:/srv/www/noughtsandcrosses/vendor \
+						-v `pwd`/src:/srv/www/noughtsandcrosses/src \
+						noughtsandcrosses-image
