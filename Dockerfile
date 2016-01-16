@@ -77,3 +77,6 @@ EXPOSE 80 443
 
 # Configure executable.
 ENTRYPOINT /usr/bin/tail -f /dev/null
+
+# Define default command.
+CMD []
