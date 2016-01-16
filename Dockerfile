@@ -37,3 +37,11 @@ ADD ${FILES}/etc/nginx/conf.d/php-upstream.conf /etc/nginx/conf.d/upstream.conf
 # Remove default directories.
 RUN rm -rf /var/www/*
 RUN rm -rf /srv/www/*
+
+# Install Wget, Git, Nano:
+#
+# 	- wget
+# 	- git
+# 	- nano
+RUN apt-get update && \
+    apt-get install -y wget git nano
