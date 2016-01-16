@@ -74,3 +74,6 @@ VOLUME ["/srv/www", "/etc/nginx", "/var/cache/nginx"]
 
 # Listen on HTTP and HTTPS ports.
 EXPOSE 80 443
+
+# Configure executable.
+ENTRYPOINT /usr/bin/tail -f /dev/null
