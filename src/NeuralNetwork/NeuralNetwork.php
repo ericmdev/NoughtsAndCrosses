@@ -75,6 +75,11 @@ class NeuralNetwork implements NeuralNetworkInterface
         if(!empty($container['layers']))
             $this->setLayers($container['layers']);
 
+        # Set train file.
+        if(!empty($container['train'])
+            && !empty($container['train']['filename']))
+            $this->setTrainFile($container['train']['filename']);
+
         # Set input layer.
         if(!empty($container['inputLayer']))
             $this->setInputLayer($container['inputLayer']);
