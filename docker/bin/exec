@@ -1,4 +1,4 @@
 #!/bin/bash
 
 # Exec container bash.
-docker exec -it noughtsandcrosses-app-01 bash
+docker exec -it noughtsandcrosses-container bash
