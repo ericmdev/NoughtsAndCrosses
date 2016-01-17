@@ -13,6 +13,10 @@ use NoughtsAndCrosses\Config\ConfigInterface;
  */
 class Application_UnitTest extends NoughtsAndCrossesTestCase
 {
+    /**
+     * Test Application implements ApplicationInterface.
+     *
+     */
     public function testIsInstanceOfApplicationInterface()
     {
         $app = new Application();
@@ -20,6 +24,8 @@ class Application_UnitTest extends NoughtsAndCrossesTestCase
     }
 
     /**
+     * Test setConfig returns the config.
+     *
      * @dataProvider configProvider
      */
     public function testSetConfig(ConfigInterface $config)
@@ -29,6 +35,8 @@ class Application_UnitTest extends NoughtsAndCrossesTestCase
     }
 
     /**
+     * Test getConfig returns the config.
+     *
      * @dataProvider configProvider
      */
     public function testGetConfig(ConfigInterface $config)
@@ -39,6 +47,8 @@ class Application_UnitTest extends NoughtsAndCrossesTestCase
     }
 
     /**
+     * Test setGame returns the game.
+     *
      * @dataProvider gameProvider
      */
     public function testSetGame(GameInterface $game)
@@ -48,6 +58,8 @@ class Application_UnitTest extends NoughtsAndCrossesTestCase
     }
 
     /**
+     * Test getGame returns the game.
+     *
      * @dataProvider gameProvider
      */
     public function testGetGame(GameInterface $game)
