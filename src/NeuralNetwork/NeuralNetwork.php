@@ -4,6 +4,7 @@ use NoughtsAndCrosses\NeuralNetwork\Layer\InputLayerInterface;
 use NoughtsAndCrosses\NeuralNetwork\Layer\HiddenLayerInterface;
 use NoughtsAndCrosses\NeuralNetwork\Layer\OutputLayerInterface;
 use stdClass;
+use FileException;
 
 /**
  * NeuralNetwork
@@ -18,6 +19,12 @@ class NeuralNetwork implements NeuralNetworkInterface
      * @var    obj
      */
     protected  $ann;
+
+    /**
+     * @access protected
+     * @var    str
+     */
+    protected  $trainfile;
 
     /**
      * @access protected
@@ -108,7 +115,7 @@ class NeuralNetwork implements NeuralNetworkInterface
      */
     public function getTrainFile()
     {
-
+        return $this->trainfile;
     }
 
     /**
@@ -120,9 +127,12 @@ class NeuralNetwork implements NeuralNetworkInterface
     public function setTrainFile($filename)
     {
         if(!is_file($filename))
-            return false;
-        else        
-            return true;
+            throw new FileException(
+                "Train file not found: $filename", 
+                1
+            );
+        $this->trainfile = $filename;
+        return true;
     }
 
     /**
@@ -132,7 +142,7 @@ class NeuralNetwork implements NeuralNetworkInterface
      */
     public function trainOnFile()
     {
-
+        return $this->trainfile;
     }
 
     /**
