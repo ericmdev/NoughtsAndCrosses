@@ -35,11 +35,15 @@ class Game implements GameInterface
     /**
      * Constructor.
      * 
-     * @var int $players Number of players (2).
+     * @var array $container DI.
      */
-    public function __construct()
+    public function __construct($container = null)
     {
+        if(!empty($container['paper']))
+            $this->setPaper($container['paper']);
 
+        if(!empty($container['pencil']))
+            $this->setPencil($container['pencil']);
     }
 
     /**
