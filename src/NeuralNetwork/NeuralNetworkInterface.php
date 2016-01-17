@@ -20,6 +20,14 @@ interface NeuralNetworkInterface
     public function createStandard();
 
     /**
+     * Sets the number of each type of layer (input, hidden, output).
+     * 
+     * @param  array $layers Array of layer types and corresponding number.
+     * @return array
+     */
+    public function setLayers(array $layers);
+
+    /**
      * Returns the input layer property.
      * 
      * @return InputLayerInterface

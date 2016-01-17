@@ -64,15 +64,19 @@ class NeuralNetwork implements NeuralNetworkInterface
      */
     public function __construct($container = null)
     {
+        # Set layers.
         if(!empty($container['layers']))
-            $this->layers = $container['layers'];
+            $this->setLayers($container['layers']);
 
+        # Set input layer.
         if(!empty($container['inputLayer']))
             $this->setInputLayer($container['inputLayer']);
 
+        # Set hidden layer.
         if(!empty($container['hiddenLayer']))
             $this->setHiddenLayer($container['hiddenLayer']);
 
+        # Set output layer.
         if(!empty($container['outputLayer']))
             $this->setOutputLayer($container['outputLayer']);
     }
@@ -84,7 +88,7 @@ class NeuralNetwork implements NeuralNetworkInterface
      */
     public function createStandard()
     {
-        # The total number of layers including the input and the output layer.
+        # Calculate the total number of layers including the input and the output layer.
         $numLayers = $this->layers['input'] + $this->layers['hidden'] + $this->layers['output'];
 
         # Create standard fully connected backpropagation neural network.
@@ -98,6 +102,17 @@ class NeuralNetwork implements NeuralNetworkInterface
             return false;
         else
             return true;
+    }
+
+    /**
+     * Set Layers.
+     * 
+     * @param  array $layers Array of layer types and number.
+     * @return array
+     */
+    public function setLayers(array $layers)
+    {
+
     }
 
     /**
