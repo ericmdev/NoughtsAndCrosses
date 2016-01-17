@@ -38,6 +38,19 @@ class NeuralNetwork_UnitTest extends NoughtsAndCrossesTestCase
     }
 
     /**
+     * Test getLayers returns the total number layers including the input and the output layer.
+     *
+     * @dataProvider neuralNetworkLayersProvider
+     */
+    public function testGetLayers(array $layers)
+    {
+        $neuralNetwork = new NeuralNetwork();
+        $neuralNetwork->setLayers($layers);
+        $numLayers = $layers['input'] + $layers['hidden'] + $layers['output'];
+        $this->assertSame($numLayers, $neuralNetwork->getLayers());
+    }
+
+    /**
      * @dataProvider neuralNetworkInputLayerProvider
      */
     public function testSetInputLayer(InputLayerInterface $layer)
