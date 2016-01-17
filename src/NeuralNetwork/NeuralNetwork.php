@@ -4,6 +4,7 @@ use NoughtsAndCrosses\NeuralNetwork\Layer\InputLayerInterface;
 use NoughtsAndCrosses\NeuralNetwork\Layer\HiddenLayerInterface;
 use NoughtsAndCrosses\NeuralNetwork\Layer\OutputLayerInterface;
 use stdClass;
+use Exception;
 
 /**
  * NeuralNetwork
@@ -17,7 +18,13 @@ class NeuralNetwork implements NeuralNetworkInterface
      * @access protected
      * @var    obj
      */
-    protected  $standard;
+    protected  $ann;
+
+    /**
+     * @access protected
+     * @var    str
+     */
+    protected  $trainfile;
 
     /**
      * @access protected
@@ -89,16 +96,53 @@ class NeuralNetwork implements NeuralNetworkInterface
     public function createStandard()
     {
         # Create standard fully connected backpropagation neural network.
-        $this->standard = fann_create_standard(
+        $this->ann = fann_create_standard(
             $this->getLayers(),
             $this->inputLayer->getNeurons(),
             $this->hiddenLayer->getNeurons(),
             $this->outputLayer->getNeurons());
 
-        if($this->standard === false)
+        if($this->ann === false)
             return false;
         else
             return true;
+    }
+
+    /**
+     * Get Train File.
+     * 
+     * @return str
+     */
+    public function getTrainFile()
+    {
+        return $this->trainfile;
+    }
+
+    /**
+     * Set Train File.
+     * 
+     * @param  str  Path to the file containing train data.
+     * @return bool
+     */
+    public function setTrainFile($filename)
+    {
+        if(!is_file($filename))
+            throw new Exception(
+                "Train file not found: $filename", 
+                1
+            );
+        $this->trainfile = $filename;
+        return true;
+    }
+
+    /**
+     * Train On File.
+     * 
+     * @return bool
+     */
+    public function trainOnFile()
+    {
+        return $this->trainfile;
     }
 
     /**
