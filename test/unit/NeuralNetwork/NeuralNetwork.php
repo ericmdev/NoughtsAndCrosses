@@ -1,10 +1,12 @@
 <?php
 namespace NoughtsAndCrosses\Test;
 use NoughtsAndCrosses\NeuralNetwork\NeuralNetwork;
+use NoughtsAndCrosses\NeuralNetwork\NeuralNetworkServiceProvider;
 use NoughtsAndCrosses\NeuralNetwork\Layer\InputLayerInterface;
 use NoughtsAndCrosses\NeuralNetwork\Layer\HiddenLayerInterface;
 use NoughtsAndCrosses\NeuralNetwork\Layer\OutputLayerInterface;
 use PHPUnit_Framework_TestCase;
+use Pimple\Container;
 
 /**
  * NeuralNetwork unit test.
@@ -14,6 +16,18 @@ use PHPUnit_Framework_TestCase;
  */
 class NeuralNetwork_UnitTest extends NoughtsAndCrossesTestCase
 {
+    /**
+     * Test createStandard creates a standard fully connected backpropagation neural network.
+     *
+     */
+    public function testCreateStandard()
+    {
+        $container = new Container();
+        $container->register(new NeuralNetworkServiceProvider());
+        $neuralNetwork = new NeuralNetwork($container);
+        $this->assertSame(true, $neuralNetwork->createStandard());
+    }
+
     /**
      * @dataProvider neuralNetworkInputLayerProvider
      */

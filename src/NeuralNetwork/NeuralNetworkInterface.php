@@ -11,6 +11,14 @@ use NoughtsAndCrosses\NeuralNetwork\Layer\OutputLayerInterface;
  */
 interface NeuralNetworkInterface
 {
+
+    /**
+     * Creates a standard fully connected backpropagation neural network.
+     * 
+     * @return bool
+     */
+    public function createStandard();
+
     /**
      * Returns the input layer property.
      * 

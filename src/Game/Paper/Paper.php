@@ -11,8 +11,9 @@ class Paper implements PaperInterface
     /**
      * Constructor.
      * 
+     * @var array $container DI.
      */
-    public function __construct()
+    public function __construct($container = null)
     {
         
     }
