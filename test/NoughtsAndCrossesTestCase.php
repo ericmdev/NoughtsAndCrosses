@@ -127,6 +127,17 @@ abstract class NoughtsAndCrossesTestCase extends PHPUnit_Framework_TestCase
     }
 
     /**
+     * Neural Network Layers Provider.
+     *
+     */
+    public function neuralNetworkLayersProvider()
+    {
+        $container = new Container();
+        $container->register(new NeuralNetworkServiceProvider());
+        return [[$container['layers']]];
+    }
+
+    /**
      * Neural Network Input Layer Provider.
      *
      */

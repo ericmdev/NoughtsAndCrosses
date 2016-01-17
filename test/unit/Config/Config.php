@@ -12,6 +12,8 @@ use PHPUnit_Framework_TestCase;
 class Config_UnitTest extends NoughtsAndCrossesTestCase
 {
     /**
+     * Test setGame returns the game config.
+     *
      * @dataProvider configDataProvider
      */
     public function testSetGame($game)

@@ -12,6 +12,8 @@ use PHPUnit_Framework_TestCase;
 class Layer_Abstract_UnitTest extends NoughtsAndCrossesTestCase
 {
     /**
+     * Test setNeurons returns the total number of neurons.
+     *
      * @dataProvider neuronsProvider
      */
     public function testSetNeurons($neurons)
@@ -23,6 +25,8 @@ class Layer_Abstract_UnitTest extends NoughtsAndCrossesTestCase
     }
 
     /**
+     * Test getNeurons returns the total number of neurons.
+     *
      * @dataProvider neuronsProvider
      */
     public function testGetNeurons($neurons)
