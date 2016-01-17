@@ -19,10 +19,12 @@ abstract class Layer_Abstract implements Layer_AbstractInterface
     /**
      * Constructor.
      *
+     * @param int $neurons Number of neurons in layer.
      */
-    public function __construct()
+    public function __construct($neurons = null)
     {
-
+        if($neurons)
+            $this->setNeurons($neurons);
     }
 
     /**
