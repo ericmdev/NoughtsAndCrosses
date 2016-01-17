@@ -17,7 +17,7 @@ use Pimple\Container;
 class NeuralNetwork_UnitTest extends NoughtsAndCrossesTestCase
 {
     /**
-     * Test createStandard creates a standard fully connected backpropagation neural network.
+     * Test createStandard returns true.
      *
      */
     public function testCreateStandard()
@@ -29,6 +29,32 @@ class NeuralNetwork_UnitTest extends NoughtsAndCrossesTestCase
     }
 
     /**
+     * Test setLayers return layers array.
+     *
+     * @dataProvider neuralNetworkLayersProvider
+     */
+    public function testSetLayers(array $layers)
+    {
+        $neuralNetwork = new NeuralNetwork();
+        $this->assertSame($layers, $neuralNetwork->setLayers($layers));
+    }
+
+    /**
+     * Test getLayers returns the total number layers.
+     *
+     * @dataProvider neuralNetworkLayersProvider
+     */
+    public function testGetLayers(array $layers)
+    {
+        $neuralNetwork = new NeuralNetwork();
+        $neuralNetwork->setLayers($layers);
+        $numLayers = $layers['input'] + $layers['hidden'] + $layers['output'];
+        $this->assertSame($numLayers, $neuralNetwork->getLayers());
+    }
+
+    /**
+     * Test setInputLayer returns the input layer.
+     *
      * @dataProvider neuralNetworkInputLayerProvider
      */
     public function testSetInputLayer(InputLayerInterface $layer)
@@ -38,6 +64,8 @@ class NeuralNetwork_UnitTest extends NoughtsAndCrossesTestCase
     }
 
     /**
+     * Test getInputLayer returns the input layer.
+     *
      * @dataProvider neuralNetworkInputLayerProvider
      */
     public function testGetInputLayer(InputLayerInterface $layer)
@@ -48,6 +76,8 @@ class NeuralNetwork_UnitTest extends NoughtsAndCrossesTestCase
     }
 
     /**
+     * Test setHiddenLayer returns the hidden layer.
+     *
      * @dataProvider neuralNetworkHiddenLayerProvider
      */
     public function testSetHiddenLayer(HiddenLayerInterface $layer)
@@ -57,6 +87,8 @@ class NeuralNetwork_UnitTest extends NoughtsAndCrossesTestCase
     }
 
     /**
+     * Test getHiddenLayer returns the hidden layer.
+     *
      * @dataProvider neuralNetworkHiddenLayerProvider
      */
     public function testGetHiddenLayer(HiddenLayerInterface $layer)
@@ -67,6 +99,8 @@ class NeuralNetwork_UnitTest extends NoughtsAndCrossesTestCase
     }
 
     /**
+     * Test setOutputLayer returns the output layer.
+     *
      * @dataProvider neuralNetworkOutputLayerProvider
      */
     public function testSetOutputLayer(OutputLayerInterface $layer)
@@ -76,6 +110,8 @@ class NeuralNetwork_UnitTest extends NoughtsAndCrossesTestCase
     }
     
     /**
+     * Test getOutputLayer returns the output layer.
+     *
      * @dataProvider neuralNetworkOutputLayerProvider
      */
     public function testGetOutputLayer(OutputLayerInterface $layer)
