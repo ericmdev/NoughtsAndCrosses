@@ -102,6 +102,16 @@ class NeuralNetwork implements NeuralNetworkInterface
     }
 
     /**
+     * Get Train File.
+     * 
+     * @return str
+     */
+    public function getTrainFile()
+    {
+
+    }
+
+    /**
      * Set Train File.
      * 
      * @return bool
