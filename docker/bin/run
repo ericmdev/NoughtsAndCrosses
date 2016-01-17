@@ -6,8 +6,6 @@
 #	--name: Set the name of the container.
 #		-v: Mount host volumes to container.
 docker run -d -P --name noughtsandcrosses-container \
-						-v `pwd`/web:/srv/www/noughtsandcrosses/web \
-						-v `pwd`/vendor:/srv/www/noughtsandcrosses/vendor \
-						-v `pwd`/src:/srv/www/noughtsandcrosses/src \
-						-v `pwd`/docker/volumes/var/log/nginx:/var/log/nginx \
+						-v `pwd`:/srv/www/noughtsandcrosses \
+						-v `pwd`/docker/volumes/var/log/nginx:/var/log/nginx/ \
 						noughtsandcrosses-image

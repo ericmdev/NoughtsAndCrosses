@@ -12,13 +12,13 @@ MAINTAINER NoughtsAndCrosses
 ENV FILES docker/files/
 ENV NGINX_VERSION 1.9.9-1~jessie
 
-# Add apt sources:
+# Add NGINX repository source:
 #
 #	- nginx
 RUN apt-key adv --keyserver hkp://pgp.mit.edu:80 --recv-keys 573BFD6B3D8FBC641079A6ABABF5BD827BD9BF62
 RUN echo "deb http://nginx.org/packages/mainline/debian/ jessie nginx" >> /etc/apt/sources.list
 
-# Install (utils):
+# Install Wget Git Nano.
 #
 # 	- wget
 # 	- git
@@ -26,11 +26,11 @@ RUN echo "deb http://nginx.org/packages/mainline/debian/ jessie nginx" >> /etc/a
 RUN apt-get update && \
     apt-get install -y wget git nano
 
-# Install (libfann):
+# Install FANN.
 RUN apt-get update && \
     apt-get install -y libfann-dev
 
-# Install (nginx):
+# Install NGINX.
 # 
 # 	- openssl
 # 	- ca-certificates
@@ -56,7 +56,7 @@ RUN rm -rf /srv/www/*
 RUN ln -sf /dev/stdout /var/log/nginx/access.log
 RUN ln -sf /dev/stderr /var/log/nginx/error.log
 
-# Install (php):
+# Install PHP 5.
 #
 # 	- php5-dev
 #	- php5-common
@@ -73,7 +73,7 @@ RUN ln -sf /dev/stderr /var/log/nginx/error.log
 RUN apt-get update && \
     apt-get install -y php5-dev php5-common php5-cli php5-fpm php5-mcrypt php5-mysql php5-apcu php5-gd php5-imagick php5-curl php5-intl
 
-# Install (pecl fann extension):
+# Install Pecl FANN extension.
 RUN pecl install fann
 
 # Add managed php ini files.
@@ -81,7 +81,16 @@ ADD ${FILES}/etc/php5/fpm/conf.d/noughtsandcrosses-app.ini /etc/php5/fpm/conf.d/
 ADD ${FILES}/etc/php5/fpm/conf.d/noughtsandcrosses-app.ini /etc/php5/cli/conf.d/
 ADD ${FILES}/etc/php5/fpm/pool.d/noughtsandcrosses-app.pool.conf /etc/php5/fpm/pool.d/
 
-# Install (supervisor):
+
+# Install PHP Pimple as a C extension.
+RUN git clone https://github.com/silexphp/Pimple && \
+	cd Pimple/ext/pimple && \
+	phpize && \
+	./configure && \
+	make && \
+	make install
+
+# Install Supervisor.
 # 
 # 	- supervisor
 RUN apt-get update && \
