@@ -1,20 +1,6 @@
 ---
 language: php 
 
-before_script:
-  # Install libfann.
-  - sudo apt-get install libfann-dev > /dev/null
-  # Install Pecl FANN.
-  - pecl install fann
-  # Install Pimple as a C extension.
-  - git clone https://github.com/silexphp/Pimple > /dev/null
-  - cd Pimple/ext/pimple
-  - phpize
-  - ./configure > /dev/null
-  - make
-  - sudo make install > /dev/null
-  - cd ..
-
 script:
   # Run PHPUnit.
   - phpunit
@@ -30,6 +16,19 @@ after_script:
   - php vendor/bin/coveralls -v
 
 before_install:
+  # Install libfann.
+  - sudo apt-get -qq update
+  - sudo apt-get install -y libfann-dev
+  # Install Pecl FANN.
+  - pecl install fann
+  # Install Pimple as a C extension.
+  - git clone https://github.com/silexphp/Pimple > /dev/null
+  - cd Pimple/ext/pimple
+  - phpize
+  - ./configure > /dev/null
+  - make
+  - sudo make install > /dev/null
+  - cd ../../../
   # Add managed php configuration file.
   - phpenv config-add docker/files/etc/php5/fpm/conf.d/noughtsandcrosses-app.ini
   # Update composer.
