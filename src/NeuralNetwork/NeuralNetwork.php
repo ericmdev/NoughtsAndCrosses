@@ -112,7 +112,8 @@ class NeuralNetwork implements NeuralNetworkInterface
      */
     public function setLayers(array $layers)
     {
-
+        $this->layers = $layers;
+        return $this->layers;
     }
 
     /**
