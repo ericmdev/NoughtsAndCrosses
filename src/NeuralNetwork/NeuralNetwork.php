@@ -119,7 +119,10 @@ class NeuralNetwork implements NeuralNetworkInterface
      */
     public function setTrainFile($filename)
     {
-        
+        if(!is_file($filename))
+            return false;
+        else        
+            return true;
     }
 
     /**
