@@ -20,6 +20,14 @@ interface NeuralNetworkInterface
     public function createStandard();
 
     /**
+     * Sets the train file.
+     * 
+     * @param  str   Path to the file containing train data.
+     * @return bool
+     */
+    public function setTrainFile($filename);
+
+    /**
      * Returns the total number of layers including the input and the output layer.
      * 
      * @return int

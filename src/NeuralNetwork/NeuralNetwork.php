@@ -17,7 +17,7 @@ class NeuralNetwork implements NeuralNetworkInterface
      * @access protected
      * @var    obj
      */
-    protected  $standard;
+    protected  $ann;
 
     /**
      * @access protected
@@ -89,18 +89,28 @@ class NeuralNetwork implements NeuralNetworkInterface
     public function createStandard()
     {
         # Create standard fully connected backpropagation neural network.
-        $this->standard = fann_create_standard(
+        $this->ann = fann_create_standard(
             $this->getLayers(),
             $this->inputLayer->getNeurons(),
             $this->hiddenLayer->getNeurons(),
             $this->outputLayer->getNeurons());
 
-        if($this->standard === false)
+        if($this->ann === false)
             return false;
         else
             return true;
     }
 
+    /**
+     * Set Train File.
+     * 
+     * @return bool
+     */
+    public function setTrainFile()
+    {
+
+    }
+    
     /**
      * Get Layers.
      * 
