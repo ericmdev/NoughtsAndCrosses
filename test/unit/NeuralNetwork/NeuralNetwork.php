@@ -29,6 +29,41 @@ class NeuralNetwork_UnitTest extends NoughtsAndCrossesTestCase
     }
 
     /**
+     * Test getTrainFile returns the path to the train file.
+     *
+     * @dataProvider neuralNetworkTrainFileProvider
+     */
+    public function testGetTrainFile($filename)
+    {
+        $neuralNetwork = new NeuralNetwork();
+        $neuralNetwork->setTrainFile($filename);
+        $this->assertSame($filename, $neuralNetwork->getTrainFile());
+    }
+
+    /**
+     * Test setTrainFile returns true.
+     *
+     * @dataProvider neuralNetworkTrainFileProvider
+     */
+    public function testSetTrainFile($filename)
+    {
+        $neuralNetwork = new NeuralNetwork();
+        $this->assertSame(true, $neuralNetwork->setTrainFile($filename));
+    }
+
+    /**
+     * Test setTrainFile throws exception if file not found.
+     *
+     * @expectedException        Exception
+     * @expectedExceptionMessage Train file not found: 
+     */
+    public function testSetTrainFileThrowsExceptionIfFileNotFound()
+    {
+        $neuralNetwork = new NeuralNetwork();
+        $neuralNetwork->setTrainFile('./dummy-trainfile.data');
+    }
+
+    /**
      * Test setLayers return layers array.
      *
      * @dataProvider neuralNetworkLayersProvider

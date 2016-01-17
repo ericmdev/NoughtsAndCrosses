@@ -20,6 +20,28 @@ interface NeuralNetworkInterface
     public function createStandard();
 
     /**
+     * Trains on an entire dataset, which is read from file, for a period of time.
+     * 
+     * @return bool
+     */
+    public function trainOnFile();
+
+    /**
+     * Returns the path to the train file.
+     * 
+     * @return str
+     */
+    public function getTrainFile();
+
+    /**
+     * Sets the train file.
+     * 
+     * @param  str  Path to the file containing train data.
+     * @return bool
+     */
+    public function setTrainFile($filename);
+
+    /**
      * Returns the total number of layers including the input and the output layer.
      * 
      * @return int
