@@ -108,7 +108,7 @@ class NeuralNetwork implements NeuralNetworkInterface
      */
     public function getLayers()
     {
-        
+        return $this->layers['input'] + $this->layers['hidden'] + $this->layers['output'];
     }
 
     /**
