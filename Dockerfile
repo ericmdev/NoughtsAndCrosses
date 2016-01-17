@@ -81,7 +81,6 @@ ADD ${FILES}/etc/php5/fpm/conf.d/noughtsandcrosses-app.ini /etc/php5/fpm/conf.d/
 ADD ${FILES}/etc/php5/fpm/conf.d/noughtsandcrosses-app.ini /etc/php5/cli/conf.d/
 ADD ${FILES}/etc/php5/fpm/pool.d/noughtsandcrosses-app.pool.conf /etc/php5/fpm/pool.d/
 
-
 # Install PHP Pimple as a C extension.
 RUN git clone https://github.com/silexphp/Pimple && \
 	cd Pimple/ext/pimple && \

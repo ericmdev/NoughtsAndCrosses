@@ -15,6 +15,8 @@ use PHPUnit_Framework_TestCase;
 class Game_UnitTest extends NoughtsAndCrossesTestCase
 {
     /**
+     * Test setPaper returns the paper.
+     *
      * @dataProvider gamePaperProvider
      */
     public function testSetPaper(PaperInterface $paper)
@@ -24,6 +26,8 @@ class Game_UnitTest extends NoughtsAndCrossesTestCase
     }
 
     /**
+     * Test getPaper returns the paper.
+     *
      * @dataProvider gamePaperProvider
      */
     public function testGetPaper(PaperInterface $paper)
@@ -34,6 +38,8 @@ class Game_UnitTest extends NoughtsAndCrossesTestCase
     }
 
     /**
+     * Test setPencil returns the pencil.
+     *
      * @dataProvider gamePencilProvider
      */
     public function testSetPencil(PencilInterface $pencil)
@@ -43,6 +49,8 @@ class Game_UnitTest extends NoughtsAndCrossesTestCase
     }
 
     /**
+     * Test getPencil returns the pencil.
+     *
      * @dataProvider gamePencilProvider
      */
     public function testGetPencil(PencilInterface $pencil)
@@ -53,6 +61,8 @@ class Game_UnitTest extends NoughtsAndCrossesTestCase
     }
 
     /**
+     * Test addPlayer returns the player.
+     *
      * @dataProvider gamePlayerProvider
      */
     public function testAddPlayer(PlayerInterface $player)
@@ -62,6 +72,8 @@ class Game_UnitTest extends NoughtsAndCrossesTestCase
     }
 
     /**
+     * Test getPlayer returns the player.
+     *
      * @dataProvider gamePlayerProvider
      */
     public function testGetPlayer(PlayerInterface $player)
@@ -72,6 +84,8 @@ class Game_UnitTest extends NoughtsAndCrossesTestCase
     }
 
     /**
+     * Test getPlayers returns the array of players.
+     *
      * @dataProvider gamePlayerProvider
      */
     public function testGetPlayers(PlayerInterface $player)
@@ -82,13 +96,18 @@ class Game_UnitTest extends NoughtsAndCrossesTestCase
     }
 
     /**
+     * Test removePlayer removes the player.
+     *
      * @dataProvider gamePlayerProvider
      */
-    public function testRemovePlayers(PlayerInterface $player)
+    public function testRemovePlayer(PlayerInterface $player)
     {
         $game = new Game();
         $game->addPlayer($player);
+        $game->addPlayer($player);
         $game->removePlayer(1);
-        $this->assertSame([], $game->getPlayers());
+        $players = [$player, $player];
+        unset($players[0]);
+        $this->assertSame($players, $game->getPlayers());
     }
 }

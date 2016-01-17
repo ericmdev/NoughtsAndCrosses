@@ -13,6 +13,8 @@ use PHPUnit_Framework_TestCase;
 class Player_UnitTest extends NoughtsAndCrossesTestCase
 {
     /**
+     * Test setNumber returns the number.
+     *
      * @dataProvider gamePlayerNumberProvider
      */
     public function testSetNumber($numbers)
@@ -24,6 +26,8 @@ class Player_UnitTest extends NoughtsAndCrossesTestCase
     }
 
     /**
+     * Test getNumber returns the number.
+     *
      * @dataProvider gamePlayerNumberProvider
      */
     public function testGetNumber($numbers)
@@ -36,6 +40,8 @@ class Player_UnitTest extends NoughtsAndCrossesTestCase
     }
 
     /**
+     * Test setNeuralNetwork returns the neural network.
+     *
      * @dataProvider gamePlayerNeuralNetworkProvider
      */
     public function testSetNeuralNetwork(NeuralNetworkInterface $neuralNetwork)
@@ -45,6 +51,8 @@ class Player_UnitTest extends NoughtsAndCrossesTestCase
     }
 
     /**
+     * Test getNeuralNetwork returns the neural network.
+     *
      * @dataProvider gamePlayerNeuralNetworkProvider
      */
     public function testGetNeuralNetwork(NeuralNetworkInterface $neuralNetwork)
