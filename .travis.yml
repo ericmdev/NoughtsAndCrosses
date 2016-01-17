@@ -1,16 +1,38 @@
 ---
 language: php 
 
+before_script:
+  # Install libfann.
+  - sudo apt-get install libfann-dev > /dev/null
+  # Install Pecl FANN.
+  - pecl install fann
+  # Install Pimple as a C extension.
+  - git clone https://github.com/silexphp/Pimple > /dev/null
+  - cd Pimple/ext/pimple
+  - phpize
+  - ./configure > /dev/null
+  - make
+  - sudo make install > /dev/null
+  - cd ..
+
 script:
+  # Run PHPUnit.
   - phpunit
+  # Create logs/.
   - mkdir logs
+  # Generate code coverage report.
   - phpunit --coverage-clover logs/clover.xml
+  # Check for security vulnerabilities.
   - php vendor/bin/security-checker security:check composer.lock
 
 after_script:
+  # Create coveralls report.
   - php vendor/bin/coveralls -v
 
 before_install:
+  # Add managed php configuration file.
+  - phpenv config-add docker/files/etc/php5/fpm/conf.d/noughtsandcrosses-app.ini
+  # Update composer.
   - composer self-update
 
 install:
