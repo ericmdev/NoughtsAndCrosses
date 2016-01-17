@@ -114,11 +114,12 @@ class NeuralNetwork implements NeuralNetworkInterface
     /**
      * Set Train File.
      * 
+     * @param  str  Path to the file containing train data.
      * @return bool
      */
-    public function setTrainFile()
+    public function setTrainFile($filename)
     {
-
+        
     }
 
     /**
@@ -128,7 +129,7 @@ class NeuralNetwork implements NeuralNetworkInterface
      */
     public function trainOnFile()
     {
-        
+
     }
 
     /**

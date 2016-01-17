@@ -15,6 +15,7 @@ class NeuralNetworkServiceProvider implements ServiceProviderInterface
 {
     public function register(Container $pimple)
     {
+        # Total number of each type of layer.
         $pimple['layers'] = function() {
             return [
                 'input'  => 1,
@@ -23,6 +24,7 @@ class NeuralNetworkServiceProvider implements ServiceProviderInterface
             ];
         };
 
+        # Total number of neurons in each layer.
         $pimple['neurons'] = function() {
             return [
                 'input'  => 1,
@@ -31,22 +33,36 @@ class NeuralNetworkServiceProvider implements ServiceProviderInterface
             ];
         };
 
+        # Input layer.
         $pimple['inputLayer'] = function($pimple) {
             return new InputLayer(
                 $pimple['neurons']['input']
             );
         };
 
+        # Hidden layer.
         $pimple['hiddenLayer'] = function($pimple) {
             return new HiddenLayer(
                 $pimple['neurons']['hidden']
             );
         };
 
+        # Output layer.
         $pimple['outputLayer'] = function($pimple) {
             return new OutputLayer(
                 $pimple['neurons']['output']
             );
         };
+
+        # Train filename.
+        $pimple['train'] = function() {
+            return [
+                'filename' => dirname(dirname(__DIR__)) . 
+                                DIRECTORY_SEPARATOR . 'app' . 
+                                DIRECTORY_SEPARATOR . 'data' . 
+                                DIRECTORY_SEPARATOR . 'noughtsandcrosses.data'
+            ];
+        };
+
     }
 }
