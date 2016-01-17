@@ -3,6 +3,7 @@ namespace NoughtsAndCrosses\NeuralNetwork;
 use NoughtsAndCrosses\NeuralNetwork\Layer\InputLayerInterface;
 use NoughtsAndCrosses\NeuralNetwork\Layer\HiddenLayerInterface;
 use NoughtsAndCrosses\NeuralNetwork\Layer\OutputLayerInterface;
+use stdClass;
 
 /**
  * NeuralNetwork
@@ -11,6 +12,12 @@ use NoughtsAndCrosses\NeuralNetwork\Layer\OutputLayerInterface;
  */
 class NeuralNetwork implements NeuralNetworkInterface
 {
+
+    /**
+     * @access protected
+     * @var    obj
+     */
+    protected  $standard;
 
     /**
      * @access protected
@@ -71,18 +78,23 @@ class NeuralNetwork implements NeuralNetworkInterface
     }
 
     /**
-     * Creates a standard fully connected backpropagation neural network.
+     * Create Standard.
      * 
      * @return bool
      */
     public function createStandard()
     {
-        $ann = fann_create_standard(
-            ($this->layers['input'] + $this->layers['hidden'] + $this->layers['output']),
-            $this->neurons['input'],
-            $this->neurons['hidden'],
-            $this->neurons['output']);
-        if($ann === false)
+        # The total number of layers including the input and the output layer.
+        $numLayers = $this->layers['input'] + $this->layers['hidden'] + $this->layers['output'];
+
+        # Create standard fully connected backpropagation neural network.
+        $this->standard = fann_create_standard(
+            $numLayers,
+            $this->inputLayer->getNeurons(),
+            $this->hiddenLayer->getNeurons(),
+            $this->outputLayer->getNeurons());
+
+        if($this->standard === false)
             return false;
         else
             return true;
