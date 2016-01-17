@@ -1,4 +1,4 @@
-# XOR Training Example
+# NoughtsAndCrosses Training Example
 
 Here is an explanation for the [input file](http://php.net/manual/en/fann.examples-1.php) for training, as it might not be obvious to everyone and you must understand it to write your own:
 
