@@ -31,19 +31,19 @@ class NeuralNetworkServiceProvider implements ServiceProviderInterface
             ];
         };
 
-        $pimple['inputLayer'] = function() {
+        $pimple['inputLayer'] = function($pimple) {
             return new InputLayer(
                 $pimple['neurons']['input']
             );
         };
 
-        $pimple['hiddenLayer'] = function() {
+        $pimple['hiddenLayer'] = function($pimple) {
             return new HiddenLayer(
                 $pimple['neurons']['hidden']
             );
         };
 
-        $pimple['outputLayer'] = function() {
+        $pimple['outputLayer'] = function($pimple) {
             return new OutputLayer(
                 $pimple['neurons']['output']
             );
