@@ -120,7 +120,17 @@ class NeuralNetwork implements NeuralNetworkInterface
     {
 
     }
-    
+
+    /**
+     * Train On File.
+     * 
+     * @return bool
+     */
+    public function trainOnFile()
+    {
+        
+    }
+
     /**
      * Get Layers.
      * 
