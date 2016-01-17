@@ -52,6 +52,18 @@ class NeuralNetwork_UnitTest extends NoughtsAndCrossesTestCase
     }
 
     /**
+     * Test setTrainFile throws exception if file not found.
+     *
+     * @expectedException        Exception
+     * @expectedExceptionMessage Train file not found: 
+     */
+    public function testSetTrainFileThrowsExceptionIfFileNotFound()
+    {
+        $neuralNetwork = new NeuralNetwork();
+        $neuralNetwork->setTrainFile('./dummy-trainfile.data');
+    }
+
+    /**
      * Test setLayers return layers array.
      *
      * @dataProvider neuralNetworkLayersProvider

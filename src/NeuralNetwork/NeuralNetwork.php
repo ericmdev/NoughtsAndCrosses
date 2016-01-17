@@ -4,7 +4,7 @@ use NoughtsAndCrosses\NeuralNetwork\Layer\InputLayerInterface;
 use NoughtsAndCrosses\NeuralNetwork\Layer\HiddenLayerInterface;
 use NoughtsAndCrosses\NeuralNetwork\Layer\OutputLayerInterface;
 use stdClass;
-use FileException;
+use Exception;
 
 /**
  * NeuralNetwork
@@ -127,7 +127,7 @@ class NeuralNetwork implements NeuralNetworkInterface
     public function setTrainFile($filename)
     {
         if(!is_file($filename))
-            throw new FileException(
+            throw new Exception(
                 "Train file not found: $filename", 
                 1
             );
