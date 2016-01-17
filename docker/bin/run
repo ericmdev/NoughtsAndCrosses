@@ -7,5 +7,5 @@
 #		-v: Mount host volumes to container.
 docker run -d -P --name noughtsandcrosses-container \
 						-v `pwd`:/srv/www/noughtsandcrosses \
-						-v `pwd`/docker/volumes/var/log/nginx:/var/log/nginx \
+						-v `pwd`/docker/volumes/var/log/nginx:/var/log/nginx/ \
 						noughtsandcrosses-image
