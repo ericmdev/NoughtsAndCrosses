@@ -2,14 +2,17 @@
 namespace NoughtsAndCrosses\Test;
 use NoughtsAndCrosses\Config\Config;
 use NoughtsAndCrosses\Game\Game;
+use NoughtsAndCrosses\Game\GameServiceProvider;
 use NoughtsAndCrosses\Game\Paper\Paper;
 use NoughtsAndCrosses\Game\Pencil\Pencil;
 use NoughtsAndCrosses\Game\Player\Player;
 use NoughtsAndCrosses\NeuralNetwork\NeuralNetwork;
+use NoughtsAndCrosses\NeuralNetwork\NeuralNetworkServiceProvider;
 use NoughtsAndCrosses\NeuralNetwork\Layer\InputLayer;
 use NoughtsAndCrosses\NeuralNetwork\Layer\HiddenLayer;
 use NoughtsAndCrosses\NeuralNetwork\Layer\OutputLayer;
 use PHPUnit_Framework_TestCase;
+use Pimple\Container;
 
 /** 
  * NoughtsAndCrosses test case.
@@ -18,6 +21,12 @@ use PHPUnit_Framework_TestCase;
  */ 
 abstract class NoughtsAndCrossesTestCase extends PHPUnit_Framework_TestCase
 {
+    /**
+     * @access protected
+     * @var    obj
+     */
+    protected  $stub;
+
     /**
      * Default Provider.
      *
@@ -61,7 +70,9 @@ abstract class NoughtsAndCrossesTestCase extends PHPUnit_Framework_TestCase
      */
     public function gameProvider()
     {
-        return [[new Game()]];
+        $container = new Container();
+        $container->register(new GameServiceProvider());
+        return [[new Game($container)]];
     }
 
     /**
@@ -110,8 +121,9 @@ abstract class NoughtsAndCrossesTestCase extends PHPUnit_Framework_TestCase
      */
     public function gamePlayerNeuralNetworkProvider()
     {
-        $neuralNetwork = new NeuralNetwork();
-        return [[$neuralNetwork]];
+        $container = new Container();
+        $container->register(new NeuralNetworkServiceProvider());
+        return [[new NeuralNetwork($container)]];
     }
 
     /**
