@@ -20,6 +20,13 @@ interface NeuralNetworkInterface
     public function createStandard();
 
     /**
+     * Returns the total number of layers including the input and the output layer.
+     * 
+     * @return int
+     */
+    public function getLayers();
+
+    /**
      * Sets the number of each type of layer (input, hidden, output).
      * 
      * @param  array $layers Array of layer types and corresponding number.

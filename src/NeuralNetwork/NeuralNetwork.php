@@ -88,12 +88,9 @@ class NeuralNetwork implements NeuralNetworkInterface
      */
     public function createStandard()
     {
-        # Calculate the total number of layers including the input and the output layer.
-        $numLayers = $this->layers['input'] + $this->layers['hidden'] + $this->layers['output'];
-
         # Create standard fully connected backpropagation neural network.
         $this->standard = fann_create_standard(
-            $numLayers,
+            $this->getLayers(),
             $this->inputLayer->getNeurons(),
             $this->hiddenLayer->getNeurons(),
             $this->outputLayer->getNeurons());
@@ -102,6 +99,16 @@ class NeuralNetwork implements NeuralNetworkInterface
             return false;
         else
             return true;
+    }
+
+    /**
+     * Get Layers.
+     * 
+     * @return int
+     */
+    public function getLayers()
+    {
+        
     }
 
     /**
