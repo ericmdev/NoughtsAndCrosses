@@ -145,6 +145,12 @@ class NeuralNetwork implements NeuralNetworkInterface
      */
     public function setActivationFunction(LayerInterface $layer)
     {
+        if($this->ann === null)
+            throw new Exception(
+                "ANN is null: create an artifical neural network before setting an activation function for a layer.", 
+                1
+            );
+            
         $result = fann_set_activation_function_hidden($this->ann, $layer::ACTIVATION_FUNCTION);
         return $result;
     }
