@@ -289,4 +289,8 @@ class NeuralNetwork implements NeuralNetworkInterface
         $result = fann_destroy($this->ann);
         return $result;
     }
+
+    public function __destruct() {
+        # Call destroy to properly free all the associated memory.
+    }
 }
