@@ -279,4 +279,14 @@ class NeuralNetwork implements NeuralNetworkInterface
         $this->outputLayer = $layer;
         return $this->outputLayer;
     }
+
+    /**
+     * Destroy.
+     *
+     */
+    public function destroy()
+    {
+        $result = fann_destroy($this->ann);
+        return $result;
+    }
 }
