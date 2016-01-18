@@ -25,7 +25,76 @@ class NeuralNetwork_UnitTest extends NoughtsAndCrossesTestCase
         $container = new Container();
         $container->register(new NeuralNetworkServiceProvider());
         $neuralNetwork = new NeuralNetwork($container);
-        $this->assertSame(true, $neuralNetwork->createStandard());
+        $this->assertTrue($neuralNetwork->createStandard());
+    }
+
+    /**
+     * Test setActivationFunction returns true for hidden layer.
+     *
+     * @dataProvider neuralNetworkProvider
+     */
+    public function testSetActivationFunctionForHiddenLayer($neuralNetwork)
+    {
+        $this->assertTrue($neuralNetwork->setActivationFunction($neuralNetwork->getHiddenLayer()));
+    }
+
+    /**
+     * Test setActivationFunction returns true for output layer.
+     *
+     * @dataProvider neuralNetworkProvider
+     */
+    public function testSetActivationFunctionForOutputLayer($neuralNetwork)
+    {
+        $this->assertTrue($neuralNetwork->setActivationFunction($neuralNetwork->getOutputLayer()));
+    }
+
+    /**
+     * Test setActivationFunction throws exception if ann is null.
+     *
+     * @expectedException        Exception
+     * @expectedExceptionMessage ANN is null:
+     */
+    public function testSetActivationFunctionThrowsExceptionIfAnnIsNull()
+    {
+        $container = new Container();
+        $container->register(new NeuralNetworkServiceProvider());
+        $neuralNetwork = new NeuralNetwork($container);
+        $this->assertTrue($neuralNetwork->setActivationFunction($neuralNetwork->getOutputLayer()));
+    }
+
+    /**
+     * Test getTrainFile returns the path to the train file.
+     *
+     * @dataProvider neuralNetworkTrainFileProvider
+     */
+    public function testGetTrainFile($filename)
+    {
+        $neuralNetwork = new NeuralNetwork();
+        $neuralNetwork->setTrainFile($filename);
+        $this->assertSame($filename, $neuralNetwork->getTrainFile());
+    }
+
+    /**
+     * Test setTrainFile returns true.
+     *
+     * @dataProvider neuralNetworkTrainfileProvider
+     */
+    public function testSetTrainfile($filename)
+    {
+        $neuralNetwork = new NeuralNetwork();
+        $this->assertTrue($neuralNetwork->setTrainFile($filename));
+    }
+
+    /**
+     * Test setTrainFile throws exception if file not found.
+     *
+     * @expectedException        Exception
+     * @expectedExceptionMessage Train file not found: 
+     */
+    public function testSetTrainFileThrowsExceptionIfFileNotFound()
+    {
+        $neuralNetwork = new NeuralNetwork();
+        $neuralNetwork->setTrainFile('./dummy-trainfile.data');
     }
 
     /**
@@ -119,5 +188,15 @@ class NeuralNetwork_UnitTest extends NoughtsAndCrossesTestCase
         $neuralNetwork = new NeuralNetwork();
         $neuralNetwork->setOutputLayer($layer);
         $this->assertSame($layer, $neuralNetwork->getOutputLayer());
+    }
+    
+    /**
+     * Test destroy returns true.
+     *
+     * @dataProvider neuralNetworkProvider
+     */
+    public function testDestroy($neuralNetwork)
+    {
+        $this->assertTrue($neuralNetwork->destroy());
     }
 }

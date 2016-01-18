@@ -9,6 +9,12 @@ namespace NoughtsAndCrosses\NeuralNetwork\Layer;
 class HiddenLayer extends Layer_Abstract implements HiddenLayerInterface
 {
     /**
+     * Activation Function.
+     *
+     */
+    const ACTIVATION_FUNCTION = FANN_LINEAR;
+
+    /**
      * Constructor.
      * 
      * @param int $neurons Number of neurons in layer.

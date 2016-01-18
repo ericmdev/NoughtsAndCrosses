@@ -1,9 +1,11 @@
 <?php
 namespace NoughtsAndCrosses\NeuralNetwork;
+use NoughtsAndCrosses\NeuralNetwork\Layer\LayerInterface;
 use NoughtsAndCrosses\NeuralNetwork\Layer\InputLayerInterface;
 use NoughtsAndCrosses\NeuralNetwork\Layer\HiddenLayerInterface;
 use NoughtsAndCrosses\NeuralNetwork\Layer\OutputLayerInterface;
 use stdClass;
+use Exception;
 
 /**
  * NeuralNetwork
@@ -14,10 +16,34 @@ class NeuralNetwork implements NeuralNetworkInterface
 {
 
     /**
+     * Input Layer.
+     *
+     */
+    const INPUT_LAYER = 1;
+
+    /**
+     * Hidden Layer.
+     *
+     */
+    const HIDDEN_LAYER = 2;
+
+    /**
+     * Output Layer.
+     *
+     */
+    const OUTPUT_LAYER = 3;
+
+    /**
      * @access protected
      * @var    obj
      */
-    protected  $standard;
+    protected  $ann;
+
+    /**
+     * @access protected
+     * @var    str
+     */
+    protected  $trainfile;
 
     /**
      * @access protected
@@ -68,17 +94,27 @@ class NeuralNetwork implements NeuralNetworkInterface
         if(!empty($container['layers']))
             $this->setLayers($container['layers']);
 
+        # Set train file.
+        if(!empty($container['train_filename'])
+            && !empty($container['train_filename']))
+            $this->setTrainFile($container['train_filename']);
+
         # Set input layer.
-        if(!empty($container['inputLayer']))
-            $this->setInputLayer($container['inputLayer']);
+        if(!empty($container['input_layer']))
+            $this->setInputLayer($container['input_layer']);
 
         # Set hidden layer.
-        if(!empty($container['hiddenLayer']))
-            $this->setHiddenLayer($container['hiddenLayer']);
+        if(!empty($container['hidden_layer']))
+            $this->setHiddenLayer($container['hidden_layer']);
 
         # Set output layer.
-        if(!empty($container['outputLayer']))
-            $this->setOutputLayer($container['outputLayer']);
+        if(!empty($container['output_layer']))
+            $this->setOutputLayer($container['output_layer']);
+
+        # Create standard ann.
+        if(!empty($container['create_standard']) 
+            && $container['create_standard'] === true)
+            $this->createStandard();
     }
 
     /**
@@ -89,16 +125,71 @@ class NeuralNetwork implements NeuralNetworkInterface
     public function createStandard()
     {
         # Create standard fully connected backpropagation neural network.
-        $this->standard = fann_create_standard(
+        $this->ann = fann_create_standard(
             $this->getLayers(),
             $this->inputLayer->getNeurons(),
             $this->hiddenLayer->getNeurons(),
             $this->outputLayer->getNeurons());
 
-        if($this->standard === false)
+        if($this->ann === false)
             return false;
         else
             return true;
+    }
+
+    /**
+     * Set Activation Function.
+     * 
+     * @param  int  $layer Layer.
+     * @return bool
+     */
+    public function setActivationFunction(LayerInterface $layer)
+    {
+        if($this->ann === null)
+            throw new Exception(
+                "ANN is null: create an artifical neural network before setting an activation function for a layer.", 
+                1
+            );
+            
+        $result = fann_set_activation_function_hidden($this->ann, $layer::ACTIVATION_FUNCTION);
+        return $result;
+    }
+
+    /**
+     * Get Train File.
+     * 
+     * @return str
+     */
+    public function getTrainFile()
+    {
+        return $this->trainfile;
+    }
+
+    /**
+     * Set Train File.
+     * 
+     * @param  str  Path to the file containing train data.
+     * @return bool
+     */
+    public function setTrainFile($filename)
+    {
+        if(!is_file($filename))
+            throw new Exception(
+                "Train file not found: $filename.", 
+                1
+            );
+        $this->trainfile = $filename;
+        return true;
+    }
+
+    /**
+     * Train On File.
+     * 
+     * @return bool
+     */
+    public function trainOnFile()
+    {
+        return $this->trainfile;
     }
 
     /**
@@ -187,5 +278,19 @@ class NeuralNetwork implements NeuralNetworkInterface
     {
         $this->outputLayer = $layer;
         return $this->outputLayer;
+    }
+
+    /**
+     * Destroy.
+     *
+     */
+    public function destroy()
+    {
+        $result = fann_destroy($this->ann);
+        return $result;
+    }
+
+    public function __destruct() {
+        # Call destroy to properly free all the associated memory.
     }
 }
