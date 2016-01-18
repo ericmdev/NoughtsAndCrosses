@@ -154,7 +154,8 @@ class NeuralNetwork implements NeuralNetworkInterface
                 1
             );
             
-        $result = fann_set_activation_function_hidden($this->ann, $layer::ACTIVATION_FUNCTION);
+        $result = fann_set_activation_function_hidden($this->ann, 
+                                                    $layer::ACTIVATION_FUNCTION);
         return $result;
     }
 
@@ -171,7 +172,11 @@ class NeuralNetwork implements NeuralNetworkInterface
      */
     public function trainOnFile($maxEpochs, $epochsBetweenReports, $desiredError)
     {
-        $result = fann_train_on_file($this->ann, $this->trainfile, $maxEpochs, $epochsBetweenReports, $desiredError);
+        $result = fann_train_on_file($this->ann, 
+                                    $this->trainfile, 
+                                    $maxEpochs, 
+                                    $epochsBetweenReports, 
+                                    $desiredError);
         return $result;
     }
 
