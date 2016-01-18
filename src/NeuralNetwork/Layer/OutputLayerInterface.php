@@ -6,7 +6,7 @@ namespace NoughtsAndCrosses\NeuralNetwork\Layer;
  *
  * @package noughtsandcrosses
  */
-interface OutputLayerInterface extends Layer_AbstractInterface
+interface OutputLayerInterface extends LayerInterface
 {
 	
 }
