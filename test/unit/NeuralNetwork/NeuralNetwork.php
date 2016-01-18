@@ -29,6 +29,49 @@ class NeuralNetwork_UnitTest extends NoughtsAndCrossesTestCase
     }
 
     /**
+     * Test setActivationFunction returns true for hidden layer.
+     *
+     */
+    public function testSetActivationFunctionForHiddenLayer()
+    {
+        $container = new Container();
+        $container->register(new NeuralNetworkServiceProvider());
+        $container['create_standard'] = true;
+        $neuralNetwork = new NeuralNetwork($container);
+        $this->assertSame(true, 
+            $neuralNetwork->setActivationFunction($neuralNetwork->getHiddenLayer()));
+    }
+
+    /**
+     * Test setActivationFunction returns true for hidden layer.
+     *
+     */
+    public function testSetActivationFunctionForOutputLayer()
+    {
+        $container = new Container();
+        $container->register(new NeuralNetworkServiceProvider());
+        $container['create_standard'] = true;
+        $neuralNetwork = new NeuralNetwork($container);
+        $this->assertSame(true, 
+            $neuralNetwork->setActivationFunction($neuralNetwork->getOutputLayer()));
+    }
+
+    /**
+     * Test setActivationFunction throws exception if ann is null.
+     *
+     * @expectedException        Exception
+     * @expectedExceptionMessage ANN is null:
+     */
+    public function testSetActivationFunctionThrowsExceptionIfAnnIsNull()
+    {
+        $container = new Container();
+        $container->register(new NeuralNetworkServiceProvider());
+        $neuralNetwork = new NeuralNetwork($container);
+        $this->assertSame(true, 
+            $neuralNetwork->setActivationFunction($neuralNetwork->getOutputLayer()));
+    }
+
+    /**
      * Test getTrainFile returns the path to the train file.
      *
      * @dataProvider neuralNetworkTrainFileProvider
@@ -43,9 +86,9 @@ class NeuralNetwork_UnitTest extends NoughtsAndCrossesTestCase
     /**
      * Test setTrainFile returns true.
      *
-     * @dataProvider neuralNetworkTrainFileProvider
+     * @dataProvider neuralNetworkTrainfileProvider
      */
-    public function testSetTrainFile($filename)
+    public function testSetTrainfile($filename)
     {
         $neuralNetwork = new NeuralNetwork();
         $this->assertSame(true, $neuralNetwork->setTrainFile($filename));
