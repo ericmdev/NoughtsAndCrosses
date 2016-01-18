@@ -29,6 +29,22 @@ class NeuralNetwork_UnitTest extends NoughtsAndCrossesTestCase
     }
 
     /**
+     * Test setActivationFunction returns true for hidden layer.
+     *
+     */
+    public function testSetActivationFunctionForHiddenLayer()
+    {
+        $container = new Container();
+        $container->register(new NeuralNetworkServiceProvider());
+        $container['create_standard'] = true;
+        $neuralNetwork = new NeuralNetwork($container);
+        $neuralNetwork->createStandard();
+        $inputLayer = $neuralNetwork->getInputLayer();
+        $this->assertSame(true, 
+            $neuralNetwork->setActivationFunction($neuralNetwork->getHiddenLayer()));
+    }
+
+    /**
      * Test getTrainFile returns the path to the train file.
      *
      * @dataProvider neuralNetworkTrainFileProvider
