@@ -30,9 +30,15 @@ interface NeuralNetworkInterface
     /**
      * Trains on an entire dataset, which is read from file, for a period of time.
      * 
+     * @param  int   $maxEpochs             The maximum number of epochs the training should continue.
+     * @param  int   $epochsBetweenReports  The number of epochs between calling a user function.
+     *                                      A value of zero means that user function is not called. 
+     * @param  float $desiredError          The desired fann_get_MSE() or fann_get_bit_fail(), 
+     *                                      depending on the stop function chosen by 
+     *                                      fann_set_train_stop_function().
      * @return bool
      */
-    public function trainOnFile();
+    public function trainOnFile($maxEpochs, $epochsBetweenReports, $desiredError);
 
     /**
      * Returns the path to the train file.
@@ -110,7 +116,7 @@ interface NeuralNetworkInterface
     public function setOutputLayer(OutputLayerInterface $layer);
 
     /**
-     * Destroys the entire network and properly freeing all the associated memory.
+     * Destroys the entire network, properly freeing all the associated memory.
      * 
      * @return bool
      */
