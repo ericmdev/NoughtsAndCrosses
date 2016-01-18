@@ -12,7 +12,6 @@ use NoughtsAndCrosses\NeuralNetwork\Layer\OutputLayerInterface;
  */
 interface NeuralNetworkInterface
 {
-
     /**
      * Creates a standard fully connected backpropagation neural network.
      * 
@@ -109,4 +108,11 @@ interface NeuralNetworkInterface
      * @return OutputLayerInterface
      */
     public function setOutputLayer(OutputLayerInterface $layer);
+
+    /**
+     * Destroys the entire network and properly freeing all the associated memory.
+     * 
+     * @return bool
+     */
+    public function destroy();
 }
