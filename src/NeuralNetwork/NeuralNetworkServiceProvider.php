@@ -34,28 +34,28 @@ class NeuralNetworkServiceProvider implements ServiceProviderInterface
         };
 
         # Input layer.
-        $pimple['inputLayer'] = function($pimple) {
+        $pimple['input_layer'] = function($pimple) {
             return new InputLayer(
                 $pimple['neurons']['input']
             );
         };
 
         # Hidden layer.
-        $pimple['hiddenLayer'] = function($pimple) {
+        $pimple['hidden_layer'] = function($pimple) {
             return new HiddenLayer(
                 $pimple['neurons']['hidden']
             );
         };
 
         # Output layer.
-        $pimple['outputLayer'] = function($pimple) {
+        $pimple['output_layer'] = function($pimple) {
             return new OutputLayer(
                 $pimple['neurons']['output']
             );
         };
 
         # Trainfile.
-        $pimple['trainfile'] = function() {
+        $pimple['train_filename'] = function() {
             $filename = dirname(dirname(__DIR__)) . 
                             DIRECTORY_SEPARATOR . 'app' . 
                             DIRECTORY_SEPARATOR . 'data' . 

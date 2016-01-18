@@ -1,5 +1,6 @@
 <?php
 namespace NoughtsAndCrosses\NeuralNetwork;
+use NoughtsAndCrosses\NeuralNetwork\Layer\LayerInterface;
 use NoughtsAndCrosses\NeuralNetwork\Layer\InputLayerInterface;
 use NoughtsAndCrosses\NeuralNetwork\Layer\HiddenLayerInterface;
 use NoughtsAndCrosses\NeuralNetwork\Layer\OutputLayerInterface;
@@ -94,21 +95,26 @@ class NeuralNetwork implements NeuralNetworkInterface
             $this->setLayers($container['layers']);
 
         # Set train file.
-        if(!empty($container['train'])
-            && !empty($container['train']['filename']))
-            $this->setTrainFile($container['train']['filename']);
+        if(!empty($container['train_filename'])
+            && !empty($container['train_filename']))
+            $this->setTrainFile($container['train_filename']);
 
         # Set input layer.
-        if(!empty($container['inputLayer']))
-            $this->setInputLayer($container['inputLayer']);
+        if(!empty($container['input_layer']))
+            $this->setInputLayer($container['input_layer']);
 
         # Set hidden layer.
-        if(!empty($container['hiddenLayer']))
-            $this->setHiddenLayer($container['hiddenLayer']);
+        if(!empty($container['hidden_layer']))
+            $this->setHiddenLayer($container['hidden_layer']);
 
         # Set output layer.
-        if(!empty($container['outputLayer']))
-            $this->setOutputLayer($container['outputLayer']);
+        if(!empty($container['output_layer']))
+            $this->setOutputLayer($container['output_layer']);
+
+        # Create standard ann.
+        if(!empty($container['create_standard']) 
+            && $container['create_standard'] === true)
+            $this->createStandard();
     }
 
     /**
@@ -130,7 +136,19 @@ class NeuralNetwork implements NeuralNetworkInterface
         else
             return true;
     }
-    
+
+    /**
+     * Set Activation Function.
+     * 
+     * @param  int  $layer Layer.
+     * @return bool
+     */
+    public function setActivationFunction(LayerInterface $layer)
+    {
+        $result = fann_set_activation_function_hidden($this->ann, $layer::ACTIVATION_FUNCTION);
+        return $result;
+    }
+
     /**
      * Get Train File.
      * 
