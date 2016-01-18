@@ -7,7 +7,7 @@ use NoughtsAndCrosses\NeuralNetwork\Neuron\Neuron;
  *
  * @package noughtsandcrosses
  */
-abstract class Layer_Abstract implements Layer_AbstractInterface
+abstract class Layer_Abstract implements LayerInterface
 {
 
     /**
