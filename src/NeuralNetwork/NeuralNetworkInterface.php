@@ -1,5 +1,6 @@
 <?php
 namespace NoughtsAndCrosses\NeuralNetwork;
+use NoughtsAndCrosses\NeuralNetwork\Layer\LayerInterface;
 use NoughtsAndCrosses\NeuralNetwork\Layer\InputLayerInterface;
 use NoughtsAndCrosses\NeuralNetwork\Layer\HiddenLayerInterface;
 use NoughtsAndCrosses\NeuralNetwork\Layer\OutputLayerInterface;
@@ -18,6 +19,14 @@ interface NeuralNetworkInterface
      * @return bool
      */
     public function createStandard();
+
+    /**
+     * Sets the ann activation function for a layer.
+     * 
+     * @param  int  $layer Layer.
+     * @return bool
+     */
+    public function setActivationFunction(LayerInterface $layer);
 
     /**
      * Trains on an entire dataset, which is read from file, for a period of time.
