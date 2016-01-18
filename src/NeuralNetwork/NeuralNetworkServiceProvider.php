@@ -54,14 +54,13 @@ class NeuralNetworkServiceProvider implements ServiceProviderInterface
             );
         };
 
-        # Train filename.
-        $pimple['train'] = function() {
-            return [
-                'filename' => dirname(dirname(__DIR__)) . 
-                                DIRECTORY_SEPARATOR . 'app' . 
-                                DIRECTORY_SEPARATOR . 'data' . 
-                                DIRECTORY_SEPARATOR . 'noughtsandcrosses.data'
-            ];
+        # Trainfile.
+        $pimple['trainfile'] = function() {
+            $filename = dirname(dirname(__DIR__)) . 
+                            DIRECTORY_SEPARATOR . 'app' . 
+                            DIRECTORY_SEPARATOR . 'data' . 
+                            DIRECTORY_SEPARATOR . 'noughtsandcrosses.data';
+            return $filename;
         };
 
     }

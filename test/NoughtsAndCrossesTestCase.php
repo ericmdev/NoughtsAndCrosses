@@ -138,14 +138,14 @@ abstract class NoughtsAndCrossesTestCase extends PHPUnit_Framework_TestCase
     }
 
     /**
-     * Neural Network Train File Provider.
+     * Neural Network Trainfile Provider.
      *
      */
-    public function neuralNetworkTrainFileProvider()
+    public function neuralNetworkTrainfileProvider()
     {
         $container = new Container();
         $container->register(new NeuralNetworkServiceProvider());
-        return [[$container['train']['filename']]];
+        return [[$container['trainfile']]];
     }
 
     /**
