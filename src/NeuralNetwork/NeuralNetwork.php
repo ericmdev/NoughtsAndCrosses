@@ -171,7 +171,8 @@ class NeuralNetwork implements NeuralNetworkInterface
      */
     public function trainOnFile($maxEpochs, $epochsBetweenReports, $desiredError)
     {
-        
+        $result = fann_train_on_file($this->ann, $this->trainfile, $maxEpochs, $epochsBetweenReports, $desiredError);
+        return $result;
     }
 
     /**
