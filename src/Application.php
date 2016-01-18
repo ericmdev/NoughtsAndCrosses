@@ -78,7 +78,7 @@ class Application implements ApplicationInterface
     }
 
     /**
-     * Runs the application.
+     * Run.
      * 
      */
     public function run()

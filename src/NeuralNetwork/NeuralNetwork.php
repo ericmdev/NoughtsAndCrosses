@@ -113,8 +113,11 @@ class NeuralNetwork implements NeuralNetworkInterface
 
         # Create standard ann.
         if(!empty($container['create_standard']) 
-            && $container['create_standard'] === true)
+            && $container['create_standard'] === true){
             $this->createStandard();
+            $this->setActivationFunction($this->getHiddenLayer());
+            $this->setActivationFunction($this->getOutputLayer());
+        }
     }
 
     /**
@@ -156,6 +159,23 @@ class NeuralNetwork implements NeuralNetworkInterface
     }
 
     /**
+     * Train On File.
+     * 
+     * @param  int   $maxEpochs             The maximum number of epochs the training should continue.
+     * @param  int   $epochsBetweenReports  The number of epochs between calling a user function.
+     *                                      A value of zero means that user function is not called. 
+     * @param  float $desiredError          The desired fann_get_MSE() or fann_get_bit_fail(), 
+     *                                      depending on the stop function chosen by 
+     *                                      fann_set_train_stop_function().
+     * @return bool
+     */
+    public function trainOnFile($maxEpochs, $epochsBetweenReports, $desiredError)
+    {
+        $result = fann_train_on_file($this->ann, $this->trainfile, $maxEpochs, $epochsBetweenReports, $desiredError);
+        return $result;
+    }
+
+    /**
      * Get Train File.
      * 
      * @return str
@@ -180,16 +200,6 @@ class NeuralNetwork implements NeuralNetworkInterface
             );
         $this->trainfile = $filename;
         return true;
-    }
-
-    /**
-     * Train On File.
-     * 
-     * @return bool
-     */
-    public function trainOnFile()
-    {
-        return $this->trainfile;
     }
 
     /**
