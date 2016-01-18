@@ -127,6 +127,19 @@ abstract class NoughtsAndCrossesTestCase extends PHPUnit_Framework_TestCase
     }
 
     /**
+     * Neural Network Provider.
+     *
+     */
+    public function neuralNetworkProvider()
+    {
+        $container = new Container();
+        $container->register(new NeuralNetworkServiceProvider());
+        $container['create_standard'] = true;
+        return [[new NeuralNetwork($container)]];
+    }
+
+
+    /**
      * Neural Network Layers Provider.
      *
      */
@@ -135,6 +148,17 @@ abstract class NoughtsAndCrossesTestCase extends PHPUnit_Framework_TestCase
         $container = new Container();
         $container->register(new NeuralNetworkServiceProvider());
         return [[$container['layers']]];
+    }
+    
+    /**
+     * Neural Network Trainfile Provider.
+     *
+     */
+    public function neuralNetworkTrainfileProvider()
+    {
+        $container = new Container();
+        $container->register(new NeuralNetworkServiceProvider());
+        return [[$container['train_filename']]];
     }
 
     /**

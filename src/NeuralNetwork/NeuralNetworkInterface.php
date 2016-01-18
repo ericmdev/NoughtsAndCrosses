@@ -1,5 +1,6 @@
 <?php
 namespace NoughtsAndCrosses\NeuralNetwork;
+use NoughtsAndCrosses\NeuralNetwork\Layer\LayerInterface;
 use NoughtsAndCrosses\NeuralNetwork\Layer\InputLayerInterface;
 use NoughtsAndCrosses\NeuralNetwork\Layer\HiddenLayerInterface;
 use NoughtsAndCrosses\NeuralNetwork\Layer\OutputLayerInterface;
@@ -11,13 +12,42 @@ use NoughtsAndCrosses\NeuralNetwork\Layer\OutputLayerInterface;
  */
 interface NeuralNetworkInterface
 {
-
     /**
      * Creates a standard fully connected backpropagation neural network.
      * 
      * @return bool
      */
     public function createStandard();
+
+    /**
+     * Sets the ann activation function for a layer.
+     * 
+     * @param  int  $layer Layer.
+     * @return bool
+     */
+    public function setActivationFunction(LayerInterface $layer);
+
+    /**
+     * Trains on an entire dataset, which is read from file, for a period of time.
+     * 
+     * @return bool
+     */
+    public function trainOnFile();
+
+    /**
+     * Returns the path to the train file.
+     * 
+     * @return str
+     */
+    public function getTrainFile();
+
+    /**
+     * Sets the train file.
+     * 
+     * @param  str  Path to the file containing train data.
+     * @return bool
+     */
+    public function setTrainFile($filename);
 
     /**
      * Returns the total number of layers including the input and the output layer.
@@ -78,4 +108,11 @@ interface NeuralNetworkInterface
      * @return OutputLayerInterface
      */
     public function setOutputLayer(OutputLayerInterface $layer);
+
+    /**
+     * Destroys the entire network and properly freeing all the associated memory.
+     * 
+     * @return bool
+     */
+    public function destroy();
 }

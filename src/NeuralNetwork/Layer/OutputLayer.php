@@ -9,6 +9,12 @@ namespace  NoughtsAndCrosses\NeuralNetwork\Layer;
 class OutputLayer extends Layer_Abstract implements OutputLayerInterface
 {
     /**
+     * Activation Function.
+     *
+     */
+    const ACTIVATION_FUNCTION = FANN_LINEAR;
+
+    /**
      * Constructor.
      * 
      * @param int $neurons Number of neurons in layer.
