@@ -15,6 +15,24 @@ class NeuralNetwork implements NeuralNetworkInterface
 {
 
     /**
+     * Input Layer.
+     *
+     */
+    const INPUT_LAYER = 1;
+
+    /**
+     * Hidden Layer.
+     *
+     */
+    const HIDDEN_LAYER = 2;
+
+    /**
+     * Output Layer.
+     *
+     */
+    const OUTPUT_LAYER = 3;
+
+    /**
      * @access protected
      * @var    obj
      */
@@ -112,7 +130,7 @@ class NeuralNetwork implements NeuralNetworkInterface
         else
             return true;
     }
-
+    
     /**
      * Get Train File.
      * 
