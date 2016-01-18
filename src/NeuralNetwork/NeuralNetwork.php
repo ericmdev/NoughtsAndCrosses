@@ -169,7 +169,7 @@ class NeuralNetwork implements NeuralNetworkInterface
     {
         if(!is_file($filename))
             throw new Exception(
-                "Train file not found: $filename", 
+                "Train file not found: $filename.", 
                 1
             );
         $this->trainfile = $filename;

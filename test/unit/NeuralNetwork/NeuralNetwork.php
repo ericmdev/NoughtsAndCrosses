@@ -57,6 +57,21 @@ class NeuralNetwork_UnitTest extends NoughtsAndCrossesTestCase
     }
 
     /**
+     * Test setActivationFunction throws exception if ann is null.
+     *
+     * @expectedException        Exception
+     * @expectedExceptionMessage ANN is null:
+     */
+    public function testSetActivationFunctionThrowsExceptionIfAnnIsNull()
+    {
+        $container = new Container();
+        $container->register(new NeuralNetworkServiceProvider());
+        $neuralNetwork = new NeuralNetwork($container);
+        $this->assertSame(true, 
+            $neuralNetwork->setActivationFunction($neuralNetwork->getOutputLayer()));
+    }
+
+    /**
      * Test getTrainFile returns the path to the train file.
      *
      * @dataProvider neuralNetworkTrainFileProvider
