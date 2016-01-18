@@ -3,11 +3,11 @@ namespace NoughtsAndCrosses\NeuralNetwork\Layer;
 use NoughtsAndCrosses\NeuralNetwork\Neuron\NeuronInterface;
 
 /** 
- * Interface for Abstract Layer.
+ * Interface for Layer.
  *
  * @package noughtsandcrosses
  */
-interface Layer_AbstractInterface
+interface LayerInterface
 {
     /**
      * Returns total number of neurons in layer.
