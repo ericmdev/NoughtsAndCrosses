@@ -29,7 +29,7 @@ class NeuralNetworkServiceProvider implements ServiceProviderInterface
             return [
                 'input'  => 9,
                 'hidden' => 9,
-                'output' => 1,
+                'output' => 9,
             ];
         };
 
@@ -74,6 +74,9 @@ class NeuralNetworkServiceProvider implements ServiceProviderInterface
 
         # Create standard artificial neural network.
         $container['create_standard'] = false;
+
+        # Create artificial neural network from configuration file.
+        $container['create_from_file'] = false;
 
         # Activate hidden layer.
         $container['activate_hidden_layer'] = false;

@@ -50,10 +50,9 @@ interface NeuralNetworkInterface
     /**
      * Constructs a backpropagation neural network from a configuration file.
      * 
-     * @param  str   $filename Configuration file path.
-     * @return array
+     * @return bool
      */
-    public static function createFromFile($filename);
+    public function createFromFile();
 
     /**
      * Runs the input through the neural network.
