@@ -206,6 +206,30 @@ class NeuralNetwork implements NeuralNetworkInterface
         $result = fann_save($this->ann, $this->configurationFile);
         return $result;
     }
+
+    /**
+     * Create From File.
+     * 
+     * @param  str      $filename Configuration file path.
+     * @return resource
+     */
+    public static function createFromFile($filename)
+    {
+
+    }
+
+    /**
+     * Run.
+     * 
+     * @param  array $input Input.
+     * @return array
+     */
+    public function run(array $input)
+    {
+        
+    }
+
+
     /**
      * Get Train File.
      * 

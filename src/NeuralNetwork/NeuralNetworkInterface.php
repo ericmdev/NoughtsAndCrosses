@@ -48,6 +48,22 @@ interface NeuralNetworkInterface
     public function save();
 
     /**
+     * Constructs a backpropagation neural network from a configuration file.
+     * 
+     * @param  str   $filename Configuration file path.
+     * @return array
+     */
+    public static function createFromFile($filename);
+
+    /**
+     * Runs the input through the neural network.
+     * 
+     * @param  array $input Input.
+     * @return array
+     */
+    public function run(array $input);
+
+    /**
      * Returns the path to the train file.
      * 
      * @return str
