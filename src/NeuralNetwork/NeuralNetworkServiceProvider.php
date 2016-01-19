@@ -27,8 +27,8 @@ class NeuralNetworkServiceProvider implements ServiceProviderInterface
         # Total number of neurons in each layer.
         $pimple['neurons'] = function() {
             return [
-                'input'  => 1,
-                'hidden' => 1,
+                'input'  => 9,
+                'hidden' => 9,
                 'output' => 1,
             ];
         };
