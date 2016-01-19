@@ -215,7 +215,13 @@ class NeuralNetwork implements NeuralNetworkInterface
      */
     public static function createFromFile($filename)
     {
-
+        $ann = fann_create_from_file($filename);
+        if($ann === false)
+            throw new Exception(
+                "Failed to create ann from network configuration file: $filename.", 
+                1
+            );
+        return $ann;
     }
 
     /**
