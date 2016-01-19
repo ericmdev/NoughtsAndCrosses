@@ -203,6 +203,19 @@ abstract class NoughtsAndCrossesTestCase extends PHPUnit_Framework_TestCase
     }
 
     /**
+     * Neural Network (For Create From File) Provider.
+     *
+     */
+    public function neuralNetworkForCreateFromFileProvider()
+    {
+        $container = new Container();
+        $container->register(new NeuralNetworkServiceProvider());
+        unset($container['train_file']);
+        $neuralNetwork = new NeuralNetwork($container);
+        return [[$neuralNetwork]];
+    }
+
+    /**
      * Neural Network (From File) Provider.
      *
      */
@@ -210,16 +223,8 @@ abstract class NoughtsAndCrossesTestCase extends PHPUnit_Framework_TestCase
     {
         $container = new Container();
         $container->register(new NeuralNetworkServiceProvider());
-        $container['create_standard'] = true;
-        $container['activate_hidden_layer'] = true;
-        $container['activate_output_layer'] = true;
+        $container['create_from_file'] = true;
         $neuralNetwork = new NeuralNetwork($container);
-        $maxEpochs = 500000;
-        $epochsBetweenReports = 1000;
-        $desiredError = 0.001;
-        $neuralNetwork->trainOnFile($maxEpochs, $epochsBetweenReports, $desiredError);
-        $neuralNetwork->save();
-        $neuralNetwork->createFromFile($neuralNetwork->getConfigurationFile());
         return [[$neuralNetwork]];
     }
 
