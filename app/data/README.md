@@ -1,4 +1,8 @@
-# NoughtsAndCrosses Training Example
+# NoughtsAndCrosses Data
+
+The train file `noughtsandcrosses.data` contains the train data.
+
+### NoughtsAndCrosses Training Example
 
 Here is an explanation for the [input file](http://php.net/manual/en/fann.examples-1.php) for training, as it might not be obvious to everyone and you must understand it to write your own:
 
