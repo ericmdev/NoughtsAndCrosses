@@ -21,7 +21,8 @@ class Layer_Abstract_UnitTest extends NoughtsAndCrossesTestCase
     	$stub = $this->getMockBuilder('NoughtsAndCrosses\NeuralNetwork\Layer\Layer_Abstract')
 			    ->setMethods(null)
 			    ->getMock();
-        $this->assertSame($neurons, $stub->setNeurons($neurons));
+        $result = $stub->setNeurons($neurons);
+        $this->assertSame($neurons, $result);
     }
 
     /**
@@ -35,6 +36,7 @@ class Layer_Abstract_UnitTest extends NoughtsAndCrossesTestCase
                 ->setMethods(null)
                 ->getMock();
         $stub->setNeurons($neurons);
-        $this->assertSame($neurons, $stub->getNeurons());
+        $result = $stub->getNeurons();
+        $this->assertSame($neurons, $result);
     }
 }

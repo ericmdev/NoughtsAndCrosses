@@ -19,6 +19,7 @@ class Config_UnitTest extends NoughtsAndCrossesTestCase
     public function testSetGame($game)
     {
         $config = new Config();
-        $this->assertSame($game, $config->setGame($game));
+        $result = $config->setGame($game);
+        $this->assertSame($game, $result);
     }
 }
