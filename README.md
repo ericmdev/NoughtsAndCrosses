@@ -74,3 +74,6 @@ Provisioning builds the Docker image `noughtsandcrosses-image` and runs the Dock
 
 ### Development
 
+#### Troubleshooting
+
+- *Segmentation fault*: train file in wrong format.
