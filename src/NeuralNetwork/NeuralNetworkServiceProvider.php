@@ -63,5 +63,13 @@ class NeuralNetworkServiceProvider implements ServiceProviderInterface
             return $filename;
         };
 
+        # Create standard artificial neural network.
+        $container['create_standard'] = false;
+
+        # Activate hidden layer.
+        $container['activate_hidden_layer'] = false;
+
+        # Activate output layer.
+        $container['activate_output_layer'] = false;
     }
 }
