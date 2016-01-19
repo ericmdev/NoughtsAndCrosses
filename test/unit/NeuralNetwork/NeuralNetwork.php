@@ -96,6 +96,34 @@ class NeuralNetwork_UnitTest extends NoughtsAndCrossesTestCase
     }
 
     /**
+     * Test createFromFile returns ann resource.
+     *
+     */
+    public function testCreateFromFile()
+    {
+        $neuralNetwork = NeuralNetwork::createFromFile();
+        $this->assertNotEquals(false, $result);
+    }
+
+    /**
+     * Test run returns calculated output.
+     *
+     * @dataProvider neuralNetworkFromFileProvider
+     */
+    public function testRun($neuralNetwork)
+    {
+        $maxEpochs = 500000;
+        $epochsBetweenReports = 1000;
+        $desiredError = 0.001;
+        $neuralNetwork->trainOnFile($maxEpochs, $epochsBetweenReports, $desiredError);
+        $neuralNetwork->save();
+
+        $result = $neuralNetwork->createFromFile($neuralNetwork->getConfigurationFile());
+
+        $this->assertTrue($result);
+    }
+
+    /**
      * Test getTrainFile returns the path to the train file.
      *
      * @dataProvider neuralNetworkTrainFileProvider
