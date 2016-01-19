@@ -202,6 +202,8 @@ class NeuralNetwork implements NeuralNetworkInterface
      * 
      * @param  str  Path to the file containing train data.
      * @return bool
+     *
+     * @todo   Check if train file in the correct format.
      */
     public function setTrainFile($filename)
     {
