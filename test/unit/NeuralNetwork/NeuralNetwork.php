@@ -96,12 +96,24 @@ class NeuralNetwork_UnitTest extends NoughtsAndCrossesTestCase
     /**
      * Test setTrainFile returns true.
      *
-     * @dataProvider neuralNetworkTrainfileProvider
+     * @dataProvider neuralNetworkTrainFileProvider
      */
-    public function testSetTrainfile($filename)
+    public function testSetTrainFile($filename)
     {
         $neuralNetwork = new NeuralNetwork();
         $result = $neuralNetwork->setTrainFile($filename);
+        $this->assertTrue($result);
+    }
+
+    /**
+     * Test setConfigurationFile returns true.
+     *
+     * @dataProvider neuralNetworkConfigurationFileProvider
+     */
+    public function testSetConfigurationFile($filename)
+    {
+        $neuralNetwork = new NeuralNetwork();
+        $result = $neuralNetwork->setConfigurationFile($filename);
         $this->assertTrue($result);
     }
 
