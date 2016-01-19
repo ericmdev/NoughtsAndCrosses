@@ -43,7 +43,13 @@ class NeuralNetwork implements NeuralNetworkInterface
      * @access protected
      * @var    str
      */
-    protected  $trainfile;
+    protected  $trainFile;
+
+    /**
+     * @access protected
+     * @var    str
+     */
+    protected  $configurationFile;
 
     /**
      * @access protected
@@ -95,9 +101,12 @@ class NeuralNetwork implements NeuralNetworkInterface
             $this->setLayers($container['layers']);
 
         # Set train file.
-        if(!empty($container['train_filename'])
-            && !empty($container['train_filename']))
-            $this->setTrainFile($container['train_filename']);
+        if(!empty($container['train_file']))
+            $this->setTrainFile($container['train_file']);
+
+        # Set configuration file.
+        if(!empty($container['configuration_file']))
+            $this->setConfigurationFile($container['configuration_file']);
 
         # Set input layer.
         if(!empty($container['input_layer']))
@@ -115,6 +124,11 @@ class NeuralNetwork implements NeuralNetworkInterface
         if(!empty($container['create_standard']) 
             && $container['create_standard'] === true)
             $this->createStandard();
+
+        # Create standard ann.
+        if(!empty($container['create_from_file']) 
+            && $container['create_from_file'] === true)
+            $this->createFromFile();
 
         # Activate hidden layer.
         if (!empty($container['activate_hidden_layer'])
@@ -146,6 +160,27 @@ class NeuralNetwork implements NeuralNetworkInterface
         else
             return true;
     }
+
+    /**
+     * Create From File.
+     * 
+     * @return bool
+     */
+    public function createFromFile()
+    {
+        $this->ann = fann_create_from_file($this->getConfigurationFile());
+        if($this->ann === false)
+            throw new Exception(
+                "Failed to create ann from network configuration file: $filename.", 
+                1
+            );
+
+        if($this->ann === false)
+            return false;
+        else
+            return true;
+    }
+
 
     /**
      * Set Activation Function.
@@ -180,12 +215,38 @@ class NeuralNetwork implements NeuralNetworkInterface
     public function trainOnFile($maxEpochs, $epochsBetweenReports, $desiredError)
     {
         $result = fann_train_on_file($this->ann, 
-                                    $this->trainfile, 
+                                    $this->trainFile, 
                                     $maxEpochs, 
                                     $epochsBetweenReports, 
                                     $desiredError);
         return $result;
     }
+
+    /**
+     * Save. 
+     * 
+     * @return bool
+     */
+    public function save()
+    {
+        $result = fann_save($this->ann, $this->configurationFile);
+        return $result;
+    }
+
+    /**
+     * Run.
+     * 
+     * @param  array $input Input.
+     * @return array
+     */
+    public function run(array $input)
+    {
+        $calc_out = fann_run($this->ann, $input);
+        printf("noughtsandcrosses test (%f,%f) -> %f\n", $input[0], $input[1], $calc_out[0]);
+        fann_destroy($this->ann);
+        return $calc_out;
+    }
+
 
     /**
      * Get Train File.
@@ -194,7 +255,7 @@ class NeuralNetwork implements NeuralNetworkInterface
      */
     public function getTrainFile()
     {
-        return $this->trainfile;
+        return $this->trainFile;
     }
 
     /**
@@ -202,6 +263,8 @@ class NeuralNetwork implements NeuralNetworkInterface
      * 
      * @param  str  Path to the file containing train data.
      * @return bool
+     *
+     * @todo   Check if training file in the correct format.
      */
     public function setTrainFile($filename)
     {
@@ -210,7 +273,35 @@ class NeuralNetwork implements NeuralNetworkInterface
                 "Train file not found: $filename.", 
                 1
             );
-        $this->trainfile = $filename;
+        $this->trainFile = $filename;
+        return true;
+    }
+
+    /**
+     * Get Configuration file.
+     * 
+     * @return str
+     */
+    public function getConfigurationFile()
+    {
+        return $this->configurationFile;
+    }
+
+    /**
+     * Set Configuration File.
+     * 
+     * @param  str  $filename Configuration file path.
+     * @return bool
+     */
+    public function setConfigurationFile($filename)
+    {
+        $directory = dirname($filename);
+        if(!is_dir($directory))
+            throw new Exception(
+                "Configuration file directory not found: $directory.", 
+                1
+            );
+        $this->configurationFile = $filename;
         return true;
     }
 

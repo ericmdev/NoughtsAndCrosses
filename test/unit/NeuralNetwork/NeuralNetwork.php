@@ -81,6 +81,47 @@ class NeuralNetwork_UnitTest extends NoughtsAndCrossesTestCase
     }
 
     /**
+     * Test save returns true.
+     *
+     * @dataProvider neuralNetworkActivatedProvider
+     */
+    public function testSave($neuralNetwork)
+    {
+        $maxEpochs = 500000;
+        $epochsBetweenReports = 1000;
+        $desiredError = 0.001;
+        $neuralNetwork->trainOnFile($maxEpochs, $epochsBetweenReports, $desiredError);
+        $result = $neuralNetwork->save();
+        $this->assertTrue($result);
+    }
+
+    /**
+     * Test createFromFile returns true.
+     *
+     * @dataProvider neuralNetworkForCreateFromFileProvider
+     */
+    public function testCreateFromFile($neuralNetwork)
+    {
+        $result = $neuralNetwork->createFromFile();
+        $this->assertTrue($result);
+    }
+
+    /**
+     * Test run returns calculated output.
+     *
+     * @dataProvider neuralNetworkFromFileProvider
+     */
+    public function testRun($neuralNetwork)
+    {
+        $input = [0, 1, -1, -1, -1, -1, -1, -1, -1];
+        $result = $neuralNetwork->run($input);
+        $expected = [0, 1, 0, -1, -1, -1, -1, -1, -1];
+        # These values will not be equal while the ann is learning.
+        # Let the build fail.
+        $this->assertSame($expected, $result);
+    }
+
+    /**
      * Test getTrainFile returns the path to the train file.
      *
      * @dataProvider neuralNetworkTrainFileProvider
@@ -96,13 +137,51 @@ class NeuralNetwork_UnitTest extends NoughtsAndCrossesTestCase
     /**
      * Test setTrainFile returns true.
      *
-     * @dataProvider neuralNetworkTrainfileProvider
+     * @dataProvider neuralNetworkTrainFileProvider
      */
-    public function testSetTrainfile($filename)
+    public function testSetTrainFile($filename)
     {
         $neuralNetwork = new NeuralNetwork();
         $result = $neuralNetwork->setTrainFile($filename);
         $this->assertTrue($result);
+    }
+
+    /**
+     * Test setConfigurationFile returns true.
+     *
+     * @dataProvider neuralNetworkConfigurationFileProvider
+     */
+    public function testSetConfigurationFile($filename)
+    {
+        $neuralNetwork = new NeuralNetwork();
+        $result = $neuralNetwork->setConfigurationFile($filename);
+        $this->assertTrue($result);
+    }
+
+    /**
+     * Test getConfigurationFile returns the path to the configuration file.
+     *
+     * @dataProvider neuralNetworkConfigurationFileProvider
+     */
+    public function testGetConfigurationFile($filename)
+    {
+        $neuralNetwork = new NeuralNetwork();
+        $neuralNetwork->setConfigurationFile($filename);
+        $result = $neuralNetwork->getConfigurationFile();
+        $this->assertSame($filename, $result);
+    }
+
+    /**
+     * Test setConfigurationFile throws exception if file not found.
+     *
+     * @expectedException        Exception
+     * @expectedExceptionMessage Configuration file directory not found: 
+     */
+    public function testSetConfigurationFileThrowsExceptionIfDirectoryNotFound()
+    {
+        $neuralNetwork = new NeuralNetwork();
+        $filename = './dummy-directory/dummy-configuration_file.net';
+        $neuralNetwork->setConfigurationFile($filename);
     }
 
     /**
@@ -114,7 +193,7 @@ class NeuralNetwork_UnitTest extends NoughtsAndCrossesTestCase
     public function testSetTrainFileThrowsExceptionIfFileNotFound()
     {
         $neuralNetwork = new NeuralNetwork();
-        $filename = './dummy-trainfile.data';
+        $filename = './dummy-train_file.data';
         $neuralNetwork->setTrainFile($filename);
     }
 
