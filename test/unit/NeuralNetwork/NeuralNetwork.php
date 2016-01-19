@@ -118,15 +118,28 @@ class NeuralNetwork_UnitTest extends NoughtsAndCrossesTestCase
     }
 
     /**
+     * Test getConfigurationFile returns the path to the configuration file.
+     *
+     * @dataProvider neuralNetworkConfigurationFileProvider
+     */
+    public function testGetConfigurationFile($filename)
+    {
+        $neuralNetwork = new NeuralNetwork();
+        $neuralNetwork->setConfigurationFile($filename);
+        $result = $neuralNetwork->getConfigurationFile();
+        $this->assertSame($filename, $result);
+    }
+
+    /**
      * Test setConfigurationFile throws exception if file not found.
      *
      * @expectedException        Exception
-     * @expectedExceptionMessage Configuration file not found: 
+     * @expectedExceptionMessage Configuration file directory not found: 
      */
-    public function testSetConfigurationFileThrowsExceptionIfFileNotFound()
+    public function testSetConfigurationFileThrowsExceptionIfDirectoryNotFound()
     {
         $neuralNetwork = new NeuralNetwork();
-        $filename = './dummy-configuration_file.net';
+        $filename = './dummy-directory/dummy-configuration_file.net';
         $neuralNetwork->setConfigurationFile($filename);
     }
 
