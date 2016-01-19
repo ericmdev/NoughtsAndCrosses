@@ -213,8 +213,9 @@ abstract class NoughtsAndCrossesTestCase extends PHPUnit_Framework_TestCase
      */
     public function neuralNetworkInputLayerProvider()
     {
-        $neurons = 1;
-        $layer = new InputLayer($neurons);
+        $container = new Container();
+        $container->register(new NeuralNetworkServiceProvider());
+        $layer = new InputLayer($container['neurons']['input']);
         return [[$layer]];
     }
 
@@ -224,8 +225,9 @@ abstract class NoughtsAndCrossesTestCase extends PHPUnit_Framework_TestCase
      */
     public function neuralNetworkHiddenLayerProvider()
     {
-        $neurons = 1;
-        $layer = new HiddenLayer($neurons);
+        $container = new Container();
+        $container->register(new NeuralNetworkServiceProvider());
+        $layer = new HiddenLayer($container['neurons']['hidden']);
         return [[$layer]];
     }
 
@@ -235,8 +237,9 @@ abstract class NoughtsAndCrossesTestCase extends PHPUnit_Framework_TestCase
      */
     public function neuralNetworkOutputLayerProvider()
     {
-        $neurons = 1;
-        $layer = new OutputLayer($neurons);
+        $container = new Container();
+        $container->register(new NeuralNetworkServiceProvider());
+        $layer = new OutputLayer($container['neurons']['output']);
         return [[$layer]];
     }
 
@@ -246,7 +249,10 @@ abstract class NoughtsAndCrossesTestCase extends PHPUnit_Framework_TestCase
      */
     public function neuronsProvider()
     {
-        return [[1]];
+        $container = new Container();
+        $container->register(new NeuralNetworkServiceProvider());
+        $neurons = $container['neurons']['input'];
+        return [[$neurons]];
     }
 
     /**
