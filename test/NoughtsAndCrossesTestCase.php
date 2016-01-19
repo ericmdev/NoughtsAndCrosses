@@ -134,10 +134,53 @@ abstract class NoughtsAndCrossesTestCase extends PHPUnit_Framework_TestCase
     {
         $container = new Container();
         $container->register(new NeuralNetworkServiceProvider());
-        $container['create_standard'] = true;
+        unset($container['train_filename']);
+        unset($container['input_layer']);
+        unset($container['hidden_layer']);
+        unset($container['output_layer']);
         return [[new NeuralNetwork($container)]];
     }
 
+    /**
+     * Neural Network (Layered) Provider.
+     *
+     */
+    public function neuralNetworkLayeredProvider()
+    {
+        $container = new Container();
+        $container->register(new NeuralNetworkServiceProvider());
+        unset($container['train_filename']);
+        $neuralNetwork = new NeuralNetwork($container);
+        return [[$neuralNetwork]];
+    }
+
+    /**
+     * Neural Network (Standard) Provider.
+     *
+     */
+    public function neuralNetworkStandardProvider()
+    {
+        $container = new Container();
+        $container->register(new NeuralNetworkServiceProvider());
+        $container['create_standard'] = true;
+        $neuralNetwork = new NeuralNetwork($container);
+        return [[$neuralNetwork]];
+    }
+
+    /**
+     * Neural Network (Activated) Provider.
+     *
+     */
+    public function neuralNetworkActivatedProvider()
+    {
+        $container = new Container();
+        $container->register(new NeuralNetworkServiceProvider());
+        $container['create_standard'] = true;
+        $container['activate_hidden_layer'] = true;
+        $container['activate_output_layer'] = true;
+        $neuralNetwork = new NeuralNetwork($container);
+        return [[$neuralNetwork]];
+    }
 
     /**
      * Neural Network Layers Provider.

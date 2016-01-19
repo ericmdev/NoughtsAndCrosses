@@ -113,11 +113,18 @@ class NeuralNetwork implements NeuralNetworkInterface
 
         # Create standard ann.
         if(!empty($container['create_standard']) 
-            && $container['create_standard'] === true){
+            && $container['create_standard'] === true)
             $this->createStandard();
+
+        # Activate hidden layer.
+        if (!empty($container['activate_hidden_layer'])
+            && $container['activate_hidden_layer'] === true)
             $this->setActivationFunction($this->getHiddenLayer());
+
+        # Activate output layer.
+        if (!empty($container['activate_output_layer'])
+            && $container['activate_output_layer'] === true)
             $this->setActivationFunction($this->getOutputLayer());
-        }
     }
 
     /**
@@ -154,7 +161,8 @@ class NeuralNetwork implements NeuralNetworkInterface
                 1
             );
             
-        $result = fann_set_activation_function_hidden($this->ann, $layer::ACTIVATION_FUNCTION);
+        $result = fann_set_activation_function_hidden($this->ann, 
+                                                    $layer::ACTIVATION_FUNCTION);
         return $result;
     }
 
@@ -171,7 +179,11 @@ class NeuralNetwork implements NeuralNetworkInterface
      */
     public function trainOnFile($maxEpochs, $epochsBetweenReports, $desiredError)
     {
-        $result = fann_train_on_file($this->ann, $this->trainfile, $maxEpochs, $epochsBetweenReports, $desiredError);
+        $result = fann_train_on_file($this->ann, 
+                                    $this->trainfile, 
+                                    $maxEpochs, 
+                                    $epochsBetweenReports, 
+                                    $desiredError);
         return $result;
     }
 
