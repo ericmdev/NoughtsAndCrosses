@@ -203,7 +203,8 @@ class NeuralNetwork implements NeuralNetworkInterface
      */
     public function save()
     {
-        
+        $result = fann_save($this->ann, $this->configurationFile);
+        return $result;
     }
     /**
      * Get Train File.
