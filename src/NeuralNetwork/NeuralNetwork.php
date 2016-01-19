@@ -243,7 +243,7 @@ class NeuralNetwork implements NeuralNetworkInterface
      */
     public function getConfigurationFile()
     {
-
+        return $this->configurationFile;
     }
 
     /**
@@ -254,13 +254,14 @@ class NeuralNetwork implements NeuralNetworkInterface
      */
     public function setConfigurationFile($filename)
     {
-        if(!is_file($filename))
+        $directory = dirname($filename);
+        if(!is_dir($directory))
             throw new Exception(
-                "Configuration file not found: $filename.", 
+                "Configuration file directory not found: $directory.", 
                 1
             );
         $this->configurationFile = $filename;
-        
+        return true;
     }
 
     /**
