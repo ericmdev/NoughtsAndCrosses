@@ -96,14 +96,14 @@ class NeuralNetwork_UnitTest extends NoughtsAndCrossesTestCase
     }
 
     /**
-     * Test createFromFile returns ann resource.
+     * Test createFromFile returns true.
      *
-     * @dataProvider neuralNetworkConfigurationFileProvider
+     * @dataProvider neuralNetworkForCreateFromFileProvider
      */
-    public function testCreateFromFile($filename)
+    public function testCreateFromFile($neuralNetwork)
     {
-        $result = NeuralNetwork::createFromFile($filename);
-        $this->assertNotEquals(false, $result);
+        $result = $neuralNetwork->createFromFile();
+        $this->assertTrue($result);
     }
 
     /**
@@ -114,8 +114,8 @@ class NeuralNetwork_UnitTest extends NoughtsAndCrossesTestCase
     public function testRun($neuralNetwork)
     {
         $input = [0, 1, -1, -1, -1, -1, -1, -1, -1];
-        $result = $neuralNetwork->run();
-        $expected = 3;
+        $result = $neuralNetwork->run($input);
+        $expected = [0, 1, 0, -1, -1, -1, -1, -1, -1];
         $this->assertSame($expected, $result);
     }
 

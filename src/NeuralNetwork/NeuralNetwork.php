@@ -125,6 +125,11 @@ class NeuralNetwork implements NeuralNetworkInterface
             && $container['create_standard'] === true)
             $this->createStandard();
 
+        # Create standard ann.
+        if(!empty($container['create_from_file']) 
+            && $container['create_from_file'] === true)
+            $this->createFromFile();
+
         # Activate hidden layer.
         if (!empty($container['activate_hidden_layer'])
             && $container['activate_hidden_layer'] === true)
@@ -155,6 +160,27 @@ class NeuralNetwork implements NeuralNetworkInterface
         else
             return true;
     }
+
+    /**
+     * Create From File.
+     * 
+     * @return bool
+     */
+    public function createFromFile()
+    {
+        $this->ann = fann_create_from_file($this->getConfigurationFile());
+        if($this->ann === false)
+            throw new Exception(
+                "Failed to create ann from network configuration file: $filename.", 
+                1
+            );
+
+        if($this->ann === false)
+            return false;
+        else
+            return true;
+    }
+
 
     /**
      * Set Activation Function.
@@ -208,23 +234,6 @@ class NeuralNetwork implements NeuralNetworkInterface
     }
 
     /**
-     * Create From File.
-     * 
-     * @param  str      $filename Configuration file path.
-     * @return resource
-     */
-    public static function createFromFile($filename)
-    {
-        $ann = fann_create_from_file($filename);
-        if($ann === false)
-            throw new Exception(
-                "Failed to create ann from network configuration file: $filename.", 
-                1
-            );
-        return $ann;
-    }
-
-    /**
      * Run.
      * 
      * @param  array $input Input.
@@ -232,7 +241,10 @@ class NeuralNetwork implements NeuralNetworkInterface
      */
     public function run(array $input)
     {
-        
+        $calc_out = fann_run($this->ann, $input);
+        printf("noughtsandcrosses test (%f,%f) -> %f\n", $input[0], $input[1], $calc_out[0]);
+        fann_destroy($this->ann);
+        return $calc_out;
     }
 
 
