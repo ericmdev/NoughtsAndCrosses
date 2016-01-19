@@ -188,6 +188,15 @@ class NeuralNetwork implements NeuralNetworkInterface
     }
 
     /**
+     * Save. 
+     * 
+     * @return bool
+     */
+    public function save()
+    {
+        
+    }
+    /**
      * Get Train File.
      * 
      * @return str
@@ -203,7 +212,7 @@ class NeuralNetwork implements NeuralNetworkInterface
      * @param  str  Path to the file containing train data.
      * @return bool
      *
-     * @todo   Check if train file in the correct format.
+     * @todo   Check if training file in the correct format.
      */
     public function setTrainFile($filename)
     {
@@ -214,6 +223,27 @@ class NeuralNetwork implements NeuralNetworkInterface
             );
         $this->trainfile = $filename;
         return true;
+    }
+
+    /**
+     * Get Configuration file.
+     * 
+     * @return str
+     */
+    public function getConfigurationFile()
+    {
+
+    }
+
+    /**
+     * Set Configuration File.
+     * 
+     * @param  str  $filename Configuration file path.
+     * @return bool
+     */
+    public function setConfigurationFile($filename)
+    {
+        
     }
 
     /**
