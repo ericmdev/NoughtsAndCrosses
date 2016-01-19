@@ -76,8 +76,8 @@ class NeuralNetwork_UnitTest extends NoughtsAndCrossesTestCase
         $maxEpochs = 500000;
         $epochsBetweenReports = 1000;
         $desiredError = 0.001;
-        // $result = $neuralNetwork->trainOnFile($maxEpochs, $epochsBetweenReports, $desiredError);
-        // $this->assertTrue($result);
+        $result = $neuralNetwork->trainOnFile($maxEpochs, $epochsBetweenReports, $desiredError);
+        $this->assertTrue($result);
     }
 
     /**
