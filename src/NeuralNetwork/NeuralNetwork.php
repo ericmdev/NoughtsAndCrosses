@@ -43,7 +43,13 @@ class NeuralNetwork implements NeuralNetworkInterface
      * @access protected
      * @var    str
      */
-    protected  $trainfile;
+    protected  $trainFile;
+
+    /**
+     * @access protected
+     * @var    str
+     */
+    protected  $configurationFile;
 
     /**
      * @access protected
@@ -98,6 +104,11 @@ class NeuralNetwork implements NeuralNetworkInterface
         if(!empty($container['train_filename'])
             && !empty($container['train_filename']))
             $this->setTrainFile($container['train_filename']);
+
+        # Set configuration file.
+        if(!empty($container['configuration_filename'])
+            && !empty($container['configuration_filename']))
+            $this->setConfigurationFile($container['configuration_filename']);
 
         # Set input layer.
         if(!empty($container['input_layer']))
@@ -180,7 +191,7 @@ class NeuralNetwork implements NeuralNetworkInterface
     public function trainOnFile($maxEpochs, $epochsBetweenReports, $desiredError)
     {
         $result = fann_train_on_file($this->ann, 
-                                    $this->trainfile, 
+                                    $this->trainFile, 
                                     $maxEpochs, 
                                     $epochsBetweenReports, 
                                     $desiredError);
@@ -194,7 +205,7 @@ class NeuralNetwork implements NeuralNetworkInterface
      */
     public function save()
     {
-        
+
     }
     /**
      * Get Train File.
@@ -203,7 +214,7 @@ class NeuralNetwork implements NeuralNetworkInterface
      */
     public function getTrainFile()
     {
-        return $this->trainfile;
+        return $this->trainFile;
     }
 
     /**
@@ -221,7 +232,7 @@ class NeuralNetwork implements NeuralNetworkInterface
                 "Train file not found: $filename.", 
                 1
             );
-        $this->trainfile = $filename;
+        $this->trainFile = $filename;
         return true;
     }
 
@@ -243,6 +254,12 @@ class NeuralNetwork implements NeuralNetworkInterface
      */
     public function setConfigurationFile($filename)
     {
+        if(!is_file($filename))
+            throw new Exception(
+                "Configuration file not found: $filename.", 
+                1
+            );
+        $this->configurationFile = $filename;
         
     }
 
