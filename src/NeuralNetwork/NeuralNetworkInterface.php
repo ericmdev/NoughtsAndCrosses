@@ -41,6 +41,28 @@ interface NeuralNetworkInterface
     public function trainOnFile($maxEpochs, $epochsBetweenReports, $desiredError);
 
     /**
+     * Saves the entire network to a configuration file. 
+     * 
+     * @return bool
+     */
+    public function save();
+
+    /**
+     * Constructs a backpropagation neural network from a configuration file.
+     * 
+     * @return bool
+     */
+    public function createFromFile();
+
+    /**
+     * Runs the input through the neural network.
+     * 
+     * @param  array $input Input.
+     * @return array
+     */
+    public function run(array $input);
+
+    /**
      * Returns the path to the train file.
      * 
      * @return str
@@ -48,9 +70,24 @@ interface NeuralNetworkInterface
     public function getTrainFile();
 
     /**
+     * Sets the configuration file path.
+     * 
+     * @param  str  $filename Configuration file path.
+     * @return bool
+     */
+    public function setConfigurationFile($filename);
+
+    /**
+     * Returns the configuration file path.
+     * 
+     * @return str
+     */
+    public function getConfigurationFile();
+
+    /**
      * Sets the train file.
      * 
-     * @param  str  Path to the file containing train data.
+     * @param  str  $filename Path to the file containing train data.
      * @return bool
      */
     public function setTrainFile($filename);

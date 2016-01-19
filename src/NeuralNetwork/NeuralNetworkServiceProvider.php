@@ -29,7 +29,7 @@ class NeuralNetworkServiceProvider implements ServiceProviderInterface
             return [
                 'input'  => 9,
                 'hidden' => 9,
-                'output' => 1,
+                'output' => 9,
             ];
         };
 
@@ -54,8 +54,8 @@ class NeuralNetworkServiceProvider implements ServiceProviderInterface
             );
         };
 
-        # Trainfile.
-        $pimple['train_filename'] = function() {
+        # Train file.
+        $pimple['train_file'] = function() {
             $filename = dirname(dirname(__DIR__)) . 
                             DIRECTORY_SEPARATOR . 'app' . 
                             DIRECTORY_SEPARATOR . 'data' . 
@@ -63,8 +63,20 @@ class NeuralNetworkServiceProvider implements ServiceProviderInterface
             return $filename;
         };
 
+        # Configuration file.
+        $pimple['configuration_file'] = function() {
+            $filename = dirname(dirname(__DIR__)) . 
+                            DIRECTORY_SEPARATOR . 'app' . 
+                            DIRECTORY_SEPARATOR . 'data' . 
+                            DIRECTORY_SEPARATOR . 'noughtsandcrosses.net';
+            return $filename;
+        };
+
         # Create standard artificial neural network.
         $container['create_standard'] = false;
+
+        # Create artificial neural network from configuration file.
+        $container['create_from_file'] = false;
 
         # Activate hidden layer.
         $container['activate_hidden_layer'] = false;
