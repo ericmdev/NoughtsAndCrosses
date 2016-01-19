@@ -55,7 +55,7 @@ class NeuralNetworkServiceProvider implements ServiceProviderInterface
         };
 
         # Train file.
-        $pimple['train_filename'] = function() {
+        $pimple['train_file'] = function() {
             $filename = dirname(dirname(__DIR__)) . 
                             DIRECTORY_SEPARATOR . 'app' . 
                             DIRECTORY_SEPARATOR . 'data' . 
@@ -64,7 +64,7 @@ class NeuralNetworkServiceProvider implements ServiceProviderInterface
         };
 
         # Configuration file.
-        $pimple['configuration_filename'] = function() {
+        $pimple['configuration_file'] = function() {
             $filename = dirname(dirname(__DIR__)) . 
                             DIRECTORY_SEPARATOR . 'app' . 
                             DIRECTORY_SEPARATOR . 'data' . 

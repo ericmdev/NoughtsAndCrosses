@@ -101,14 +101,12 @@ class NeuralNetwork implements NeuralNetworkInterface
             $this->setLayers($container['layers']);
 
         # Set train file.
-        if(!empty($container['train_filename'])
-            && !empty($container['train_filename']))
-            $this->setTrainFile($container['train_filename']);
+        if(!empty($container['train_file']))
+            $this->setTrainFile($container['train_file']);
 
         # Set configuration file.
-        if(!empty($container['configuration_filename'])
-            && !empty($container['configuration_filename']))
-            $this->setConfigurationFile($container['configuration_filename']);
+        if(!empty($container['configuration_file']))
+            $this->setConfigurationFile($container['configuration_file']);
 
         # Set input layer.
         if(!empty($container['input_layer']))
@@ -205,7 +203,7 @@ class NeuralNetwork implements NeuralNetworkInterface
      */
     public function save()
     {
-
+        
     }
     /**
      * Get Train File.

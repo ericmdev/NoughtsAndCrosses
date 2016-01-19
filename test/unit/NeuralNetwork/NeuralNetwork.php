@@ -81,6 +81,21 @@ class NeuralNetwork_UnitTest extends NoughtsAndCrossesTestCase
     }
 
     /**
+     * Test save returns true.
+     *
+     * @dataProvider neuralNetworkActivatedProvider
+     */
+    public function testSave($neuralNetwork)
+    {
+        $maxEpochs = 500000;
+        $epochsBetweenReports = 1000;
+        $desiredError = 0.001;
+        $neuralNetwork->trainOnFile($maxEpochs, $epochsBetweenReports, $desiredError);
+        $result = $neuralNetwork->save();
+        $this->assertTrue($result);
+    }
+
+    /**
      * Test getTrainFile returns the path to the train file.
      *
      * @dataProvider neuralNetworkTrainFileProvider

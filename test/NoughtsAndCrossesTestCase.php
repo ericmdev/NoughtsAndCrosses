@@ -136,7 +136,8 @@ abstract class NoughtsAndCrossesTestCase extends PHPUnit_Framework_TestCase
     {
         $container = new Container();
         $container->register(new NeuralNetworkServiceProvider());
-        unset($container['train_filename']);
+        unset($container['train_file']);
+        unset($container['configuration_file']);
         unset($container['input_layer']);
         unset($container['hidden_layer']);
         unset($container['output_layer']);
@@ -152,7 +153,8 @@ abstract class NoughtsAndCrossesTestCase extends PHPUnit_Framework_TestCase
     {
         $container = new Container();
         $container->register(new NeuralNetworkServiceProvider());
-        unset($container['train_filename']);
+        unset($container['train_file']);
+        unset($container['configuration_file']);
         $neuralNetwork = new NeuralNetwork($container);
         return [[$neuralNetwork]];
     }
@@ -186,6 +188,21 @@ abstract class NoughtsAndCrossesTestCase extends PHPUnit_Framework_TestCase
     }
 
     /**
+     * Neural Network (Trained) Provider.
+     *
+     */
+    public function neuralNetworkTrainedProvider()
+    {
+        $container = new Container();
+        $container->register(new NeuralNetworkServiceProvider());
+        $container['create_standard'] = true;
+        $container['activate_hidden_layer'] = true;
+        $container['activate_output_layer'] = true;
+        $neuralNetwork = new NeuralNetwork($container);
+        return [[$neuralNetwork]];
+    }
+
+    /**
      * Neural Network Layers Provider.
      *
      */
@@ -204,7 +221,7 @@ abstract class NoughtsAndCrossesTestCase extends PHPUnit_Framework_TestCase
     {
         $container = new Container();
         $container->register(new NeuralNetworkServiceProvider());
-        return [[$container['train_filename']]];
+        return [[$container['train_file']]];
     }
     
     /**
@@ -215,7 +232,7 @@ abstract class NoughtsAndCrossesTestCase extends PHPUnit_Framework_TestCase
     {
         $container = new Container();
         $container->register(new NeuralNetworkServiceProvider());
-        return [[$container['configuration_filename']]];
+        return [[$container['configuration_file']]];
     }
 
     /**
