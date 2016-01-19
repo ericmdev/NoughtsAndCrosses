@@ -118,6 +118,19 @@ class NeuralNetwork_UnitTest extends NoughtsAndCrossesTestCase
     }
 
     /**
+     * Test setConfigurationFile throws exception if file not found.
+     *
+     * @expectedException        Exception
+     * @expectedExceptionMessage Configuration file not found: 
+     */
+    public function testSetConfigurationFileThrowsExceptionIfFileNotFound()
+    {
+        $neuralNetwork = new NeuralNetwork();
+        $filename = './dummy-configuration_file.net';
+        $neuralNetwork->setConfigurationFile($filename);
+    }
+
+    /**
      * Test setTrainFile throws exception if file not found.
      *
      * @expectedException        Exception
@@ -126,7 +139,7 @@ class NeuralNetwork_UnitTest extends NoughtsAndCrossesTestCase
     public function testSetTrainFileThrowsExceptionIfFileNotFound()
     {
         $neuralNetwork = new NeuralNetwork();
-        $filename = './dummy-trainfile.data';
+        $filename = './dummy-train_file.data';
         $neuralNetwork->setTrainFile($filename);
     }
 
