@@ -113,11 +113,18 @@ class NeuralNetwork implements NeuralNetworkInterface
 
         # Create standard ann.
         if(!empty($container['create_standard']) 
-            && $container['create_standard'] === true){
+            && $container['create_standard'] === true)
             $this->createStandard();
+
+        # Activate hidden layer.
+        if (!empty($container['activate_hidden_layer'])
+            && $container['activate_hidden_layer'] === true)
             $this->setActivationFunction($this->getHiddenLayer());
+
+        # Activate output layer.
+        if (!empty($container['activate_output_layer'])
+            && $container['activate_output_layer'] === true)
             $this->setActivationFunction($this->getOutputLayer());
-        }
     }
 
     /**

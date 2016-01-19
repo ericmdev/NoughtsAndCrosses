@@ -22,7 +22,8 @@ class Game_UnitTest extends NoughtsAndCrossesTestCase
     public function testSetPaper(PaperInterface $paper)
     {
         $game = new Game();
-        $this->assertSame($paper, $game->setPaper($paper));
+        $result = $game->setPaper($paper);
+        $this->assertSame($paper, $result);
     }
 
     /**
@@ -34,7 +35,8 @@ class Game_UnitTest extends NoughtsAndCrossesTestCase
     {
         $game = new Game();
         $game->setPaper($paper);
-        $this->assertSame($paper, $game->getPaper());
+        $result = $game->getPaper();
+        $this->assertSame($paper, $result);
     }
 
     /**
@@ -45,7 +47,8 @@ class Game_UnitTest extends NoughtsAndCrossesTestCase
     public function testSetPencil(PencilInterface $pencil)
     {
         $game = new Game();
-        $this->assertSame($pencil, $game->setPencil($pencil));
+        $result = $game->setPencil($pencil);
+        $this->assertSame($pencil, $result);
     }
 
     /**
@@ -57,7 +60,8 @@ class Game_UnitTest extends NoughtsAndCrossesTestCase
     {
         $game = new Game();
         $game->setPencil($pencil);
-        $this->assertSame($pencil, $game->getPencil());
+        $result = $game->getPencil();
+        $this->assertSame($pencil, $result);
     }
 
     /**
@@ -68,7 +72,8 @@ class Game_UnitTest extends NoughtsAndCrossesTestCase
     public function testAddPlayer(PlayerInterface $player)
     {
         $game = new Game();
-        $this->assertSame($player, $game->addPlayer($player));
+        $result = $game->addPlayer($player);
+        $this->assertSame($player, $result);
     }
 
     /**
@@ -80,7 +85,8 @@ class Game_UnitTest extends NoughtsAndCrossesTestCase
     {
         $game = new Game();
         $game->addPlayer($player);
-        $this->assertSame($player, $game->getPlayer(1));
+        $result = $game->getPlayer(1);
+        $this->assertSame($player, $result);
     }
 
     /**
@@ -92,7 +98,8 @@ class Game_UnitTest extends NoughtsAndCrossesTestCase
     {
         $game = new Game();
         $game->addPlayer($player);
-        $this->assertSame([$player], $game->getPlayers());
+        $result = $game->getPlayers();
+        $this->assertSame([$player], $result);
     }
 
     /**
@@ -108,6 +115,7 @@ class Game_UnitTest extends NoughtsAndCrossesTestCase
         $game->removePlayer(1);
         $players = [$player, $player];
         unset($players[0]);
-        $this->assertSame($players, $game->getPlayers());
+        $result = $game->getPlayers();
+        $this->assertSame($players, $result);
     }
 }

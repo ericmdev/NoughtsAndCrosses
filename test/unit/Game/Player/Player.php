@@ -21,7 +21,8 @@ class Player_UnitTest extends NoughtsAndCrossesTestCase
     {
         $player = new Player();
         foreach ($numbers as $number) {
-            $this->assertSame($number, $player->setNumber($number));
+            $result = $player->setNumber($number);
+            $this->assertSame($number, $result);
         }
     }
 
@@ -35,7 +36,8 @@ class Player_UnitTest extends NoughtsAndCrossesTestCase
         $player = new Player();
         foreach ($numbers as $number) {
             $player->setNumber($number);
-            $this->assertSame($number, $player->getNumber());
+            $result = $player->getNumber();
+            $this->assertSame($number, $result);
         }
     }
 
@@ -47,7 +49,8 @@ class Player_UnitTest extends NoughtsAndCrossesTestCase
     public function testSetNeuralNetwork(NeuralNetworkInterface $neuralNetwork)
     {
         $player = new Player();
-        $this->assertSame($neuralNetwork, $player->setNeuralNetwork($neuralNetwork));
+        $result = $player->setNeuralNetwork($neuralNetwork);
+        $this->assertSame($neuralNetwork, $result);
     }
 
     /**
@@ -59,6 +62,7 @@ class Player_UnitTest extends NoughtsAndCrossesTestCase
     {
         $player = new Player();
         $player->setNeuralNetwork($neuralNetwork);
-        $this->assertSame($neuralNetwork, $player->getNeuralNetwork());
+        $result = $player->getNeuralNetwork();
+        $this->assertSame($neuralNetwork, $result);
     }
 }
