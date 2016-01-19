@@ -51,7 +51,8 @@ abstract class NoughtsAndCrossesTestCase extends PHPUnit_Framework_TestCase
      */
     public function configProvider()
     {
-        return [[new Config()]];
+        $config = new Config();
+        return [[$config]];
     }
 
     /**
@@ -123,7 +124,8 @@ abstract class NoughtsAndCrossesTestCase extends PHPUnit_Framework_TestCase
     {
         $container = new Container();
         $container->register(new NeuralNetworkServiceProvider());
-        return [[new NeuralNetwork($container)]];
+        $neuralNetwork = new NeuralNetwork($container);
+        return [[$neuralNetwork]];
     }
 
     /**
@@ -138,7 +140,8 @@ abstract class NoughtsAndCrossesTestCase extends PHPUnit_Framework_TestCase
         unset($container['input_layer']);
         unset($container['hidden_layer']);
         unset($container['output_layer']);
-        return [[new NeuralNetwork($container)]];
+        $neuralNetwork = new NeuralNetwork($container);
+        return [[$neuralNetwork]];
     }
 
     /**
