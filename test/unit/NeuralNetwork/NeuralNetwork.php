@@ -25,27 +25,30 @@ class NeuralNetwork_UnitTest extends NoughtsAndCrossesTestCase
         $container = new Container();
         $container->register(new NeuralNetworkServiceProvider());
         $neuralNetwork = new NeuralNetwork($container);
-        $this->assertTrue($neuralNetwork->createStandard());
+        $result = $neuralNetwork->createStandard();
+        $this->assertTrue($result);
     }
 
     /**
      * Test setActivationFunction returns true for hidden layer.
      *
-     * @dataProvider neuralNetworkProvider
+     * @dataProvider neuralNetworkStandardProvider
      */
     public function testSetActivationFunctionForHiddenLayer($neuralNetwork)
     {
-        $this->assertTrue($neuralNetwork->setActivationFunction($neuralNetwork->getHiddenLayer()));
+        $result = $neuralNetwork->setActivationFunction($neuralNetwork->getHiddenLayer());
+        $this->assertTrue($result);
     }
 
     /**
      * Test setActivationFunction returns true for output layer.
      *
-     * @dataProvider neuralNetworkProvider
+     * @dataProvider neuralNetworkStandardProvider
      */
     public function testSetActivationFunctionForOutputLayer($neuralNetwork)
     {
-        $this->assertTrue($neuralNetwork->setActivationFunction($neuralNetwork->getOutputLayer()));
+        $result = $neuralNetwork->setActivationFunction($neuralNetwork->getOutputLayer());
+        $this->assertTrue($result);
     }
 
     /**
@@ -59,20 +62,22 @@ class NeuralNetwork_UnitTest extends NoughtsAndCrossesTestCase
         $container = new Container();
         $container->register(new NeuralNetworkServiceProvider());
         $neuralNetwork = new NeuralNetwork($container);
-        $this->assertTrue($neuralNetwork->setActivationFunction($neuralNetwork->getOutputLayer()));
+        $result = $neuralNetwork->setActivationFunction($neuralNetwork->getOutputLayer());
+        $this->assertTrue($result);
     }
 
     /**
      * Test trainOnFile returns true.
      *
-     * @dataProvider neuralNetworkProvider
+     * @dataProvider neuralNetworkActivatedProvider
      */
     public function testTrainOnFile($neuralNetwork)
     {
         $maxEpochs = 500000;
         $epochsBetweenReports = 1000;
         $desiredError = 0.001;
-        // $this->assertTrue($neuralNetwork->trainOnFile($maxEpochs, $epochsBetweenReports, $desiredError));
+        // $result = $neuralNetwork->trainOnFile($maxEpochs, $epochsBetweenReports, $desiredError);
+        // $this->assertTrue($result);
     }
 
     /**
@@ -84,7 +89,8 @@ class NeuralNetwork_UnitTest extends NoughtsAndCrossesTestCase
     {
         $neuralNetwork = new NeuralNetwork();
         $neuralNetwork->setTrainFile($filename);
-        $this->assertSame($filename, $neuralNetwork->getTrainFile());
+        $result = $neuralNetwork->getTrainFile();
+        $this->assertSame($filename, $result);
     }
 
     /**
@@ -95,7 +101,8 @@ class NeuralNetwork_UnitTest extends NoughtsAndCrossesTestCase
     public function testSetTrainfile($filename)
     {
         $neuralNetwork = new NeuralNetwork();
-        $this->assertTrue($neuralNetwork->setTrainFile($filename));
+        $result = $neuralNetwork->setTrainFile($filename);
+        $this->assertTrue($result);
     }
 
     /**
@@ -107,7 +114,8 @@ class NeuralNetwork_UnitTest extends NoughtsAndCrossesTestCase
     public function testSetTrainFileThrowsExceptionIfFileNotFound()
     {
         $neuralNetwork = new NeuralNetwork();
-        $neuralNetwork->setTrainFile('./dummy-trainfile.data');
+        $filename = './dummy-trainfile.data';
+        $neuralNetwork->setTrainFile($filename);
     }
 
     /**
@@ -118,7 +126,8 @@ class NeuralNetwork_UnitTest extends NoughtsAndCrossesTestCase
     public function testSetLayers(array $layers)
     {
         $neuralNetwork = new NeuralNetwork();
-        $this->assertSame($layers, $neuralNetwork->setLayers($layers));
+        $result = $neuralNetwork->setLayers($layers);
+        $this->assertSame($layers, $result);
     }
 
     /**
@@ -131,7 +140,8 @@ class NeuralNetwork_UnitTest extends NoughtsAndCrossesTestCase
         $neuralNetwork = new NeuralNetwork();
         $neuralNetwork->setLayers($layers);
         $numLayers = $layers['input'] + $layers['hidden'] + $layers['output'];
-        $this->assertSame($numLayers, $neuralNetwork->getLayers());
+        $result = $neuralNetwork->getLayers();
+        $this->assertSame($numLayers, $result);
     }
 
     /**
@@ -142,7 +152,8 @@ class NeuralNetwork_UnitTest extends NoughtsAndCrossesTestCase
     public function testSetInputLayer(InputLayerInterface $layer)
     {
         $neuralNetwork = new NeuralNetwork();
-        $this->assertSame($layer, $neuralNetwork->setInputLayer($layer));
+        $result = $neuralNetwork->setInputLayer($layer);
+        $this->assertSame($layer, $result);
     }
 
     /**
@@ -154,7 +165,8 @@ class NeuralNetwork_UnitTest extends NoughtsAndCrossesTestCase
     {
         $neuralNetwork = new NeuralNetwork();
         $neuralNetwork->setInputLayer($layer);
-        $this->assertSame($layer, $neuralNetwork->getInputLayer());
+        $result = $neuralNetwork->getInputLayer();
+        $this->assertSame($layer, $result);
     }
 
     /**
@@ -165,7 +177,8 @@ class NeuralNetwork_UnitTest extends NoughtsAndCrossesTestCase
     public function testSetHiddenLayer(HiddenLayerInterface $layer)
     {
         $neuralNetwork = new NeuralNetwork();
-        $this->assertSame($layer, $neuralNetwork->setHiddenLayer($layer));
+        $result = $neuralNetwork->setHiddenLayer($layer);
+        $this->assertSame($layer, $result);
     }
 
     /**
@@ -177,7 +190,8 @@ class NeuralNetwork_UnitTest extends NoughtsAndCrossesTestCase
     {
         $neuralNetwork = new NeuralNetwork();
         $neuralNetwork->setHiddenLayer($layer);
-        $this->assertSame($layer, $neuralNetwork->getHiddenLayer());
+        $result = $neuralNetwork->getHiddenLayer();
+        $this->assertSame($layer, $result);
     }
 
     /**
@@ -188,7 +202,8 @@ class NeuralNetwork_UnitTest extends NoughtsAndCrossesTestCase
     public function testSetOutputLayer(OutputLayerInterface $layer)
     {
         $neuralNetwork = new NeuralNetwork();
-        $this->assertSame($layer, $neuralNetwork->setOutputLayer($layer));
+        $result = $neuralNetwork->setOutputLayer($layer);
+        $this->assertSame($layer, $result);
     }
     
     /**
@@ -200,16 +215,18 @@ class NeuralNetwork_UnitTest extends NoughtsAndCrossesTestCase
     {
         $neuralNetwork = new NeuralNetwork();
         $neuralNetwork->setOutputLayer($layer);
-        $this->assertSame($layer, $neuralNetwork->getOutputLayer());
+        $result = $neuralNetwork->getOutputLayer();
+        $this->assertSame($layer, $result);
     }
     
     /**
      * Test destroy returns true.
      *
-     * @dataProvider neuralNetworkProvider
+     * @dataProvider neuralNetworkActivatedProvider
      */
     public function testDestroy($neuralNetwork)
     {
-        $this->assertTrue($neuralNetwork->destroy());
+        $result = $neuralNetwork->destroy();
+        $this->assertTrue($result);
     }
 }
