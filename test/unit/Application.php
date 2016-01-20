@@ -13,6 +13,13 @@ use NoughtsAndCrosses\Config\ConfigInterface;
  */
 class Application_UnitTest extends NoughtsAndCrossesTestCase
 {
+
+    /**
+     * @access protected
+     * @var    str
+     */
+    protected  $mockType = 'NoughtsAndCrosses\Application';
+
     /**
      * Test Application implements ApplicationInterface.
      *
@@ -21,6 +28,19 @@ class Application_UnitTest extends NoughtsAndCrossesTestCase
     {
         $app = new Application();
         $this->assertTrue($app instanceof ApplicationInterface); 
+    }
+
+    /**
+     * Test construct creates game if arg passed.
+     *
+     * @dataProvider gameProvider
+     */
+    public function testConstructCreatesGame($game)
+    {
+        $args = ['game' => $game];
+        $app = new Application($args);
+        $result = $app->getGame();
+        $this->assertTrue($result instanceof GameInterface); 
     }
 
     /**
