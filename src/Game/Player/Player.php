@@ -44,7 +44,11 @@ class Player implements PlayerInterface
      */
     public function train()
     {
-        
+        $maxEpochs = 500000;
+        $epochsBetweenReports = 1000;
+        $desiredError = 0.001;
+        $result = $this->neuralNetwork->trainOnFile($maxEpochs, $epochsBetweenReports, $desiredError);
+        return $result;
     }
 
     /**

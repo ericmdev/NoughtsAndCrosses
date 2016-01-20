@@ -24,8 +24,19 @@ class PlayerServiceProvider implements ServiceProviderInterface
             $pimple['create_standard'] = true;
             $pimple['activate_hidden_layer'] = true;
             $pimple['activate_output_layer'] = true;
-            return new NeuralNetwork($container);
+            return new NeuralNetwork($pimple);
         };
 
+        # Player numbers.
+        $pimple['numbers'] = [1, 2];
+
+        # Train.
+        $pimple['train'] = function($pimple) {
+            return [
+                'max_epochs' => 500000,
+                'epochs_between_reports' => 1000,
+                'desired_error' => 0.001
+            ];
+        };
     }
 }
