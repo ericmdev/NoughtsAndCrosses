@@ -7,7 +7,7 @@ use Pimple\Container;
 use Pimple\ServiceProviderInterface;
 
 /**
- * NeuralNetwork
+ * Service Provider for NeuralNetwork.
  *
  * @package noughtsandcrosses
  */
