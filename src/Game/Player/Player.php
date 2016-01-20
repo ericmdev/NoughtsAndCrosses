@@ -24,10 +24,17 @@ class Player implements PlayerInterface
     /**
      * Constructor.
      * 
+     * @param array $container DI.
      */
-    public function __construct()
+    public function __construct($container = null)
     {
-        
+        # Set number.
+        if(!empty($container['number']))
+            $this->setNumber($container['number']);
+
+        # Set neural network.
+        if(!empty($container['neural_network']))
+            $this->setNeuralNetwork($container['neural_network']);
     }
 
     /**
@@ -37,7 +44,11 @@ class Player implements PlayerInterface
      */
     public function train()
     {
-
+        $maxEpochs = 500000;
+        $epochsBetweenReports = 1000;
+        $desiredError = 0.001;
+        $result = $this->neuralNetwork->trainOnFile($maxEpochs, $epochsBetweenReports, $desiredError);
+        return $result;
     }
 
     /**
