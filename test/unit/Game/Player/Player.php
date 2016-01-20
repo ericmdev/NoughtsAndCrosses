@@ -13,6 +13,43 @@ use PHPUnit_Framework_TestCase;
 class Player_UnitTest extends NoughtsAndCrossesTestCase
 {
     /**
+     * Test construct sets game.
+     *
+     * @dataProvider gamePlayerNumberProvider
+     */
+    public function testConstructSetsNumber($numbers)
+    {
+        foreach ($numbers as $number) {
+            $player = new Player(['number' => $number]);
+            $result = $player->getNumber();
+            $this->assertSame($number, $result);
+        }
+    }
+
+    /**
+     * Test construct sets NeuralNetwork.
+     *
+     * @dataProvider gamePlayerNeuralNetworkProvider
+     */
+    public function testConstructSetsNeuralNetwork(NeuralNetworkInterface $neuralNetwork)
+    {
+        $player = new Player(['neural_network' => $neuralNetwork]);
+        $result = $player->getNeuralNetwork();
+        $this->assertTrue($result instanceof NeuralNetworkInterface);
+    }
+
+    /**
+     * Test train returns true.
+     *
+     * @dataProvider gamePlayerForTrainProvider
+     */
+    public function testTrain($player)
+    {
+        $result = $player->train();
+        $this->assertTrue($result);
+    }
+
+    /**
      * Test setNumber returns the number.
      *
      * @dataProvider gamePlayerNumberProvider
