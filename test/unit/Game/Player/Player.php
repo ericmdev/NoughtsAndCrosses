@@ -33,7 +33,9 @@ class Player_UnitTest extends NoughtsAndCrossesTestCase
      */
     public function testConstructSetsNeuralNetwork(NeuralNetworkInterface $neuralNetwork)
     {   
-        
+        $player = new Player(['neural_network' => $neuralNetwork]);
+        $result = $player->getNeuralNetwork();
+        $this->assertTrue($result instanceof NeuralNetworkInterface);
     }
 
     /**
