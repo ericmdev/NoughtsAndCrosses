@@ -27,14 +27,17 @@ class Application implements ApplicationInterface
     /**
      * Constructor.
      * 
+     * @param array $container DI.
      */
-    public function __construct()
+    public function __construct($container = null)
     {
-
+        # Create game.
+        if(!empty($container['game']))
+            $this->setGame($container['game']);
     }
 
     /**
-     * Get config.
+     * Get Config.
      * 
      * @return ConfigInterface
      */
@@ -44,7 +47,7 @@ class Application implements ApplicationInterface
     }
 
     /**
-     * Set config.
+     * Set Config.
      * 
      * @param  ConfigInterface $config Configuration object.
      * @return ConfigInterface
@@ -56,7 +59,7 @@ class Application implements ApplicationInterface
     }
 
     /**
-     * Get game.
+     * Get Game.
      * 
      * @return GameInterface
      */
@@ -66,7 +69,7 @@ class Application implements ApplicationInterface
     }
 
     /**
-     * Set game.
+     * Set Game.
      * 
      * @param  GameInterface $game Game object.
      * @return GameInterface
@@ -76,6 +79,17 @@ class Application implements ApplicationInterface
         $this->game = $game;
         return $this->game;
     }
+
+    /**
+     * Train Player.
+     * 
+     * @param int $number Player number.
+     */
+    public function trainPlayer($number = 1)
+    {
+        $this->game->getPlayer($number)->train();
+
+    } 
 
     /**
      * Run.

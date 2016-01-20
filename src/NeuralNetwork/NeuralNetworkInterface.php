@@ -108,7 +108,7 @@ interface NeuralNetworkInterface
     public function setLayers(array $layers);
 
     /**
-     * Returns the input layer property.
+     * Returns the input layer.
      * 
      * @return InputLayerInterface
      */
@@ -123,7 +123,7 @@ interface NeuralNetworkInterface
     public function setInputLayer(InputLayerInterface $layer);
 
     /**
-     * Returns the hidden layer property.
+     * Returns the hidden layer.
      * 
      * @return HiddenLayerInterface
      */
@@ -138,7 +138,7 @@ interface NeuralNetworkInterface
     public function setHiddenLayer(HiddenLayerInterface $layer);
 
     /**
-     * Returns the output layer property.
+     * Returns the output layer.
      * 
      * @return OutputLayerInterface
      */
