@@ -130,6 +130,18 @@ abstract class NoughtsAndCrossesTestCase extends PHPUnit_Framework_TestCase
     }
 
     /**
+     * Game Player (For Train) Provider.
+     *
+     */
+    public function gamePlayerForTrainProvider()
+    {
+        $container = new Container();
+        $container->register(new PlayerServiceProvider());
+        $player = new Player($container);
+        return [[$player]];
+    }
+
+    /**
      * Neural Network Provider.
      *
      */
