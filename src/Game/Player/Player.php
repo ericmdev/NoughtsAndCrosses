@@ -24,9 +24,13 @@ class Player implements PlayerInterface
     /**
      * Constructor.
      * 
+     * @param array $container DI.
      */
-    public function __construct()
+    public function __construct($container = null)
     {
+        # Set number.
+        if(!empty($container['number']))
+            $this->setNumber($container['number']);
         
     }
 
@@ -37,7 +41,7 @@ class Player implements PlayerInterface
      */
     public function train()
     {
-
+        
     }
 
     /**
