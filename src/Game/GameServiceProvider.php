@@ -6,7 +6,7 @@ use Pimple\Container;
 use Pimple\ServiceProviderInterface;
 
 /**
- * GameServiceProvider
+ * Service Provider for Game.
  *
  * @package noughtsandcrosses
  */
