@@ -171,7 +171,8 @@ class NeuralNetwork implements NeuralNetworkInterface
         $this->ann = fann_create_from_file($this->getConfigurationFile());
         if($this->ann === false)
             throw new Exception(
-                "Failed to create ann from network configuration file: $filename.", 
+                sprintf("Failed to create ann from network configuration file: %s.", $this->getConfigurationFile())
+                , 
                 1
             );
 
@@ -204,12 +205,12 @@ class NeuralNetwork implements NeuralNetworkInterface
     /**
      * Train On File.
      * 
-     * @param  int   $maxEpochs             The maximum number of epochs the training should continue.
-     * @param  int   $epochsBetweenReports  The number of epochs between calling a user function.
-     *                                      A value of zero means that user function is not called. 
-     * @param  float $desiredError          The desired fann_get_MSE() or fann_get_bit_fail(), 
-     *                                      depending on the stop function chosen by 
-     *                                      fann_set_train_stop_function().
+     * @param  int   $maxEpochs            The maximum number of epochs the training should continue.
+     * @param  int   $epochsBetweenReports The number of epochs between calling a user function.
+     *                                     A value of zero means that user function is not called. 
+     * @param  float $desiredError         The desired fann_get_MSE() or fann_get_bit_fail(), 
+     *                                     depending on the stop function chosen by 
+     *                                     fann_set_train_stop_function().
      * @return bool
      */
     public function trainOnFile($maxEpochs, $epochsBetweenReports, $desiredError)

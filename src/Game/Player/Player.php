@@ -31,7 +31,17 @@ class Player implements PlayerInterface
     }
 
     /**
-     * Returns the number property.
+     * Train.
+     * 
+     * @return bool
+     */
+    public function train()
+    {
+
+    }
+
+    /**
+     * Get Number.
      * 
      * @return int
      */
@@ -41,7 +51,7 @@ class Player implements PlayerInterface
     }
 
     /**
-     * Sets the number property.
+     * Set Number.
      * 
      * @param  int $number Player number.
      * @return int
@@ -53,7 +63,7 @@ class Player implements PlayerInterface
     }
 
     /**
-     * Returns the neuralNetwork property.
+     * Get Neural Network.
      * 
      * @return NeuralNetworkInterface
      */
@@ -63,7 +73,7 @@ class Player implements PlayerInterface
     }
 
     /**
-     * Sets the neuralNetwork property.
+     * Set NeuralNetwork.
      * 
      * @param  NeuralNetworkInterface $neuralNetwork Neural network.
      * @return NeuralNetworkInterface
