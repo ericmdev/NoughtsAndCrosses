@@ -31,7 +31,10 @@ class Player implements PlayerInterface
         # Set number.
         if(!empty($container['number']))
             $this->setNumber($container['number']);
-        
+
+        # Set neural network.
+        if(!empty($container['neural_network']))
+            $this->setNeuralNetwork($container['neural_network']);
     }
 
     /**
