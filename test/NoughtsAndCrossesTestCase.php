@@ -125,9 +125,8 @@ abstract class NoughtsAndCrossesTestCase extends PHPUnit_Framework_TestCase
     public function gamePlayerNeuralNetworkProvider()
     {
         $container = new Container();
-        $container->register(new NeuralNetworkServiceProvider());
-        $neuralNetwork = new NeuralNetwork($container);
-        return [[$neuralNetwork]];
+        $container->register(new PlayerServiceProvider());
+        return [[$container['neural_network']]];
     }
 
     /**

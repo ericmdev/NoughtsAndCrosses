@@ -13,7 +13,7 @@ use PHPUnit_Framework_TestCase;
 class Player_UnitTest extends NoughtsAndCrossesTestCase
 {
     /**
-     * Test construct creates game if arg passed.
+     * Test construct sets game.
      *
      * @dataProvider gamePlayerNumberProvider
      */
@@ -24,6 +24,16 @@ class Player_UnitTest extends NoughtsAndCrossesTestCase
             $result = $player->getNumber();
             $this->assertSame($number, $result);
         }
+    }
+
+    /**
+     * Test construct sets NeuralNetwork.
+     *
+     * @dataProvider gamePlayerNeuralNetworkProvider
+     */
+    public function testConstructSetsNeuralNetwork(NeuralNetworkInterface $neuralNetwork)
+    {   
+        
     }
 
     /**
