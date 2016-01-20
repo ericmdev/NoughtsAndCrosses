@@ -27,13 +27,13 @@ class Application implements ApplicationInterface
     /**
      * Constructor.
      * 
+     * @param array $container DI.
      */
-    public function __construct()
+    public function __construct($container = null)
     {
         # Create game.
-        if(!empty($container['create_game']) 
-            && $container['create_game'] === true)
-            $this->createFromFile();
+        if(!empty($container['game']))
+            $this->setGame($container['game']);
     }
 
     /**
@@ -87,7 +87,8 @@ class Application implements ApplicationInterface
      */
     public function trainPlayer($number = 1)
     {
-        
+        $this->game->getPlayer($number)->train();
+
     } 
 
     /**
