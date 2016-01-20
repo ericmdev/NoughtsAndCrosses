@@ -13,6 +13,20 @@ use PHPUnit_Framework_TestCase;
 class Player_UnitTest extends NoughtsAndCrossesTestCase
 {
     /**
+     * Test construct creates game if arg passed.
+     *
+     * @dataProvider gamePlayerNumberProvider
+     */
+    public function testConstructSetsNumber($numbers)
+    {   
+        foreach ($numbers as $number) {
+            $player = new Player(['number' => $number]);
+            $result = $player->getNumber();
+            $this->assertSame($number, $result);
+        }
+    }
+
+    /**
      * Test setNumber returns the number.
      *
      * @dataProvider gamePlayerNumberProvider
