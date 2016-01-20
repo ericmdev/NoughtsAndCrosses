@@ -6,6 +6,7 @@ use NoughtsAndCrosses\Game\GameServiceProvider;
 use NoughtsAndCrosses\Game\Paper\Paper;
 use NoughtsAndCrosses\Game\Pencil\Pencil;
 use NoughtsAndCrosses\Game\Player\Player;
+use NoughtsAndCrosses\Game\Player\PlayerServiceProvider;
 use NoughtsAndCrosses\NeuralNetwork\NeuralNetwork;
 use NoughtsAndCrosses\NeuralNetwork\NeuralNetworkServiceProvider;
 use NoughtsAndCrosses\NeuralNetwork\Layer\InputLayer;
@@ -112,8 +113,9 @@ abstract class NoughtsAndCrossesTestCase extends PHPUnit_Framework_TestCase
      */
     public function gamePlayerNumberProvider()
     {
-        $numbers = [1, 2];
-        return [[$numbers]];
+        $container = new Container();
+        $container->register(new PlayerServiceProvider());
+        return [[$container['numbers']]];
     }
 
     /**
