@@ -10,6 +10,14 @@ use NoughtsAndCrosses\NeuralNetwork\NeuralNetworkInterface;
 interface PlayerInterface
 {
     /**
+     * Trains the player on the training dataset, 
+     * which is read from file, for a period of time.
+     * 
+     * @return bool
+     */
+    public function train();
+
+    /**
      * Returns the number property.
      * 
      * @return int

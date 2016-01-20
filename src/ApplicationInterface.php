@@ -41,6 +41,13 @@ interface ApplicationInterface
     public function setGame(GameInterface $game);
 
     /**
+     * Train Player.
+     * 
+     * @param int $number Player number.
+     */
+    public function trainPlayer($number = 1);
+
+    /**
      * Runs the application.
      * 
      * @return bool
