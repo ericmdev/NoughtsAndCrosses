@@ -6,4 +6,3 @@
 composer.phar
 *.tmp
 *cache.properties
-app/data/noughtsandcrosses.net
