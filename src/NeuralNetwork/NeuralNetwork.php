@@ -168,6 +168,12 @@ class NeuralNetwork implements NeuralNetworkInterface
      */
     public function createFromFile()
     {
+        # Create neural network configuration file if it doesn't already exist.
+        if (!is_file($this->getConfigurationFile())) {
+            $this->createStandard();
+            $this->save();
+        }
+        # Create neural network from file.
         $this->ann = fann_create_from_file($this->getConfigurationFile());
         if($this->ann === false)
             throw new Exception(

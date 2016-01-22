@@ -21,7 +21,9 @@ class PlayerServiceProvider implements ServiceProviderInterface
         $pimple['neural_network'] = function($pimple) {
             $pimple = new Container();
             $pimple->register(new NeuralNetworkServiceProvider());
-            $pimple['create_standard'] = true;
+            // $pimple['create_standard'] = true;
+            $pimple['configuration_filename'] = 'noughtsandcrosses-player.net'; // move to a class var
+            $pimple['create_from_file'] = true;
             $pimple['activate_hidden_layer'] = true;
             $pimple['activate_output_layer'] = true;
             return new NeuralNetwork($pimple);
