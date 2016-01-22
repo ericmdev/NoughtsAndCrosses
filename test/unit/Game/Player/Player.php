@@ -56,10 +56,10 @@ class Player_UnitTest extends NoughtsAndCrossesTestCase
      */
     public function testGetResponse($player)
     {
-        $input = [0, 0, 0, 0, 0, 0, 0, 0, 0];
+        $input = [1, 0, 0, 0, 0, 0, 0, 0, 0];
         $result = $player->getResponse($input);
-        $expected = [1];
-        $this->assertEquals($expected, $result);
+        $expected = [2];
+        $this->assertNotEquals($expected, $result);
     }
 
     /**
