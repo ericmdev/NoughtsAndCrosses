@@ -39,14 +39,27 @@ class Player_UnitTest extends NoughtsAndCrossesTestCase
     }
 
     /**
-     * Test train returns true.
+     * Test trainOnFile returns true.
      *
      * @dataProvider gamePlayerForTrainProvider
      */
-    public function testTrain($player)
+    public function testTrainOnFile($player)
     {
-        $result = $player->train();
+        $result = $player->trainOnFile();
         $this->assertTrue($result);
+    }
+
+    /**
+     * Test getResponse returns calculated output.
+     *
+     * @dataProvider gamePlayerForTrainProvider
+     */
+    public function testGetResponse($player)
+    {
+        $input = [0, 0, 0, 0, 0, 0, 0, 0, 0];
+        $result = $player->getResponse($input);
+        $expected = [1];
+        $this->assertEquals($expected, $result);
     }
 
     /**
