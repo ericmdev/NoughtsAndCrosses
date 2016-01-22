@@ -15,7 +15,15 @@ interface PlayerInterface
      * 
      * @return bool
      */
-    public function train();
+    public function trainOnFile();
+
+    /**
+     * Get Response.
+     * 
+     * @param  array $input Input (e.g: [0, 0, 0, 0, 0, 0, 0, 0, 0]).
+     * @return array
+     */
+    public function getResponse(array $input);
 
     /**
      * Returns the number property.

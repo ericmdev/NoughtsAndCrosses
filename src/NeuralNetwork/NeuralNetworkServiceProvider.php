@@ -63,12 +63,15 @@ class NeuralNetworkServiceProvider implements ServiceProviderInterface
             return $filename;
         };
 
-        # Configuration file.
-        $pimple['configuration_file'] = function() {
+        # Default network configuration filename.
+        $pimple['configuration_filename'] = 'noughtsandcrosses.net';
+
+        # Default network configuration file path.
+        $pimple['configuration_file'] = function($pimple) {
             $filename = dirname(dirname(__DIR__)) . 
                             DIRECTORY_SEPARATOR . 'app' . 
                             DIRECTORY_SEPARATOR . 'data' . 
-                            DIRECTORY_SEPARATOR . 'noughtsandcrosses.net';
+                            DIRECTORY_SEPARATOR . $pimple['configuration_filename'];
             return $filename;
         };
 
