@@ -116,8 +116,6 @@ class NeuralNetwork_UnitTest extends NoughtsAndCrossesTestCase
         $input = [-1, 2, 0, 0, 0, 0, 0, 0, 0];
         $result = $neuralNetwork->run($input);
         $expected = [3];
-        # These values will not be equal while the ann is learning.
-        # Let the build fail.
         $this->assertNotEquals($expected, $result);
     }
 

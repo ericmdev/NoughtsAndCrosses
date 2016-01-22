@@ -50,6 +50,19 @@ class Player_UnitTest extends NoughtsAndCrossesTestCase
     }
 
     /**
+     * Test getResponse returns calculated output.
+     *
+     * @dataProvider gamePlayerForTrainProvider
+     */
+    public function testGetResponse($player)
+    {
+        $input = [0, 0, 0, 0, 0, 0, 0, 0, 0];
+        $result = $player->getResponse($input);
+        $expected = [1];
+        $this->assertEquals($expected, $result);
+    }
+
+    /**
      * Test setNumber returns the number.
      *
      * @dataProvider gamePlayerNumberProvider
