@@ -39,11 +39,11 @@ class Player implements PlayerInterface
     }
 
     /**
-     * Train.
+     * Train On File.
      * 
      * @return bool
      */
-    public function train()
+    public function trainOnFile()
     {
         $maxEpochs = 500000;
         $epochsBetweenReports = 1000;

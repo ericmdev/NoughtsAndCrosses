@@ -15,7 +15,7 @@ interface PlayerInterface
      * 
      * @return bool
      */
-    public function train();
+    public function trainOnFile();
 
     /**
      * Returns the number property.

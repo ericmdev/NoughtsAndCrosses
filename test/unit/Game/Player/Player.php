@@ -39,13 +39,13 @@ class Player_UnitTest extends NoughtsAndCrossesTestCase
     }
 
     /**
-     * Test train returns true.
+     * Test trainOnFile returns true.
      *
      * @dataProvider gamePlayerForTrainProvider
      */
-    public function testTrain($player)
+    public function testTrainOnFile($player)
     {
-        $result = $player->train();
+        $result = $player->trainOnFile();
         $this->assertTrue($result);
     }
 
