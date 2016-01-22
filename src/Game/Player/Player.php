@@ -1,6 +1,7 @@
 <?php
 namespace NoughtsAndCrosses\Game\Player;
 use NoughtsAndCrosses\NeuralNetwork\NeuralNetworkInterface;
+use RuntimeException;
 
 /**
  * Player
@@ -48,6 +49,19 @@ class Player implements PlayerInterface
         $epochsBetweenReports = 1000;
         $desiredError = 0.001;
         $result = $this->neuralNetwork->trainOnFile($maxEpochs, $epochsBetweenReports, $desiredError);
+        if($result === false)
+            throw new RuntimeException(
+                sprintf("Failed to train neural network on file: %s", 
+                    $this->neuralNetwork->getConfigurationFile()), 
+                1
+            );
+        $result = $this->neuralNetwork->save();
+        if($result === false)
+            throw new RuntimeException(
+                sprintf("Failed to save neural network to file: %s", 
+                    $this->neuralNetwork->getConfigurationFile()), 
+                1
+            );
         return $result;
     }
 
