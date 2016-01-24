@@ -1,4 +1,0 @@
-#!/bin/bash
-
-# Exec container bash.
-docker exec -it noughtsandcrosses-qa bash
