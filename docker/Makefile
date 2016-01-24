@@ -23,7 +23,7 @@ exec:
 ip:
 	docker-machine ip default
 
-# List machiens.
+# List machines.
 machines:
 	docker-machine ls
 
