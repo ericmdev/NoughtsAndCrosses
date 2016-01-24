@@ -1,4 +1,0 @@
-#!/bin/bash
-
-# Build image.
-docker build -t noughtsandcrosses-qa-image -f Dockerfile .
