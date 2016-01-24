@@ -1,4 +1,0 @@
-#!/bin/bash
-
-# Show IP of default machine.
-docker-machine ip default

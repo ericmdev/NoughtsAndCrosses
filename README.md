@@ -17,31 +17,13 @@ The application *demonstrates* **machine learning** in a PHP game.
 
 You can build and run the NoughtsAndCrosses application environment using native Docker.
 
-*Bash scripts in `docker/bin`:*
+On your local machine, build the docker image and then run the container.
 
-    # Stop and remove all containers.
-    . docker/bin/clean
+Use the Makefile to build the Docker NoughtsAndCrosses image.
+    
+    $ make -f ./docker/Makefile build
 
-    # Delete all images and stop and remove all containers.
-    . docker/bin/clean-all
-
-    # Build the image `noughtsandcrosses-image`.
-    . docker/bin/build
-
-    # Run the container `noughtsandcrosses-container`.
-    . docker/bin/run
-
-    # Access the container `noughtsandcrosses-container`.
-    . docker/bin/exec
-
-    # List running containers.
-    . docker/bin/containers
-
-    # List machines.
-    . docker/bin/machines
-
-    # Show ip of default machine.
-    . docker/bin/ip
+You can also use `Makefile [containers|clean|clean-image|exec|ip|machines|run]`.
 
 *Browser:*
 Visit: `<docker_machine_ip>:<docker_container_host_port_80>/index.php`.
