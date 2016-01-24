@@ -1,4 +1,0 @@
-#!/bin/bash
-
-# List machines.
-docker machine ls
